@@ -1,0 +1,11 @@
+<h3>Top Properties</h3>
+<div class="grid grid-pad">
+  <a *ngFor="let property of properties" class="col-1-4" routerLink="/detail/{{property.id}}">
+    <div class="module property">
+      <h4>{{property.name}}</h4>
+    </div>
+  </a>
+</div>
+
+
+<app-property-search></app-property-search>

@@ -1,0 +1,23 @@
+<h2>Properties</h2>
+
+
+<div>
+  <label>Property name:
+    <input #propertyName />
+  </label>
+  <!-- (click) passes input value to add() and then clears the input -->
+  <button (click)="add(propertyName.value); propertyName.value=''">
+    add
+  </button>
+</div>
+
+<ul class="properties">
+  <li *ngFor="let property of properties">
+    <a routerLink="/detail/{{property.id}}">
+      <span class="badge">{{property.id}}</span> {{property.name}}
+    </a>
+    <button class="delete" title="delete property"
+            (click)="delete(property)">x
+    </button>
+  </li>
+</ul>

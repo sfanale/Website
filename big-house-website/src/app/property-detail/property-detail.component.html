@@ -9,7 +9,21 @@
       <input [(ngModel)]="property.name" placeholder="name">
     </label>
   </div>
+  <div>
+    <span>Address: </span>{{property.address}}
+  </div>
+  <div>
+    <span>Monthly Rent: </span>{{property.rent}}
+  </div>
+  <div>
+    <span>Home Value: </span>{{property.price}}
+  </div>
+  <div>
+    <span>Return: </span>{{property.return}}
+  </div>
 </div>
+
 
 <button (click)="save()">Save</button>
 <button (click)="goBack()">Go Back</button>
+<button routerLink="/trade/{{property.id}}">Trade</button>

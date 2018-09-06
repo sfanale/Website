@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { MessagesService } from '../messages.service';
+import {MessageService} from "../messages.service";
 
 @Component({
   selector: 'app-messages',
@@ -9,7 +9,7 @@ import { MessagesService } from '../messages.service';
 })
 export class MessagesComponent implements OnInit {
 
-  constructor(public messagesService : MessagesService) { }
+  constructor(public messageService: MessageService) { }
 
   ngOnInit() {
   }

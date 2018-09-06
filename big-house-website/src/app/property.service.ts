@@ -1,27 +1,30 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+
+import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 
 import { Property } from './property';
-import { MessagesService } from './messages.service';
+import { MessageService } from './messages.service';
 
 
-@Injectable({
-  providedIn: 'root'
-})
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
 
+@Injectable({ providedIn: 'root' })
 export class PropertyService {
 
+  private propertiesUrl = 'api/properties';  // URL to web api
 
-  private log(message: string) {
-    this.messageService.add(`PropertyService: ${message}`);
-  }
 
-  private propertiesUrl = 'api/properties';
+  constructor(
+    private http: HttpClient,
+    private messageService: MessageService) { }
 
 
   getProperties (): Observable<Property[]> {
+
     return this.http.get<Property[]>(this.propertiesUrl)
       .pipe(
         tap(properties => this.log('fetched properties')),
@@ -29,37 +32,30 @@ export class PropertyService {
       );
   }
 
-  getProperty (id: number): Observable<Property> {
+
+  getPropertyNo404<Data>(id: number): Observable<Property> {
+    const url = `${this.propertiesUrl}/?id=${id}`;
+    return this.http.get<Property[]>(url)
+      .pipe(
+        map(properties => properties[0]), // returns a {0|1} element array
+        tap(h => {
+          const outcome = h ? `fetched` : `did not find`;
+          this.log(`${outcome} property id=${id}`);
+        }),
+        catchError(this.handleError<Property>(`getProperty id=${id}`))
+      );
+  }
+
+
+  getProperty(id: number): Observable<Property> {
     const url = `${this.propertiesUrl}/${id}`;
     return this.http.get<Property>(url).pipe(
-      tap(_=>this.log(`fetched property id = ${id}`)),
-      catchError(this.handleError<Property>(`getProperty id = ${id}`))
+      tap(_ => this.log(`fetched property id=${id}`)),
+      catchError(this.handleError<Property>(`getProperty id=${id}`))
     );
   }
 
-  addProperty (property:Property): Observable<Property> {
-    const httpOptions = {
-      headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-    };
-    return this.http.post<Property>(this.propertiesUrl, property, httpOptions).pipe(
-      tap((property: Property) => this.log(`Added new property with id = ${property.id}`)),
-      catchError(this.handleError<Property>('addProperty'))
-    );
-  }
 
-  deleteProperty (property: Property | number): Observable<Property> {
-    const id = typeof property === 'number' ? property : property.id;
-    const url = `${this.propertiesUrl}/${id}`;
-    const httpOptions = {
-      headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-    };
-    return this.http.delete<Property>(url, httpOptions).pipe(
-      tap(_ => this.log(`deleted property id=${id}`)),
-      catchError(this.handleError<Property>('deleteProperty'))
-    );
-  }
-
-  /* GET heroes whose name contains search term */
   searchProperties(term: string): Observable<Property[]> {
     if (!term.trim()) {
       // if not search term, return empty hero array.
@@ -71,17 +67,54 @@ export class PropertyService {
     );
   }
 
-
-  /** PUT: update the hero on the server */
-  updateProperty (property: Property): Observable<any> {
-    const httpOptions = {
-      headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-    };
-    return this.http.put(this.propertiesUrl, property, httpOptions).pipe(
-      tap(_ => this.log(`updated property id=${property.id}`)),
-      catchError(this.handleError<any>('updateProperty'))
+  searchPropertiesResearch(term: string): Observable<Property[]> {
+    if (term == "") {
+      return this.http.get<Property[]>(this.propertiesUrl)
+        .pipe(
+          tap(properties => this.log('fetched properties')),
+          catchError(this.handleError('getProperties', []))
+        );
+    }
+    return this.http.get<Property[]>(`${this.propertiesUrl}/?name=${term}`).pipe(
+      tap(_ => this.log(`found properties matching "${term}"`)),
+      catchError(this.handleError<Property[]>('searchProperties', []))
     );
   }
+
+
+
+
+
+
+  //////// Save methods //////////
+
+
+  addProperty (property: Property): Observable<Property> {
+    return this.http.post<Property>(this.propertiesUrl, property, httpOptions).pipe(
+      tap((property: Property) => this.log(`added property w/ id=${property.id}`)),
+      catchError(this.handleError<Property>('addProperty'))
+    );
+  }
+
+
+  deleteProperty (property: Property | number): Observable<Property> {
+    const id = typeof property === 'number' ? property : property.id;
+    const url = `${this.propertiesUrl}/${id}`;
+
+    return this.http.delete<Property>(url, httpOptions).pipe(
+      tap(_ => this.log(`deleted property id=${id}`)),
+      catchError(this.handleError<Property>('deleteProperty'))
+    );
+  }
+
+
+  updateProperty(property: Property): Observable<any> {
+    return this.http.put(this.propertiesUrl, property, httpOptions).pipe(
+      tap(_ => this.log(`updated hero id=${property.id}`)),
+      catchError(this.handleError<any>('updateHero'))
+    );
+  }
+
 
 
   /**
@@ -104,9 +137,8 @@ export class PropertyService {
     };
   }
 
-
-  constructor(
-    private messageService: MessageService,
-    private http: HttpClient
-  ) { }
+  private log(message: string) {
+    this.messageService.add(`PropertyService: ${message}`);
+  }
 }
+

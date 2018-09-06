@@ -21,8 +21,8 @@ export class PropertiesComponent implements OnInit {
   }
 
   getProperties(): void {
-    this.propertyService.getProperties()
-      .subscribe(properties => this.properties = properties);
+    this.propertyService.getProperties().subscribe(properties => this.properties = properties as Property[]);
+
   }
 
   add(name:string): void {
@@ -36,7 +36,7 @@ export class PropertiesComponent implements OnInit {
     this.propertyService.deleteProperty(property).subscribe();
   }
 
-}
 
+}
 
 

@@ -1,3 +1,13 @@
-<p>
-  property-search works!
-</p>
+<div id="property-component">
+  <h4>Property Search</h4>
+
+  <input #searchBox id="search-box" (keyup)="search(searchBox.value)" />
+
+  <ul class="search-result">
+    <li *ngFor="let property of properties$ | async" >
+      <a routerLink="/detail/{{property.id}}">
+        {{property.name}}
+      </a>
+    </li>
+  </ul>
+</div>

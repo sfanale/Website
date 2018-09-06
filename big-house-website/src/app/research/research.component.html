@@ -1,0 +1,82 @@
+<h2>Research</h2>
+
+<div class="example-container mat-elevation-z8">
+<div class="example-loading-shade"
+     *ngIf="isLoadingResults || isRateLimitReached">
+  <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+  <div class="example-rate-limit-reached" *ngIf="isRateLimitReached">
+   The API rate limit has been reached. It will be reset in one minute.
+  </div>
+</div>
+
+  <mat-form-field>
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+  </mat-form-field>
+
+
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" matSort >
+
+      <!-- ID Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> name </th>
+        <td mat-cell *matCellDef="let row"> {{row.name}} </td>
+      </ng-container>
+
+      <!-- Progress Column -->
+      <ng-container matColumnDef="rent">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> rent </th>
+        <td mat-cell *matCellDef="let row"> {{row.rent|currency}} </td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="price">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> price </th>
+        <td mat-cell *matCellDef="let row"> {{row.price|currency}} </td>
+      </ng-container>
+
+      <!-- Color Column -->
+      <ng-container matColumnDef="return">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> return </th>
+        <td mat-cell *matCellDef="let row" > {{row.return}}% </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+      </tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+  </div>
+
+
+  <!--
+  <input #searchBox id="search-box" (keyup)="search(searchBox.value)" />
+  <button  (click)="sortedByRent()">Rent</button>
+  <button  (click)="sortedByPrice()">Price</button>
+  <button  (click)="sortedByReturn()">Return</button>
+
+  <ul class="research">
+    <div class="row">
+      <div class="col-1-5"><h5>Property Name</h5></div>
+      <div class="col-1-5"><h5>Rent</h5> </div>
+      <div class="col-1-5"><h5>Price</h5> </div>
+      <div class="col-1-5"><h5>Return</h5></div>
+    </div>
+    <li *ngFor="let property of properties" >
+      <div class="row">
+        <div class="col-1-5">
+      <a routerLink="/detail/{{property.id}}">
+        {{property.name}}
+      </a>
+        </div>
+        <div class="col-1-5">{{property.rent}} </div>
+        <div class="col-1-5">{{property.price}} </div>
+        <div class="col-1-5">{{property.return}} </div>
+      </div>
+    </li>
+  </ul>
+</div>
+
+
+-->

@@ -59,6 +59,7 @@ import {CdkTableModule} from '@angular/cdk/table';
 import {CdkTreeModule} from '@angular/cdk/tree';
 
 import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
+import { UsersComponent } from './users/users.component';
 
 
 @NgModule({
@@ -70,7 +71,8 @@ import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
     DashboardComponent,
     PropertiesComponent,
     ResearchComponent,
-    TradeComponent
+    TradeComponent,
+    UsersComponent
   ],
   imports: [
     BrowserModule,

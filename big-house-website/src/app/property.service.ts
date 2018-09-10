@@ -24,7 +24,6 @@ export class PropertyService {
 
 
   getProperties (): Observable<Property[]> {
-
     return this.http.get<Property[]>(this.propertiesUrl)
       .pipe(
         tap(properties => this.log('fetched properties')),

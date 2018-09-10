@@ -30,6 +30,13 @@
   <div>
     <span>Historical Prices: </span>{{tradeInfo.histPrices}}
   </div>
+  <input type="number" id="Number-of-shares" name="Number-of-shares"
+                           placeholder="Number of Shares"
+                           min="1" value="" />
+  <input type="number" id="bid-price" name="bid-price"
+         placeholder="bid price"
+         min="1" value=""/>
+  <button (click)="buy()">Buy</button>
 </div>
 
 

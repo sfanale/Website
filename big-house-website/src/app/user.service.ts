@@ -1,48 +1,49 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
+
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 
-import {TradeInfo} from "./tradeinfo";
+import { User } from './user';
 import { MessageService } from './messages.service';
-import {Property} from "./property";
 
-const httpOptions = {
+
+/*const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
-
+*/
 @Injectable({
   providedIn: 'root'
 })
-export class TradingService {
+export class UserService {
 
-  private tradeInfoUrl = 'api/tradeInfo';  // ?
+  private usersUrl = 'api/users';  // URL to web api
 
-  constructor(
-    private http: HttpClient,
-    private messageService: MessageService
-  ) { }
-
-  getTradeInfo(id: number): Observable<TradeInfo> {
-    const url = `${this.tradeInfoUrl}/${id}`;
-    return this.http.get<TradeInfo>(url).pipe(
-      tap(_ => this.log(`fetched Trade Info id=${id}`)),
-      catchError(this.handleError<TradeInfo>(`getTradeInfo id=${id}`))
-    );
-  }
+  constructor(private http: HttpClient,
+              private messageService: MessageService) { }
 
 
-  updateTradeInfo(tradeInfo: TradeInfo): Observable<TradeInfo> {
-    return this.http.put(this.tradeInfoUrl, tradeInfo, httpOptions).pipe(
-      tap(_ => this.log(`updated trade info id=${tradeInfo.id}`)),
-      catchError(this.handleError<any>('updateTradeInfo'))
+
+  getUser(id: number): Observable<User> {
+    const url = `${this.usersUrl}/${id}`;
+    return this.http.get<User>(url).pipe(
+      tap(_ => this.log(`fetched user id=${id}`)),
+      catchError(this.handleError<User>(`getUser id=${id}`))
     );
   }
 
 
 
 
+
+
+  /**
+   * Handle Http operation that failed.
+   * Let the app continue.
+   * @param operation - name of the operation that failed
+   * @param result - optional value to return as the observable result
+   */
   private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
 
@@ -61,3 +62,5 @@ export class TradingService {
     this.messageService.add(`PropertyService: ${message}`);
   }
 }
+
+

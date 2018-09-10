@@ -6,6 +6,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { PropertyDetailComponent } from './property-detail/property-detail.component';
 import {ResearchComponent} from "./research/research.component";
 import {TradeComponent} from "./trade/trade.component";
+import {UsersComponent} from "./users/users.component";
 
 
 const routes : Routes = [
@@ -15,7 +16,9 @@ const routes : Routes = [
   {path: 'detail/:id', component: PropertyDetailComponent },
   {path: 'research', component: ResearchComponent},
   {path: 'trade/:id', component: TradeComponent},
-  {path: 'trade', component: TradeComponent}
+  {path: 'trade', component: TradeComponent},
+  {path: 'account',component:UsersComponent},
+  {path: 'account/:id',component:UsersComponent}
 
 ];
 

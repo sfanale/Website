@@ -1,0 +1,28 @@
+<div *ngIf="!user">
+  <input type="text" id="username" name="username"
+         placeholder="User Name" value="" />
+  <button (click)="logIn()">Log In</button>
+</div>
+
+<div *ngIf="user">
+  <div>
+    <span>User: </span>{{user.username}}
+  </div>
+  <div>
+    <span>Cash: </span>{{user.cash|currency}}
+  </div>
+  <div>
+  <table>
+    <tr>
+      <th>Property ID</th>
+      <th>Shares</th>
+      <th>Price Paid</th>
+    </tr>
+    <tr *ngFor="let property of user.holdings">
+      <td>{{property.id}}</td>
+      <td>{{property.shares}}</td>
+      <td>{{property.pricePaid|currency}}</td>
+    </tr>
+  </table>
+  </div>
+</div>

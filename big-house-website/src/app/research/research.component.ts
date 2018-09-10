@@ -38,18 +38,18 @@ export class ResearchComponent implements OnInit {
 
   constructor(private propertyService: PropertyService) {
     //this.dataSource = new MatTableDataSource<Property>(this.properties);
-    //this.dataSource = new MatTableDataSource<Property>(propertiesConst);
+    this.dataSource = new MatTableDataSource<Property>(propertiesConst);
 
 
-    this.dataSource = new MatTableDataSource();
+    //this.dataSource = new MatTableDataSource();
   }
 
   ngOnInit() {
     //this.propertyService.getProperties().subscribe(properties => this.properties = properties);
 
-    this.propertyService.getProperties().subscribe(properties => this.dataSource = new MatTableDataSource<Property>(properties));
+    //this.propertyService.getProperties().subscribe(properties => this.dataSource = new MatTableDataSource<Property>(properties));
 
-    this.dataSource = new MatTableDataSource<Property>(this.properties)
+    //this.dataSource = new MatTableDataSource<Property>(this.properties)
 
     //this.dataSource = new MatTableDataSource<Property>(this.properties);
     this.dataSource.paginator = this.paginator;

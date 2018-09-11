@@ -23,7 +23,7 @@ export class InMemoryDataService implements InMemoryDbService {
     ];
 
     let users = [
-      {username:"Stephen", id:1, cash:10000, holdings:[{id:11, shares:10, pricePaid:69, date:1}]}
+      {username:"Stephen",password:'password', id:'Stephen',name:'Stephen', cash:10000, holdings:[{id:11, shares:10, pricePaid:69, date:1, rentIncome:72}]}
     ];
     return {properties,tradeInfo,users};
   }

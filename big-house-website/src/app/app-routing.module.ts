@@ -17,9 +17,7 @@ const routes : Routes = [
   {path: 'research', component: ResearchComponent},
   {path: 'trade/:id', component: TradeComponent},
   {path: 'trade', component: TradeComponent},
-  {path: 'account',component:UsersComponent},
-  {path: 'account/:id',component:UsersComponent}
-
+  {path: 'account',component:UsersComponent}
 ];
 
 @NgModule({

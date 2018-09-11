@@ -35,10 +35,9 @@ export class TradeComponent implements OnInit {
   }
 
   buy(): void {
-    //TODO add user
-    //use this information to record ownership,cash movement, and user
-    //Does user have enough cash? Are there enough shares?
-    // if so buy number of shares at rate
+    //validate transaction
+    // property id and number of shares valid?
+    // does user have this much cash?
     // user cash => dealer cash ; dealer shares => user shares
     var numberOfShares = (document.getElementById('Number-of-shares') as HTMLInputElement).value;
     var bidPrice = (document.getElementById('bid-price') as HTMLInputElement).value;

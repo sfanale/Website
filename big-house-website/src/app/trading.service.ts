@@ -32,6 +32,14 @@ export class TradingService {
     );
   }
 
+  getTradeInfoAll(): Observable<TradeInfo[]> {
+    var url = `${this.tradeInfoUrl}/`;
+    return this.http.get<TradeInfo[]>(url).pipe(
+      tap(_ => this.log(`fetched Trade Info All`)),
+      catchError(this.handleError<TradeInfo[]>(`getTradeInfo All`))
+    );
+  }
+
 
   updateTradeInfo(tradeInfo: TradeInfo): Observable<TradeInfo> {
     return this.http.put(this.tradeInfoUrl, tradeInfo, httpOptions).pipe(

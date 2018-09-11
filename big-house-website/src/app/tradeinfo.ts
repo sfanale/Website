@@ -1,5 +1,5 @@
 export class TradeInfo {
-  id:number;
+  id:number;  // property ID
   lastPrice:number;
   numberShares:number;
   histPrices:number[];

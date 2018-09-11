@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 
 import { Observable, of } from 'rxjs';
-import { catchError, map, tap } from 'rxjs/operators';
+import {catchError, map, subscribeOn, tap} from 'rxjs/operators';
 
 import { User } from './user';
 import { MessageService } from './messages.service';
@@ -13,6 +13,11 @@ import { MessageService } from './messages.service';
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
 */
+export var loggedInUser:User ={
+  username:"",password:'', id:'',name:'', cash:0,totalRentIncome:0,
+    holdings:[{id:0, shares:0, pricePaid:0, rentIncome:0, date:0,return:0}]
+};
+
 @Injectable({
   providedIn: 'root'
 })
@@ -20,18 +25,51 @@ export class UserService {
 
   private usersUrl = 'api/users';  // URL to web api
 
+  //private blankUser:User ={username:"loggedout",password:'', id:0,name:'null', cash:0,totalRentIncome:0, holdings:[{id:0, shares:0, pricePaid:0, rentIncome:0, date:0,return:0}]};
+  //tempUser:User;
   constructor(private http: HttpClient,
               private messageService: MessageService) { }
 
 
 
-  getUser(id: number): Observable<User> {
-    const url = `${this.usersUrl}/${id}`;
+  getUser(username: string): Observable<User> {
+    if (!username.trim()) {
+      // if not search term, return empty hero array.
+      return of();
+    }
+    const url = `${this.usersUrl}/${username}`;
+    this.log(url);
     return this.http.get<User>(url).pipe(
-      tap(_ => this.log(`fetched user id=${id}`)),
-      catchError(this.handleError<User>(`getUser id=${id}`))
+      tap(_ => this.log(`fetched user id=${username}`)),
+      catchError(this.handleError<User>(`getUser id=${username}`))
     );
   }
+
+  changeUser(username: string, password:string):Observable<User> {
+    if (!username.trim()) {
+      // if not search term, return empty hero array.
+      return of();
+    }
+    const url = `${this.usersUrl}/${username}`;
+    //this.http.get<User>(url).subscribe( user =>this.tempUser=user);
+    /*
+    if(setTimeout(()=> this.tempUser.password!=password,2000)) {
+      this.log('incorrect password');
+      return of(this.blankUser);
+    }
+    */
+    this.http.get<User>(url).subscribe(user=>loggedInUser=user);
+    this.log('changed user');
+    return this.http.get<User>(url).pipe(
+      tap(_ => this.log(`fetched user id=${username}`)),
+      catchError(this.handleError<User>(`getUser id=${username}`))
+    );
+    //this.loggedInUser = this.tempUser;
+    /*
+
+    */
+  }
+  // TODO add the ability to log in and check password to change user
 
 
 
@@ -59,7 +97,7 @@ export class UserService {
   }
 
   private log(message: string) {
-    this.messageService.add(`PropertyService: ${message}`);
+    this.messageService.add(`UserService: ${message}`);
   }
 }
 

@@ -1,6 +1,6 @@
 export class Property {
   name: string;
-  id: number;
+  id: number;  // Property ID
   address: string;
   rent: number;
   price: number;

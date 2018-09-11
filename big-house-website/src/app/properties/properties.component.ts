@@ -14,6 +14,7 @@ export class PropertiesComponent implements OnInit {
 
   properties: Property[];
 
+
   constructor(private propertyService: PropertyService) { }
 
   ngOnInit() {

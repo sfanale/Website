@@ -35,6 +35,7 @@ export class TradeComponent implements OnInit {
   }
 
   buy(): void {
+    // todo this should be an api call to the backend
     //validate transaction
     // property id and number of shares valid?
     // does user have this much cash?

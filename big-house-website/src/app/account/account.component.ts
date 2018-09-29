@@ -2,7 +2,6 @@ import {Component, OnInit, Input, OnChanges, Output} from '@angular/core';
 import {User } from "../user";
 import {MessageService} from "../messages.service";
 import {TradingService} from "../trading.service";
-import {Observable} from "rxjs/internal/Observable";
 import { TradeInfo } from "../tradeinfo";
 
 @Component({
@@ -24,13 +23,6 @@ export class AccountComponent implements OnChanges{
     this.log(this.user.username)
   }
 
-  getPrice(id:number) {
-    for (let property in this.holdingsTradeInfo) {
-      if (property.id == id) {
-        return property.lastPrice;
-      }
-    }
-  }
 
   private log(message: string) {
     this.messageService.add(`Accounts: ${message}`);

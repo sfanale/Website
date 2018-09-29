@@ -46,6 +46,7 @@ export class UsersComponent implements OnInit {
 
   ngOnInit() {
     this.getUser();
+    // todo this should be an api call that does a join
     this.tradingService.getTradeInfoAll().subscribe(info=>this.holdingsTradeInfo=info);
   }
 

@@ -1,24 +1,31 @@
+<div class="container">
 <div>
-  <span>User: </span>{{user.name}}
+  <span><strong>User: </strong></span>{{user.name}}
 </div>
 <div>
-  <span>Cash: </span>{{user.cash|currency}}
+  <span><strong>Cash: </strong></span>{{user.cash|currency}}
 </div>
-<div>
-  <table>
+</div>
+
+<div class="container">
+  <table class="table table-striped">
+    <thead>
     <tr>
       <th>Property ID</th>
       <th>Shares</th>
       <th>Price Paid</th>
+      <th>Last Price</th>
       <th>Gain</th>
       <th>Return</th>
       <th>Percent Return</th>
       <th>Annual Rent Income</th>
     </tr>
+    </thead>
     <tr *ngFor="let property of user.holdings; let i = index">
       <td><a routerLink="/detail/{{property.id}}">{{property.id}}</a></td>
       <td>{{property.shares}}</td>
       <td>{{property.pricePaid|currency}}</td>
+      <td>{{holdingsTradeInfo[i].lastPrice}}</td>
       <td>{{holdingsTradeInfo[i].lastPrice - property.pricePaid |currency}}</td>
       <td>{{(holdingsTradeInfo[i].lastPrice-property.pricePaid) *property.shares |currency}}</td>
       <td>{{(holdingsTradeInfo[i].lastPrice/property.pricePaid) -1 |percent}}</td>

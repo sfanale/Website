@@ -1,0 +1,29 @@
+.page-name-container {
+  margin-top: 60px;
+}
+
+#map {
+  height: 100%;
+  width: 100%;
+  background-color: grey;
+}
+
+.card {
+  width: 100%;
+}
+
+#house-prof-pic {
+  font-size: larger;
+}
+.oi-home {
+  color: #ff9500;  /*Apple Orange*/
+  font-size: 200px;
+}
+
+.container-fluid {
+  padding: 60px 50px;
+}
+
+p {
+  font-size: larger;
+}

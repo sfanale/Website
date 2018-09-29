@@ -1,29 +1,55 @@
-<div *ngIf="property">
+<div class="page-name-container">
+<h2>{{property.name | uppercase}} Details</h2>
+</div>
+<div>
+  <label>name:
+    <input [(ngModel)]="property.name" placeholder="name">
+  </label>
+</div>
 
-  <h2>{{property.name | uppercase}} Details</h2>
-  <div>
-    <span>id: </span>{{property.id}}
-  </div>
-  <div>
-    <label>name:
-      <input [(ngModel)]="property.name" placeholder="name">
-    </label>
-  </div>
-  <div>
-    <span>Address: </span>{{property.address}}
-  </div>
-  <div>
-    <span>Monthly Rent: </span>{{property.rent}}
-  </div>
-  <div>
-    <span>Home Value: </span>{{property.price}}
-  </div>
-  <div>
-    <span>Return: </span>{{property.return}}
+
+<div class = "container">
+  <div class="row">
+    <div class="col-md-3">
+      <img id="house-prof-pic" src="none">
+    </div>
+    <div class="col-md-3">
+      <p><strong>id:</strong> {{property.id}}</p>
+      <p id="address">{{property.address}}</p>
+      <p><strong>Rent:</strong> {{property.rent | currency}}</p>
+      <p><strong>Home Value:</strong> {{property.price | currency}}</p>
+      <p><strong>Return:</strong> {{property.return | percent}}</p>
+    </div>
+    <div class="col-md-6">
+      <div id="map"></div>
+    </div>
   </div>
 </div>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-6">
+      <h3>Home Info</h3>
+      <p>Fact 1</p>
+      <p>Fact 2</p>
+      <p> Fact 3</p>
+    </div>
+    <div class="col-sm-6">
+      <h3>Neighborhood info</h3>
+        <p>Fact 1</p>
+        <p>Fact 2</p>
+        <p>Fact 3</p>
+
+    </div>
+  </div>
+</div>
+
+
 
 
 <button (click)="save()">Save</button>
 <button (click)="goBack()">Go Back</button>
 <button routerLink="/trade/{{property.id}}">Trade</button>
+
+
+

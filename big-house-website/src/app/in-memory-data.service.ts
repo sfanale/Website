@@ -4,7 +4,7 @@ export class InMemoryDataService implements InMemoryDbService {
   createDb() {
     let properties = [
       { id: 11, name: "Calvin's House", address:"", rent: 6000, price: 900000, return: 8 },
-      { id: 12, name: "Stephen's House", address:"", rent: 3100, price: 550000, return: 6.76 },
+      { id: 12, name: "Stephen's House", address:"520 E 14th St, New York, NY 10009", rent: 3100, price: 550000, return: 6.76 },
       { id: 13, name: "6969 Easy Street #32", address:"", rent: 1200, price: 234000, return: 6.15  },
       { id: 14, name: "6969 Easy Street #33", address:"", rent: 1250, price: 256000, return: 5.86  },
       { id: 15, name: "6969 Easy Street #22", address:"", rent: 1100, price: 240000, return: 5.5  },
@@ -23,7 +23,8 @@ export class InMemoryDataService implements InMemoryDbService {
     ];
 
     let users = [
-      {username:"Stephen",password:'password', id:'Stephen',name:'Stephen', cash:10000, holdings:[{id:11, shares:10, pricePaid:69, date:1, rentIncome:72}]}
+      {username:"Stephen",password:'password', id:'Stephen',name:'Stephen', cash:10000, holdings:[{id:11, shares:10, pricePaid:69, date:1, rentIncome:72},
+          {id:12, shares:20, pricePaid:20, date:1, rentIncome:70}]}
     ];
     return {properties,tradeInfo,users};
   }

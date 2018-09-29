@@ -1,23 +1,22 @@
-<h2>Properties</h2>
+<div class="page-name-container"><h2>Properties</h2></div>
 
 
-<div>
-  <label>Property name:
-    <input #propertyName />
-  </label>
-  <!-- (click) passes input value to add() and then clears the input -->
-  <button (click)="add(propertyName.value); propertyName.value=''">
-    add
-  </button>
+<div class="container">
+  <table class="table table-hover">
+    <thead>
+    <tr>
+      <th>Property Name</th>
+      <th>Price</th>
+      <th>Address</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let property of properties">
+      <td><a routerLink="/detail/{{property.id}}">{{property.name}}</a></td>
+      <td>{{property.price}}</td>
+      <td>{{property.address}}</td>
+    </tr>
+    </tbody>
+  </table>
 </div>
 
-<ul class="properties">
-  <li *ngFor="let property of properties">
-    <a routerLink="/detail/{{property.id}}">
-      <span class="badge">{{property.id}}</span> {{property.name}}
-    </a>
-    <button class="delete" title="delete property"
-            (click)="delete(property)">x
-    </button>
-  </li>
-</ul>

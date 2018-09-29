@@ -5,6 +5,12 @@
   padding: 0;
   width: 15em;
 }
+
+
+.page-name-container {
+  margin-top: 60px;
+}
+
 .properties li {
   position: relative;
   cursor: pointer;

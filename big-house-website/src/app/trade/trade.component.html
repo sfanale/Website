@@ -1,6 +1,8 @@
 <div *ngIf="property">
 
+  <div class="page-name-container">
   <h2>{{property.name | uppercase}} Details</h2>
+  </div>
   <div>
     <span>id: </span>{{property.id}}
   </div>
@@ -43,7 +45,9 @@
 
 
 <div *ngIf="!property">
+  <div class="page-name-container">
   <p>Trading Works!</p>
+  </div>
 </div>
 
 <button (click)="save()">Save</button>

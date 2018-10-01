@@ -2,11 +2,12 @@
   margin-top: 60px;
 }
 
-#map {
+#detail-map {
   height: 100%;
   width: 100%;
   background-color: grey;
 }
+
 
 .card {
   width: 100%;

@@ -61,6 +61,7 @@ import {CdkTreeModule} from '@angular/cdk/tree';
 import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 import { UsersComponent } from './users/users.component';
 import { AccountComponent } from './account/account.component';
+import { MapsComponent } from './maps/maps.component';
 
 
 @NgModule({
@@ -74,7 +75,8 @@ import { AccountComponent } from './account/account.component';
     ResearchComponent,
     TradeComponent,
     UsersComponent,
-    AccountComponent
+    AccountComponent,
+    MapsComponent
   ],
   imports: [
     BrowserModule,

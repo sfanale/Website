@@ -36,8 +36,7 @@ export class PropertyDetailComponent implements OnInit {
 
   ngOnInit() {
     this.getProperty();
-
-
-
   }
+
+
 }

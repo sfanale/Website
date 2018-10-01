@@ -2,3 +2,13 @@
 .page-name-container {
   margin-top: 60px;
 }
+
+
+.container-fluid {
+  margin-left: 10%;
+}
+
+.col-md-6 {
+  text-align: left;
+}
+

@@ -14,7 +14,8 @@
 }
 
 #house-prof-pic {
-  font-size: larger;
+  height:100%;
+  width:100%;
 }
 .oi-home {
   color: #ff9500;  /*Apple Orange*/

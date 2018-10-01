@@ -1,43 +1,55 @@
 <div *ngIf="property">
-
   <div class="page-name-container">
-  <h2>{{property.name | uppercase}} Details</h2>
+  <h2>Trade Form</h2>
   </div>
-  <div>
-    <span>id: </span>{{property.id}}
+  <div class="container-fluid">
+    <h3>{{property.name}}</h3>
+    <div class="row">
+      <div class="col-md-6">
+        <p>{{property.address}}</p>
+        <p>{{property.rent |currency}}</p>
+        <p>{{property.price | currency}}</p>
+      </div>
+      <div class="col-md-6">
+        <p>{{tradeInfo.lastPrice | currency}}</p>
+        <p>Return: {{property.return}}%</p>
+        <p>{{tradeInfo.numberShares}}</p>
+      </div>
+   </div>
   </div>
-  <div>
-    <label>name:
-      <input [(ngModel)]="property.name" placeholder="name">
-    </label>
+<div class="container-fluid">
+<form>
+  <div class="row">
+    <div class="col">
+    <div class="form-group">
+    <label for="order-type">Price Type</label>
+    <select class="form-control" id="order-type">
+      <option>Buy</option>
+      <option>Sell</option>
+    </select>
   </div>
-  <div>
-    <span>Address: </span>{{property.address}}
+      <div class="coll">
+        <input type="number" class="form-control" placeholder="Number of Shares" id="number-of-shares">
+      </div>
   </div>
-  <div>
-    <span>Monthly Rent: </span>{{property.rent | currency}}
   </div>
-  <div>
-    <span>Home Value: </span>{{property.price | currency}}
+  <div class="row">
+    <div class="col">
+  <div class="form-group">
+    <label for="price-type">Price Type</label>
+    <select class="form-control" id="price-type">
+      <option>Market</option>
+      <option>Limit</option>
+      <option>Stop on Quote</option>
+    </select>
   </div>
-  <div>
-    <span>Return: </span>{{property.return}}%
+    </div>
+    <div class="col">
+      <input type="number" class="form-control" placeholder="" id="price">
+    </div>
   </div>
-  <div>
-    <span>Last Price: </span>{{tradeInfo.lastPrice | currency}}
-  </div>
-  <div>
-    <span>Number of Shares: </span>{{tradeInfo.numberShares}}
-  </div>
-  <div>
-    <span>Historical Prices: </span>{{tradeInfo.histPrices}}
-  </div>
-  <input type="number" id="Number-of-shares" name="Number-of-shares"
-                           placeholder="Number of Shares"
-                           min="1" value="" />
-  <input type="number" id="bid-price" name="bid-price"
-         placeholder="bid price"
-         min="1" value=""/>
+</form>
+</div>
   <button (click)="buy()">Buy</button>
 </div>
 

@@ -1,21 +1,15 @@
 /* DashboardComponent's private CSS styles */
-[class*='col-'] {
-  float: left;
-  padding-right: 20px;
-  padding-bottom: 20px;
-}
-[class*='col-']:last-of-type {
-  padding-right: 0;
-}
+
 a {
   text-decoration: none;
 }
 
 .jumbotron {
-  background-color: #00a300; /* Windows Green */
+  background-color: #696969; /* Windows Green */
   color: #ffffff;
-  padding: 100px 25px;
+  padding: 200px 25px;
 }
+
 
 .bg-grey {
   background-color: #f6f6f6;
@@ -35,10 +29,6 @@ a {
   width: 100%;
   height: 100%;
   margin-bottom: 10px;
-}
-
-.top-props {
-  padding: 80px 150px;
 }
 
 .logo {
@@ -106,7 +96,7 @@ h4 {
   color: #eee;
   max-height: 120px;
   min-width: 120px;
-  background-color: #607d8b;
+  background-color: #696969;
   border-radius: 2px;
 }
 .module:hover {

@@ -66,6 +66,12 @@ button {
   font-family: Arial;
 }
 
+.thumbnail {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 10px;
+}
+
 button:hover {
   background-color: #cfd8dc;
 }

@@ -5,9 +5,26 @@ a {
 }
 
 .jumbotron {
-  background-color: #696969; /* Windows Green */
+  background-image: url("https://s3.amazonaws.com/real-fun-estate-mediaassets/IMG_0009+2.jpeg");
+  background-size: cover;
+  padding-top: 300px;
+  padding-left: 100px;
+  padding-bottom: 100px ;
+}
+
+h1 {
   color: #ffffff;
-  padding: 200px 25px;
+}
+
+p {
+  color: #ffffff;
+}
+
+.card {
+  background-color: #696969;
+  margin-right:80%;
+  background-blend-mode: color;
+  opacity: .85;
 }
 
 

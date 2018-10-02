@@ -15,7 +15,7 @@
     <tr *ngFor="let property of properties">
       <td><img class="thumbnail" src="https://s3.amazonaws.com/real-fun-estate-mediaassets/properties/IMG_1343.jpeg"></td>
       <td><a routerLink="/detail/{{property.id}}">{{property.name}}</a></td>
-      <td>{{property.price}}</td>
+      <td>{{property.price|currency}}</td>
       <td>{{property.address}}</td>
     </tr>
     </tbody>

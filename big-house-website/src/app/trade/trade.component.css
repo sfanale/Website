@@ -3,12 +3,37 @@
   margin-top: 60px;
 }
 
+.trade-container {
+  padding-top: 50px;
+  padding-bottom: 50px;
+  background-color: #f6f6f6;
+}
 
 .container-fluid {
   margin-left: 10%;
+  padding-left: 15%;
+  padding-right: 15%;
 }
 
 .col-md-6 {
   text-align: left;
 }
+
+.form-group {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.form-container {
+  padding-top: 50px;
+  margin-left: 20%;
+  padding-bottom: 50px;
+}
+
+.my-button {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+
 

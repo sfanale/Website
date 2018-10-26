@@ -62,6 +62,7 @@ import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 import { UsersComponent } from './users/users.component';
 import { AccountComponent } from './account/account.component';
 import { MapsComponent } from './maps/maps.component';
+import { OptionsComponent } from './options/options.component';
 
 
 @NgModule({
@@ -76,17 +77,12 @@ import { MapsComponent } from './maps/maps.component';
     TradeComponent,
     UsersComponent,
     AccountComponent,
-    MapsComponent
+    MapsComponent,
+    OptionsComponent,
   ],
   imports: [
     BrowserModule,
-    FormsModule,
     AppRoutingModule,
-    HttpClientModule,
-    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, { dataEncapsulation: false }),
-    BrowserAnimationsModule,
-    MatTableModule,
-    BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,

@@ -7,6 +7,7 @@ import { PropertyDetailComponent } from './property-detail/property-detail.compo
 import {ResearchComponent} from "./research/research.component";
 import {TradeComponent} from "./trade/trade.component";
 import {UsersComponent} from "./users/users.component";
+import {OptionsComponent} from "./options/options.component";
 
 
 const routes : Routes = [
@@ -17,7 +18,8 @@ const routes : Routes = [
   {path: 'research', component: ResearchComponent},
   {path: 'trade/:id', component: TradeComponent},
   {path: 'trade', component: TradeComponent},
-  {path: 'account',component:UsersComponent}
+  {path: 'account',component:UsersComponent},
+  {path: 'options', component:OptionsComponent}
 ];
 
 @NgModule({

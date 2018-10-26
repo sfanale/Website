@@ -1,0 +1,35 @@
+<div class="form-group">
+  <div class="row">
+    <div class="col-md-6">
+      <input #symbol type="text" class="form-control" placeholder="Enter Stock Symbol..." id="symbol">
+    </div>
+    <div class="col-md-6">
+      <button  class="btn btn-outline-success btn-md my-button" (click)="getOption(symbol.value)">Get Option</button>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+<table class="table table-hover">
+  <thead>
+  <tr>
+    <th></th>
+    <th>Symbol</th>
+    <th>Strike</th>
+    <th>Last Price</th>
+    <th>Expiry</th>
+    <th>Price Date</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let option of options">
+    <td>{{option.symbol}}</td>
+    <td>{{option.strike}}</td>
+    <td>{{option.lastprice}}</td>
+    <td>{{option.expiry}}</td>
+    <td>{{option.pricedate}}</td>
+  </tr>
+  </tbody>
+</table>
+</div>
+

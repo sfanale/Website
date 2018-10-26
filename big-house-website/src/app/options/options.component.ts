@@ -24,7 +24,7 @@ export class OptionsComponent implements OnInit {
 
 
   ngOnInit() {
-    this.getOption('AAPL');
+
   }
 
 

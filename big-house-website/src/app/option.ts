@@ -5,6 +5,7 @@ export class Option {
   symbol: string;
   strike: string;
   pricedate: string;
+  contractsymbol: string;
 
 }
 

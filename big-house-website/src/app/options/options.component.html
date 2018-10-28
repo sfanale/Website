@@ -15,19 +15,13 @@
   <tr>
     <th></th>
     <th>Symbol</th>
-    <th>Strike</th>
-    <th>Last Price</th>
-    <th>Expiry</th>
-    <th>Price Date</th>
+    <th>Contract</th>
   </tr>
   </thead>
   <tbody>
   <tr *ngFor="let option of options">
     <td>{{option.symbol}}</td>
-    <td>{{option.strike}}</td>
-    <td>{{option.lastprice}}</td>
-    <td>{{option.expiry}}</td>
-    <td>{{option.pricedate}}</td>
+    <td><a>{{option.contractsymbol}}</a></td>
   </tr>
   </tbody>
 </table>

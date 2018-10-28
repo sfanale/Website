@@ -32,10 +32,10 @@ export class OptionPricesService {
 
 
 
-  getOption (ticker:string)   {
+  getOption (ticker:string) :Observable<Option[]>  {
     const url = `${this.optionsurl}/${ticker}`;
     this.messageService.add(`OptionPricesService: ${url}`);
-    return this.http.get(url)
+    return this.http.get<Option[]>(url)
       .pipe(
         tap(_ => this.log('fetched prices')),
         catchError(this.handleError('getOption', []))

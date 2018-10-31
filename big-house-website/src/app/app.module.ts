@@ -63,6 +63,7 @@ import { UsersComponent } from './users/users.component';
 import { AccountComponent } from './account/account.component';
 import { MapsComponent } from './maps/maps.component';
 import { OptionsComponent } from './options/options.component';
+import { OptionDetailComponent } from './option-detail/option-detail.component';
 
 
 @NgModule({
@@ -79,6 +80,7 @@ import { OptionsComponent } from './options/options.component';
     AccountComponent,
     MapsComponent,
     OptionsComponent,
+    OptionDetailComponent,
   ],
   imports: [
     BrowserModule,

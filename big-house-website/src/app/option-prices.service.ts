@@ -34,11 +34,19 @@ export class OptionPricesService {
 
   getOption (ticker:string) :Observable<Option[]>  {
     const url = `${this.optionsurl}/${ticker}`;
-    this.messageService.add(`OptionPricesService: ${url}`);
     return this.http.get<Option[]>(url)
       .pipe(
         tap(_ => this.log('fetched prices')),
         catchError(this.handleError('getOption', []))
+      );
+  }
+
+  getContract (contractsymbol:string) :Observable<Option[]> {
+    const url = `${this.optionsurl}/detail/${contractsymbol}`;
+    return this.http.get<Option[]>(url)
+      .pipe(
+        tap(_ => this.log('fetched contract details')),
+        catchError(this.handleError('getContract', []))
       );
   }
 

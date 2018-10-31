@@ -4,7 +4,7 @@ export class Option {
   timestamp:string;
   symbol: string;
   strike: string;
-  pricedate: string;
+  pricedate: number;
   contractsymbol: string;
 
 }

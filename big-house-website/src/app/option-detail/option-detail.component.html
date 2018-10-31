@@ -1,3 +1,29 @@
-<p>
-  option-detail works!
-</p>
+<div class="page-name-container">
+  <h2>{{option[0].contractsymbol | uppercase}} Details</h2>
+</div>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-6">
+      <h3>Contract Information</h3>
+      <p>Underlying Symbol: {{option[0].symbol}}</p>
+      <p>Strike: {{option[0].strike}}</p>
+      <p>Expiration Date: {{option[0].expiry}}</p>
+    </div>
+
+<div class="container">
+  <table class="table">
+    <thead>
+    <tr>
+      <th>Last Price</th>
+      <th>Price Date</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let row of option">
+      <td>{{row.lastprice}}</td>
+      <td>{{row.pricedate *1000 | date }}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>

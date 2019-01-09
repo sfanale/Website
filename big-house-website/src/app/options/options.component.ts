@@ -15,7 +15,7 @@ import {Observable} from "rxjs";
 export class OptionsComponent implements OnInit {
 
   options: Option[];
-
+  data: number[];
 
   constructor(
     private optionPriceService: OptionPricesService,
@@ -32,6 +32,7 @@ export class OptionsComponent implements OnInit {
     this.optionPriceService.getOption(ticker).subscribe(data => {this.options = data} );
     // this.messageService.add(this.options[0].symbol);
   }
+
 
 
 

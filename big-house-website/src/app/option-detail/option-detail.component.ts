@@ -13,6 +13,7 @@ import {PropertyService} from "../property.service";
 })
 export class OptionDetailComponent implements OnInit {
 
+
   @Input() option: Option[];
 
   constructor(

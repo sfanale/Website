@@ -2,15 +2,15 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {MessageService} from "./messages.service";
 import {Observable, of} from "rxjs";
-import {Option} from "./option";
 import {catchError, tap} from "rxjs/operators";
+import { ModelResults } from "./model-results";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ModelService {
 
-  private optionsurl = '0.0.0.0:5000/api/model';  // url to local model endpoint
+  private optionsurl = 'http://0.0.0.0:5000/api/model';  // url to local model endpoint
   private  httpOptions = {
     headers: new HttpHeaders({ 'Response-Type': 'application/json' })
   };
@@ -21,18 +21,14 @@ export class ModelService {
   ) { }
 
 
-  runModel(ticker:string[], opt_range:string, expiry_range:string, opt_freq:string) {
+  runModel(ticker:string, opt_range:string, expiry_range:string, opt_freq:string): Observable<ModelResults[]> {
     let text = '';
     let s ;
-    for(s in ticker) {
-      text += (s + '+')
-    }
-    const url = `${this.optionsurl}/`+text+'&'+opt_range+'&'+expiry_range+'&'+opt_freq;
-    return this.http.get(url)
-      .pipe(
-        tap(_ => this.log('fetched prices')),
-        catchError(this.handleError('getOption', []))
-      );
+    // for(s in ticker) {
+    //  text += (s + '+')
+    //}
+    const url = `${this.optionsurl}/run/`+ticker+'&'+opt_range+'&'+expiry_range+'&'+opt_freq;
+    return this.http.get<ModelResults[]>(url);
   }
 
   private handleError<T> (operation = 'operation', result?: T) {

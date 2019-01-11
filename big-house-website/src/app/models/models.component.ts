@@ -30,6 +30,7 @@ export class ModelsComponent implements OnInit {
 
 
   run(assets:string, opt_range:string, expiry_range:string, opt_freq:string) {
+    this.chart = [];
     log('hello');
     //this.modelService.runModel(assets, opt_range.toString(), expiry_range.toString(), opt_freq.toString()).subscribe(data=> this.results = data);
     this.modelService.runModel(assets, opt_range.toString(), expiry_range.toString(), opt_freq.toString()).subscribe(data=> {

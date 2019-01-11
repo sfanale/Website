@@ -11,12 +11,19 @@
       <p>Expiration Date: {{option[0].expiry*1000 | date}}</p>
     </div>
   </div>
+  <div class="row">
+    <h3>Graph Options</h3>
+    <div class="col-md-4">
+      <button class="btn btn-outline-success btn-md my-button" (click)="graphOpenInterest()">Open Interest</button>
+    </div>
+    <div class="col-md-4">
+      <button class="btn btn-outline-success btn-md my-button" (click)="graphOpenInterest()">Open Interest</button>
+    </div>
+  </div>
 </div>
 
 <div>
-  <canvas class="chart chart-line" chart-data="data" chart-labels="labels"
-             chart-series="series" chart-click="onClick">
-  </canvas>
+  <canvas id="canvas">{{ chart }}</canvas>
 </div>
 
 
@@ -26,12 +33,16 @@
     <tr>
       <th>Last Price</th>
       <th>Price Date</th>
+      <th>Calc Price</th>
+      <th>Open Interest</th>
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let row of option">
+    <tr *ngFor="let row of option; let i = index">
       <td>{{row.lastprice}}</td>
       <td>{{row.pricedate *1000 | date }}</td>
+      <td>{{row.bid}}</td>
+      <td>{{row.openinterest}}</td>
     </tr>
     </tbody>
   </table>

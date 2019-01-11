@@ -6,6 +6,10 @@ export class Option {
   strike: string;
   pricedate: number;
   contractsymbol: string;
+  bid: string;
+  ask: string;
+  openinterest:string;
+  volume:string;
 
 }
 

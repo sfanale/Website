@@ -10,7 +10,7 @@ import { ModelResults } from "./model-results";
 })
 export class ModelService {
 
-  private optionsurl = 'http://0.0.0.0:5000/api/model';  // url to local model endpoint
+  private optionsurl = 'http://model.fanaleresearch.com/api/model';  // url to local model endpoint
   private  httpOptions = {
     headers: new HttpHeaders({ 'Response-Type': 'application/json' })
   };

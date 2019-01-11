@@ -9,20 +9,26 @@
   </div>
 </div>
 
+
+
 <div class="container">
 <table class="table table-hover">
   <thead>
   <tr>
-    <th>Symbol</th>
     <th>Contract</th>
+    <th>Strike</th>
+    <th>Expiration Date</th>
   </tr>
   </thead>
   <tbody>
   <tr *ngFor="let option of options">
-    <td>{{option.symbol}}</td>
+
     <td><a routerLink="/options/detail/{{option.contractsymbol}}">{{option.contractsymbol}}</a></td>
+    <td>{{option.strike}}</td>
+    <td>{{option.expiry*1000 | date}}</td>
   </tr>
   </tbody>
 </table>
 </div>
+
 

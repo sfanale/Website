@@ -1,24 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import {Property} from "../property";
 import {OptionPricesService} from "../option-prices.service";
-import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import {MatTableModule} from "@angular/material";
-import { Option, OptionINT } from "../option";
+import { Option } from "../option";
 import { MessageService } from '../messages.service';
-import {debounceTime, distinctUntilChanged, switchMap} from "rxjs/operators";
 import {Observable} from "rxjs";
-import { NgModule} from "@angular/core";
+
 
 @Component({
   selector: 'app-options',
   templateUrl: './options.component.html',
-  styleUrls: ['./options.component.css']
-})
-
-@NgModule({
-  imports: [BrowserAnimationsModule, MatTableModule]
+  styleUrls: ['./options.component.css'],
 
 })
+
 
 export class OptionsComponent implements OnInit {
 
@@ -36,10 +29,12 @@ export class OptionsComponent implements OnInit {
   }
 
 
-  getOption(ticker:string): void {
-    this.optionPriceService.getOption(ticker).subscribe(data => {this.options = data} );
+  getOption(ticker:string, strike:string, expiry:string): void {
+    this.optionPriceService.getOption(ticker, strike, expiry).subscribe(data => {this.options = data} );
     // this.messageService.add(this.options[0].symbol);
   }
+
+
 
 
 

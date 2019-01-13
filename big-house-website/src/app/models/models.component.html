@@ -41,18 +41,26 @@
           <input #filter type="number" class="form-control" placeholder="Required time until expiration (weeks)" id="filter_range">
         </div>
         <div class="col-md-4">
-          <button  class="btn btn-outline-success btn-md my-button" (click)="run(tickers.value, opt_range.value, filter.value, opt_freq.value)">Buy</button>
+          <button  class="btn btn-outline-success btn-md my-button" (click)="run(tickers.value, opt_range.value, filter.value, opt_freq.value)">Build</button>
         </div>
       </div>
     </div>
 
     <div class="form-group">
-      <div *ngIf="chart">
+      <div *ngIf="chart!=[]">
+        <div *ngIf="loading">
+          <mat-card id="loading">
+            <mat-spinner></mat-spinner>
+          </mat-card>
+        </div>
         <canvas id="canvas">{{ chart }}</canvas>
       </div>
     </div>
   </div>
 </div>
+
+
+
 
 <div class="results-container">
     <table class="table table-hover">

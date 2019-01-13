@@ -18,6 +18,7 @@ export class ModelsComponent implements OnInit {
   chart = [];
   dates=[];
   values=[];
+  loading = false;
 
   constructor(
     private modelService: ModelService,
@@ -31,7 +32,7 @@ export class ModelsComponent implements OnInit {
 
   run(assets:string, opt_range:string, expiry_range:string, opt_freq:string) {
     this.chart = [];
-    log('hello');
+    this.loading = true;
     //this.modelService.runModel(assets, opt_range.toString(), expiry_range.toString(), opt_freq.toString()).subscribe(data=> this.results = data);
     this.modelService.runModel(assets, opt_range.toString(), expiry_range.toString(), opt_freq.toString()).subscribe(data=> {
       this.results = data;
@@ -42,6 +43,7 @@ export class ModelsComponent implements OnInit {
       }
 
       console.log(this.values);
+      this.loading = false;
       this.chart = new Chart('canvas', {
         type: 'line',
         data: {

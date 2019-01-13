@@ -32,8 +32,8 @@ export class OptionPricesService {
 
 
 
-  getOption (ticker:string) :Observable<Option[]>  {
-    const url = `${this.optionsurl}/${ticker}`;
+  getOption (ticker:string, strike:string, expiry:string) :Observable<Option[]>  {
+    const url = `${this.optionsurl}/${ticker}&${strike}&${expiry}`;
     return this.http.get<Option[]>(url)
       .pipe(
         tap(_ => this.log('fetched prices')),

@@ -17,7 +17,7 @@ h1 {
 }
 
 p {
-  color: #ffffff;
+  color: #333323;
 }
 
 .card {
@@ -100,6 +100,7 @@ h3 {
 }
 h4 {
   position: relative;
+  color: #333323;
 }
 .grid {
   margin: 0;

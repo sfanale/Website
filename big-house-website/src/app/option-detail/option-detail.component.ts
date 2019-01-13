@@ -4,7 +4,6 @@ import { Location } from '@angular/common';
 import { Chart} from 'chart.js';
 import {OptionPricesService} from "../option-prices.service";
 import {Option} from "../option";
-import {PropertyService} from "../property.service";
 
 @Component({
   selector: 'app-option-detail',

@@ -1,8 +1,6 @@
-<div class="page-name-container">
-  <h2>{{option[0].contractsymbol | uppercase}} Details</h2>
-</div>
+<mat-card-title>{{option[0].contractsymbol | uppercase}} Details</mat-card-title>
 
-<div class="container-fluid">
+<mat-card>
   <div class="row">
     <div class="col-sm-6">
       <h3>Contract Information</h3>
@@ -13,21 +11,26 @@
   </div>
   <div class="row">
     <h3>Graph Options</h3>
-    <div class="col-md-4">
-      <button class="btn btn-outline-success btn-md my-button" (click)="graphOpenInterest()">Open Interest</button>
-    </div>
-    <div class="col-md-4">
-      <button class="btn btn-outline-success btn-md my-button" (click)="graphOpenInterest()">Open Interest</button>
-    </div>
   </div>
-</div>
+    <div class="row">
+    <div class="col-md-2">
+      <button class="btn btn-outline-success btn-md my-button" (click)="graphOpenInterest()">Open Interest</button>
+    </div>
+      <div class="col-md-2">
+      <button class="btn btn-outline-success btn-md my-button" (click)="graphPrice()">Prices</button>
+    </div>
+      <div class="col-md-2">
+        <button class="btn btn-outline-success btn-md my-button" (click)="graphCalcPrice()">Calculated Prices</button>
+      </div>
+  </div>
+</mat-card>
 
-<div class="container">
+<mat-card>
   <canvas id="canvas">{{ chart }}</canvas>
-</div>
+</mat-card>
 
 
-<div class="container">
+<mat-card>
   <table class="table">
     <thead>
     <tr>
@@ -46,4 +49,4 @@
     </tr>
     </tbody>
   </table>
-</div>
+</mat-card>

@@ -1,11 +1,11 @@
 
-
+<mat-card>
 <div class="jumbotron">
-  <div class="card">
-  <h1>Fanale Research</h1>
+  <div class="card col-md-3">
+  <mat-card-title class="h1">Fanale Research</mat-card-title>
   </div>
 
-  <form class="form-inline">
+  <mat-form-field class="form-inline">
     <div class="form-group">
       <!---todo: make email form do something  --->
       <input type="email" class="form-control" size="50" placeholder="Email Address" required>
@@ -13,85 +13,88 @@
         <button type="button" class="btn btn-danger">Subscribe</button>
       </div>
     </div>
-  </form>
+  </mat-form-field>
 </div>
+</mat-card>
 
+<mat-divider></mat-divider>
 
-<div class="container-fluid">
+<mat-card class="mat-elevation-z2">
   <div class="row">
-    <div class="col-sm-8">
-      <h2>Research. Model. Trade. ???? Profit.</h2>
-      <p>   Never before has it been so easy to perform intelligent market research. Finally, the hassle of spending hours
+    <div class="col-md-8">
+      <mat-card-title>Research. Model. Trade. ???? Profit.</mat-card-title>
+      <mat-card-content> Never before has it been so easy to perform intelligent market research. Finally, the hassle of spending hours
         building tools and custom models and back-testing them yourself is over. With our easy to use portal anyone can
       research like a Quant!
-      </p>
+      </mat-card-content>
     </div>
-    <div class="col-sm-4">
-      <span class="glyphicon glyphicon-signal logo"></span>
-    </div>
-  </div>
-</div>
-
-<div class="container-fluid bg-grey">
-  <div class="row">
-    <div class="col-sm-4">
-      <span class="glyphicon glyphicon-globe logo"></span>
-    </div>
-    <div class="col-sm-8">
-      <h2>Trade like a Quant</h2>
-      <h4>Stop making uninformed investments</h4>
-      <p>also please venmo me, I'm poor and this was a lot of work</p>
+    <div class="col-md-4">
+      <mat-icon class="md-96">show_chart</mat-icon>
     </div>
   </div>
-</div>
+</mat-card>
 
-<div class="container-fluid">
+<mat-divider></mat-divider>
+
+<mat-card class="container-fluid bg-grey">
+    <mat-card-content class="center">
+      <mat-card-title>Trade like a Quant</mat-card-title>
+      <mat-card-subtitle>Stop making uninformed investments</mat-card-subtitle>
+    </mat-card-content>
+</mat-card>
+
+<mat-divider></mat-divider>
+
+<mat-card>
   <div class="row">
     <div class="col-sm-4">
-      <span class="glyphicon glyphicon-signal logo"></span>
+      <mat-icon class="md-96">cake</mat-icon>
     </div>
     <div class="col-sm-8">
-      <h2>Research</h2>
-      <p>  Our platform allows easy access to historical data from stocks and options. Using the research portal, you can
+      <mat-card-title class="right">Research</mat-card-title>
+      <mat-card-content class="right">  Our platform allows easy access to historical data from stocks and options. Using the research portal, you can
         find whatever asset you are looking for, and easily create beautiful charts. Want to compare open interest to
         price over time for several options? Done. Want to compare option movements to underlying movements? Done. Be
         sure to check out our PriceMap® features!
-
-      </p>
+      </mat-card-content>
     </div>
   </div>
-</div>
+</mat-card>
 
-<div class="container-fluid">
+<mat-divider></mat-divider>
+
+<mat-card>
   <div class="row">
     <div class="col-sm-8">
-      <h2>Model</h2>
-      <p>   Our modelling platform allows anyone build and back-test common quantitative trading algorithms. The models
+      <mat-card-title>Model</mat-card-title>
+      <mat-card-content>   Our modelling platform allows anyone build and back-test common quantitative trading algorithms. The models
         can be customized with asset filters, factor screens, optimization parameters, and strategies. Our advanced model
         portal allows the construction of even more customizable model parameters, and the ability to save these models
         to your account for use with trading.
-      </p>
+      </mat-card-content>
     </div>
     <div class="col-sm-4">
-    <span class="glyphicon glyphicon-search"></span>
+      <mat-icon class="md-96">fitness_center</mat-icon>
   </div>
   </div>
-</div>
+</mat-card>
 
-<div class="container-fluid">
+<mat-divider></mat-divider>
+
+<mat-card>
   <div class="row">
     <div class="col-sm-4">
-      <span class="glyphicon glyphicon-signal logo"></span>
+      <mat-icon class="md-96">computer</mat-icon>
     </div>
     <div class="col-sm-8">
-      <h2>Trade</h2>
-      <p>  Leverage the full power of our platform by trading! Choose either a preset model, or build your own custom
+      <mat-card-title class="right">Trade</mat-card-title>
+      <mat-card-content class="right">  Leverage the full power of our platform by trading! Choose either a preset model, or build your own custom
         one using our advanced model tools. We give you the ability to create your own highly customizable models, and
         then we will trade that model for you. Now, anyone can trade like a Quant shop!
-      </p>
+      </mat-card-content>
     </div>
   </div>
-</div>
+</mat-card>
 
 <div class="container-fluid text-center">
   <h2>WHAT WE OFFER</h2>
@@ -146,7 +149,7 @@
   <!-- Wrapper for slides -->
   <div class="carousel-inner" role="listbox">
     <div class="item active">
-      <h4>"I cry at least twice a day"<br><span style="font-style:normal;">Calvin Barker</span></h4>
+      <h4>"I love looking at numbers!"<br><span style="font-style:normal;">Calvin Barker</span></h4>
     </div>
   </div>
 

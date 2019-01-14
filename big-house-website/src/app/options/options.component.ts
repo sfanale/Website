@@ -29,13 +29,17 @@ export class OptionsComponent implements OnInit {
   }
 
 
-  getOption(ticker:string, strike:string, expiry:string): void {
-    this.optionPriceService.getOption(ticker, strike, expiry).subscribe(data => {this.options = data} );
+  getOption(ticker:string, strike:string, expiry: string): void {
+    let d = (new Date(expiry).getTime()/1000).toString();
+    console.log(d);
+    if (d == 'NaN') {
+        console.log('Got ya');
+        d = '';
+    }
+    console.log(strike);
+    this.optionPriceService.getOption(ticker, strike, d).subscribe(data => {this.options = data} );
     // this.messageService.add(this.options[0].symbol);
   }
-
-
-
 
 
 

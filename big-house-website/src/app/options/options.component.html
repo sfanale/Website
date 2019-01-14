@@ -1,30 +1,34 @@
-<mat-card-header>
-  <h1>Research</h1>
-</mat-card-header>
+<mat-card-title>Research</mat-card-title>
 
-<mat-card-content>
-
+<mat-card>
   <div class="row">
     <div class="col-lg-6">
-      <input #symbol type="text" class="form-control" placeholder="Enter Stock Symbol..." id="symbol">
+      <mat-form-field class="input" appearance="fill">
+        <mat-label>Symbol</mat-label>
+      <input #symbol matInput type="text" placeholder="Enter Stock Symbol..." id="symbol">
+      </mat-form-field>
     </div>
     <div class="col-lg-2">
-      <input #strike type="text" class="form-control" placeholder="Strike" id="strike">
+      <mat-form-field class="input" appearance="fill">
+        <mat-label>Strike Price</mat-label>
+      <input #strike matInput type="text" placeholder="Strike Price"  id="strike">
+      </mat-form-field>
     </div>
     <div class="col-lg-3">
-      <mat-form-field>
-        <input matInput [matDatepicker]="picker" placeholder="Choose a date">
+      <mat-form-field appearance="fill">
+        <mat-label>Minimum Expiration Date</mat-label>
+        <input #expiry matInput [matDatepicker]="picker" placeholder="Choose a date">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
     </div>
     <div class="col-lg-1">
-      <button  class="btn btn-outline-success btn-md my-button" (click)="getOption(symbol.value, strike.value, date.patchValue())">Get Option</button>
+      <button mat-stroked-button class="btn btn-outline-success btn-md my-button" (click)="getOption(symbol.value, strike.value, expiry.value)">SEARCH</button>
     </div>
   </div>
-</mat-card-content>
-<mat-divider></mat-divider>
+</mat-card>
 
+<mat-divider></mat-divider>
 
 <mat-card>
 <table class="table table-hover">

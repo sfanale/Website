@@ -4,25 +4,55 @@ a {
   text-decoration: none;
 }
 
+mat-card{
+  padding-left: 15%;
+  padding-right: 15%;
+}
+
+
+mat-card-title {
+  font-size: 36px;
+}
+
+mat-card-subtitle {
+  font-size: 24px;
+}
+
 .jumbotron {
   background-image: url("https://s3.amazonaws.com/real-fun-estate-mediaassets/IMG_0009+2.jpeg");
   background-size: cover;
-  padding-top: 300px;
-  padding-left: 100px;
-  padding-bottom: 100px ;
+  background-repeat: no-repeat;
+  padding-top: 30%;
+  padding-bottom: 10%;
 }
 
-h1 {
+.h1 {
   color: #ffffff;
+}
+
+.md-96 {
+  font-size: 96px;
+}
+
+mat-icon {
+  margin-top: 5%;
+  margin-left: 40%;
 }
 
 p {
   color: #333323;
 }
 
+.center {
+  text-align: center;
+}
+
+.right {
+  text-align: right;
+}
+
 .card {
   background-color: #696969;
-  margin-right:80%;
   background-blend-mode: color;
   opacity: .85;
 }
@@ -53,10 +83,7 @@ p {
   font-size: 200px;
 }
 
-.logo-small {
-  color: #ff9500;
-  font-size: 50px;
-}
+
 
 @media screen and (max-width: 768px) {
   .col-sm-4 {

@@ -1,12 +1,4 @@
-<div class="page-name-container"><h1>Account</h1></div>
-<div *ngIf="user.username==''">
-  <input type="text" id="username" name="username"
-         placeholder="User Name" value="" />
-  <input type="text" id="password" name="password"
-         placeholder="Password is password" value="" />
-  <button (click)="logIn()">Log In</button>
-</div>
-
-<div *ngIf="user.username!=''">
-<app-account [user]="user" [holdingsTradeInfo]="holdingsTradeInfo"></app-account>
-</div>
+<mat-card-title>Account</mat-card-title>
+<mat-card>
+  <mat-card-subtitle>Coming soon!</mat-card-subtitle>
+</mat-card>

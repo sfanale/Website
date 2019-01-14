@@ -10,7 +10,7 @@ import { ModelResults } from "./model-results";
 })
 export class ModelService {
 
-  private optionsurl = 'http://model.fanaleresearch.com/api/model';  // url to local model endpoint
+  private optionsurl = 'http://0.0.0.0:5000/api/model';  // url to local model endpoint
   private  httpOptions = {
     headers: new HttpHeaders({ 'Response-Type': 'application/json' })
   };
@@ -21,13 +21,13 @@ export class ModelService {
   ) { }
 
 
-  runModel(ticker:string, opt_range:string, expiry_range:string, opt_freq:string): Observable<ModelResults[]> {
+  runModel(ticker:string, opt_range:string, expiry_range:string, opt_freq:string, asset_type:string): Observable<ModelResults[]> {
     let text = '';
     let s ;
     // for(s in ticker) {
     //  text += (s + '+')
     //}
-    const url = `${this.optionsurl}/run/`+ticker+'&'+opt_range+'&'+expiry_range+'&'+opt_freq;
+    const url = `${this.optionsurl}/run/`+ticker+'&'+opt_range+'&'+expiry_range+'&'+opt_freq +'&'+asset_type;
     return this.http.get<ModelResults[]>(url);
   }
 

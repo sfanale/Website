@@ -78,13 +78,71 @@ export class OptionDetailComponent implements OnInit {
 
 
   graphOpenInterest(): void {
-    this.chart = Chart('canvas', {
+    this.chart = new Chart('canvas', {
       type: 'line',
       data: {
         labels: this.dates,
         datasets: [
           {
             data: this.open_interest,
+            borderColor: "#3cba9f",
+            fill: false
+          }
+        ]
+      },
+      options: {
+        legend: {
+          display: false
+        },
+        scales: {
+          xAxes: [{
+            display: true
+          }],
+          yAxes: [{
+            display: true
+          }],
+        }
+      }
+    });
+  }
+
+  graphPrice(): void {
+    this.chart = new Chart('canvas', {
+      type: 'line',
+      data: {
+        labels: this.dates,
+        datasets: [
+          {
+            data: this.prices,
+            borderColor: "#3cba9f",
+            fill: false
+          }
+        ]
+      },
+      options: {
+        legend: {
+          display: false
+        },
+        scales: {
+          xAxes: [{
+            display: true
+          }],
+          yAxes: [{
+            display: true
+          }],
+        }
+      }
+    });
+  }
+
+  graphCalcPrice(): void {
+    this.chart = new Chart('canvas', {
+      type: 'line',
+      data: {
+        labels: this.dates,
+        datasets: [
+          {
+            data: this.calc_prices,
             borderColor: "#3cba9f",
             fill: false
           }

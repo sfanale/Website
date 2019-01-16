@@ -38,7 +38,7 @@ export class OptionPricesService {
   }
 
 
-  getOption (ticker:string, strike:string, expiry:string) :Observable<Option[]>  {
+  getOption (ticker:string, strike:string, expiry:string):Observable<Option[]>  {
     const url = `${this.optionsurl}/${ticker}&${strike}&${expiry}`;
     return this.http.get<Option[]>(url)
       .pipe(
@@ -47,7 +47,7 @@ export class OptionPricesService {
       );
   }
 
-  getContract (contractsymbol:string) :Observable<Option[]> {
+  getContract (contractsymbol:string):Observable<Option[]> {
     const url = `${this.optionsurl}/detail/${contractsymbol}`;
     return this.http.get<Option[]>(url)
       .pipe(

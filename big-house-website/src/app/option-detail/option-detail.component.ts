@@ -4,6 +4,7 @@ import { Location } from '@angular/common';
 import { Chart} from 'chart.js';
 import {OptionPricesService} from "../option-prices.service";
 import {Option} from "../option";
+import {optionstools} from "../options-tools";
 
 @Component({
   selector: 'app-option-detail',
@@ -16,7 +17,8 @@ export class OptionDetailComponent implements OnInit {
   constructor(
     private location : Location,
     private optionPricesService: OptionPricesService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private optionTools: optionstools
   ) { }
 
   ngOnInit() {
@@ -30,11 +32,14 @@ export class OptionDetailComponent implements OnInit {
   calc_prices=[];
   open_interest=[];
   volume=[];
+  returns=[];
+  calcrets=[];
 
   getOptionDetails(): void {
     const sym = this.route.snapshot.paramMap.get('sym');
     this.optionPricesService.getContract(sym).subscribe(data=> {
       this.option = data;
+
       console.log(data);
       for ( let row of this.option) {
         let d_temp = new Date(row.pricedate*1000);
@@ -44,6 +49,11 @@ export class OptionDetailComponent implements OnInit {
         this.open_interest = this.open_interest.concat(row.openinterest);
         this.volume = this.volume.concat(row.volume);
       }
+      this.returns = this.optionTools.getRets(data);
+      this.calcrets = this.optionTools.getCalRets(data);
+      console.log(this.returns);
+      console.log(this.calcrets);
+
 
       this.chart = new Chart('canvas', {
         type: 'line',

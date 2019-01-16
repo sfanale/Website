@@ -31,6 +31,10 @@ export class ModelService {
     return this.http.get<ModelResults[]>(url);
   }
 
+  buyHold(ticker:string, start_hold:string, end_hold:string, asset_type:string) {
+    const url = `${this.optionsurl}/buy/`+ticker+'&'+start_hold+'&'+end_hold +'&'+asset_type;
+  }
+
   private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
 

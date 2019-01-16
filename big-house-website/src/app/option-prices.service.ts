@@ -4,7 +4,7 @@ import {HttpClient, HttpHeaders, HttpResponse} from '@angular/common/http';
 
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
-
+import {Stock} from "./stock";
 import { Option } from './option';
 import { MessageService } from './messages.service';
 
@@ -20,6 +20,7 @@ const httpOptions = {
 export class OptionPricesService {
 
   private optionsurl = 'http://data.fanaleresearch.com/api/options';  // url to local options endpoint
+  private stocksurl = 'http://0.0.0.0:5000/api/quotes';  // url to local options endpoint
 
 
 
@@ -29,7 +30,12 @@ export class OptionPricesService {
   ) { }
 
 
-
+  getStock (ticker:string): Observable<Stock[]> {
+    const url = `${this.stocksurl}/${ticker}`;
+    return this.http.get<Stock[]>(url).pipe( tap(_=> this.log('fetched stock info')),
+      catchError(this.handleError('getStock', []))
+    );
+  }
 
 
   getOption (ticker:string, strike:string, expiry:string) :Observable<Option[]>  {

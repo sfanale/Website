@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {OptionPricesService} from "../option-prices.service";
 import { Option } from "../option";
 import { MessageService } from '../messages.service';
+import {Stock} from "../stock";
 import {Observable} from "rxjs";
 
 
@@ -16,6 +17,7 @@ import {Observable} from "rxjs";
 export class OptionsComponent implements OnInit {
 
   options: Option[];
+  stock: Stock[];
   data: number[];
 
   constructor(
@@ -38,6 +40,7 @@ export class OptionsComponent implements OnInit {
     }
     console.log(strike);
     this.optionPriceService.getOption(ticker, strike, d).subscribe(data => {this.options = data} );
+    this.optionPriceService.getStock(ticker).subscribe(data=>{this.stock = data});
     // this.messageService.add(this.options[0].symbol);
   }
 

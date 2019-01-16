@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ModelService} from "../model.service";
-import {log} from "util";
 import { MessageService } from "../messages.service";
 import { Observable} from "rxjs";
 import { ModelResults} from "../model-results";
 import { Chart } from "chart.js";
+import { FormGroup, FormBuilder, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-models',
@@ -20,15 +20,25 @@ export class ModelsComponent implements OnInit {
   values=[];
   loading = false;
   asset_type: string;
+  firstFormGroup: FormGroup;
+  secondFormGroup: FormGroup;
+
 
   constructor(
     private modelService: ModelService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private _formBuilder: FormBuilder
   ) { }
 
-  ngOnInit() {
-  }
 
+  ngOnInit() {
+    this.firstFormGroup = this._formBuilder.group({
+      firstCtrl: ['', Validators.required]
+    });
+    this.secondFormGroup = this._formBuilder.group({
+      secondCtrl: ['', Validators.required]
+    });
+  }
 
 
   run(assets:string, opt_range:string, expiry_range:string, opt_freq:string, asset_type:string) {

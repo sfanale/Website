@@ -13,8 +13,6 @@ import {Option} from "../option";
 export class OptionDetailComponent implements OnInit {
 
 
-  //@Input() option: Option[];
-
   constructor(
     private location : Location,
     private optionPricesService: OptionPricesService,

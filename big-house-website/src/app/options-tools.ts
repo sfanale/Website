@@ -41,4 +41,32 @@ export class optionstools {
     }
     return calcrets;
   }
+
+
+  getAvailableDates(contract_list:Option[]) {
+    let results= new Set;
+    for (let contract of contract_list) {
+      let d_temp = new Date(parseFloat(contract.expiry)*1000);
+      let date_key = d_temp.getMonth()+'/'+ d_temp.getDate()+'/'+d_temp.getFullYear();
+      if (date_key !in results) {
+        results.add(date_key);
+      }
+    }
+    return results;
+  }
+
+  getAvailableStrikes(contract_list:Option[]) {
+    let results = new Set;
+    for ( let contract of contract_list) {
+      let strike = parseFloat(contract.strike)
+      if ( strike !in results) {
+        results.add(strike);
+      }
+    }
+    return results;
+  }
+
+
+
+
 }

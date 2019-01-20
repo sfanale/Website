@@ -76,8 +76,8 @@ export class StockDetailComponent implements OnInit {
     });
   }
 
-  bolingerBands() {
-    let bands = this.optionTools.bolingerBands(this.prices, this.dates);
+  bollingerBands() {
+    let bands = this.optionTools.bollingerBands(this.prices, this.dates);
     console.log(bands);
     this.chart = [];
     this.chart = new Chart('canvas', {

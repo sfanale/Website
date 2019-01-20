@@ -65,7 +65,7 @@ export class optionstools {
     return results;
   }
 
-  bolingerBands(prices:number[], dates:string[]) {
+  bollingerBands(prices:number[], dates:string[]) {
     // 2 stds above and below simple moving average
     let upper = [];
     let lower = [];

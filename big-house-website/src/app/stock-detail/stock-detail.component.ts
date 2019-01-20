@@ -147,7 +147,10 @@ export class StockDetailComponent implements OnInit {
         }
       }
     });
+  }
 
+  macd_line() {
+    console.log(this.optionTools.macd(this.prices, this.dates));
   }
 
 }

@@ -85,6 +85,44 @@ export class optionstools {
   }
 
 
+  exp_moving_ave(prices:number[], range:number) {
+    // first ema is based off prior period sma
+    let sma = math.mean(prices.slice(0,range));
+    let multiplier = 2 / (range+1);
+    let result = new Array(range); //pad with zeros for ease
+    let i = range;
+    while ( i <= prices.length) {
+      if ( i == range ) {
+        result.push( (prices[i] - sma)*multiplier + sma);
+      }
+      else {
+        result.push( (prices[i] - result[i-1])*multiplier + result[i-1]);
+      }
+      console.log(result);
+      i++;
+    }
+    return result;
+
+  }
+
+  macd(prices:number[], dates:string[]) {
+    let macd_line = [];
+    let i = 52;
+    let ema26 = this.exp_moving_ave(prices, 26);
+    let ema12 = this.exp_moving_ave(prices, 12);
+    let d = [];
+    console.log(ema26);
+    console.log(ema12);
+    while ( i < prices.length) {
+      macd_line.push(ema26[i] - ema12[i]);
+      d.push(dates[i]);
+      i++;
+    }
+    let signal_line = this.exp_moving_ave(macd_line, 9 );
+    return {signal:signal_line, macd:macd_line, dates:d};
+  }
+
+
 
 
 }

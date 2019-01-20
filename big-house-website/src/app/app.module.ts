@@ -60,6 +60,7 @@ import { OptionsComponent } from './options/options.component';
 import { OptionDetailComponent } from './option-detail/option-detail.component';
 import { ModelsComponent } from './models/models.component';
 import {MatMomentDateModule} from "@angular/material-moment-adapter";
+import { StockDetailComponent } from './stock-detail/stock-detail.component';
 
 
 @NgModule({
@@ -74,6 +75,7 @@ import {MatMomentDateModule} from "@angular/material-moment-adapter";
     OptionsComponent,
     OptionDetailComponent,
     ModelsComponent,
+    StockDetailComponent,
   ],
   imports: [
     BrowserModule,

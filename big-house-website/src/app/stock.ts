@@ -1,6 +1,6 @@
 export class Stock {
-  ticker :string;
-  price: string;
+  symbol :string;
+  close: string;
   pricedate: number;
   volume:string;
 

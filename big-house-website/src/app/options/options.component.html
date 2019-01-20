@@ -42,7 +42,7 @@
   <tbody>
   <tr *ngFor="let option of options">
 
-    <td><a routerLink="/options/detail/{{option.contractsymbol}}">{{option.contractsymbol}}</a></td>
+    <td><a routerLink="/research/options/{{option.contractsymbol}}">{{option.contractsymbol}}</a></td>
     <td>{{option.strike}}</td>
     <td>{{option.expiry*1000 | date}}</td>
   </tr>

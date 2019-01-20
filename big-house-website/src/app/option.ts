@@ -10,6 +10,7 @@ export class Option {
   ask: string;
   openinterest:string;
   volume:string;
+  prices_arr: number[];
 
 }
 

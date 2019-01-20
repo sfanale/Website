@@ -3,8 +3,7 @@ import {ModelResults} from "./model-results";
 import {Stock} from "./stock";
 import { Injectable } from '@angular/core';
 import {catchError} from "rxjs/operators";
-
-
+const math = require('mathjs')
 
 @Injectable({
   providedIn: 'root'
@@ -64,6 +63,25 @@ export class optionstools {
       }
     }
     return results;
+  }
+
+  bolingerBands(prices:number[], dates:string[]) {
+    // 2 stds above and below simple moving average
+    let upper = [];
+    let lower = [];
+    let d = [];
+    let i = 21;
+    let price = [];
+    while ( i < (prices.length)) {
+      let sig = math.std(prices.slice(i-21,i));
+      let sma = math.mean(prices.slice(i-21,i));
+      upper.push(sma + (sig*2));
+      lower.push(sma - (sig*2));
+      d.push(dates[i]);
+      price.push(prices[i])
+      i++;
+    }
+    return { upper:upper, lower:lower, dates:d, prices:price } ;
   }
 
 

@@ -62,6 +62,9 @@ import { ModelsComponent } from './models/models.component';
 import {MatMomentDateModule} from "@angular/material-moment-adapter";
 import { StockDetailComponent } from './stock-detail/stock-detail.component';
 import { LearnComponent } from './learn/learn.component';
+import { InsightsComponent } from './insights/insights.component';
+import { InsightsDetailComponent } from './insights-detail/insights-detail.component';
+import { InsightsCreateComponent } from './insights-create/insights-create.component';
 
 
 @NgModule({
@@ -78,6 +81,9 @@ import { LearnComponent } from './learn/learn.component';
     ModelsComponent,
     StockDetailComponent,
     LearnComponent,
+    InsightsComponent,
+    InsightsDetailComponent,
+    InsightsCreateComponent,
   ],
   imports: [
     BrowserModule,

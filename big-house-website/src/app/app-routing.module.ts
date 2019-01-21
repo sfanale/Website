@@ -13,13 +13,12 @@ import {LearnComponent} from "./learn/learn.component";
 
 
 const routes : Routes = [
-  {path: 'dashboard', component: DashboardComponent},
-  {path: '', redirectTo:'/dashboard', pathMatch: 'full'},
+  {path: '', component: DashboardComponent},
   {path: 'research', component: ResearchComponent},
   {path: 'trade/:id', component: TradeComponent},
   {path: 'trade', component: TradeComponent},
   {path: 'account',component:UsersComponent},
-  {path: 'options', component:OptionsComponent},
+  {path: 'research', component:OptionsComponent},
   {path: 'research/options/:sym', component: OptionDetailComponent},
   {path: 'models', component: ModelsComponent},
   {path: 'research/stocks/:sym', component:StockDetailComponent},

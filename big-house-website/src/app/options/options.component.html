@@ -30,7 +30,19 @@
 
 <mat-divider></mat-divider>
 
-<mat-card>
+<div>
+  <div class="col-sm-4">
+    <p>Symbol: <a routerLink="/research/stocks/{{stock[0].symbol}}">{{stock[0].symbol}}</a></p>
+  </div>
+  <div class="col-sm-4">
+    <p>Last Price: {{stock[0].close}}</p>
+  </div>
+  <div class="col-sm-4">
+    <p>Volume: {{stock[0].volume}}</p>
+  </div>
+</div>
+
+<div>
 <table class="table table-hover">
   <thead>
   <tr>
@@ -41,13 +53,12 @@
   </thead>
   <tbody>
   <tr *ngFor="let option of options">
-
     <td><a routerLink="/research/options/{{option.contractsymbol}}">{{option.contractsymbol}}</a></td>
     <td>{{option.strike}}</td>
     <td>{{option.expiry*1000 | date}}</td>
   </tr>
   </tbody>
 </table>
-</mat-card>
+</div>
 
 

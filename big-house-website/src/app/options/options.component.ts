@@ -5,6 +5,8 @@ import { MessageService } from '../messages.service';
 import {Stock} from "../stock";
 import {Observable} from "rxjs";
 
+// This is not really an option page so much as a search page
+
 
 @Component({
   selector: 'app-options',

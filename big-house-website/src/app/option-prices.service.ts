@@ -20,7 +20,7 @@ const httpOptions = {
 export class OptionPricesService {
 
   private optionsurl = 'http://data.fanaleresearch.com/api/options';  // url to local options endpoint
-  private stocksurl = 'http://0.0.0.0:5000/api/quotes';  // url to local options endpoint
+  private stocksurl = 'http://data.fanaleresearch.com/api/quotes';  // url to local options endpoint
 
 
 

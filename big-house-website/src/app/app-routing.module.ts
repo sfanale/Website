@@ -9,6 +9,7 @@ import {OptionsComponent} from "./options/options.component";
 import {OptionDetailComponent} from "./option-detail/option-detail.component";
 import {ModelsComponent} from "./models/models.component";
 import {StockDetailComponent} from "./stock-detail/stock-detail.component";
+import {LearnComponent} from "./learn/learn.component";
 
 
 const routes : Routes = [
@@ -21,7 +22,8 @@ const routes : Routes = [
   {path: 'options', component:OptionsComponent},
   {path: 'research/options/:sym', component: OptionDetailComponent},
   {path: 'models', component: ModelsComponent},
-  {path: 'research/stocks/:sym', component:StockDetailComponent}
+  {path: 'research/stocks/:sym', component:StockDetailComponent},
+  {path: 'research/learn', component:LearnComponent}
 ];
 
 @NgModule({

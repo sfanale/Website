@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {BrowserModule} from "@angular/platform-browser";
 import {HttpClient, HttpHeaders, HttpResponse} from '@angular/common/http';
-
+import { Tickers} from "./option";
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import {Stock} from "./stock";
@@ -54,6 +54,11 @@ export class OptionPricesService {
         tap(_ => this.log('fetched contract details')),
         catchError(this.handleError('getContract', []))
       );
+  }
+
+  getAllTickers(): Observable<Tickers> {
+    const url = `${this.optionsurl}/alltickers`;
+    return this.http.get<Tickers>(url);
   }
 
 

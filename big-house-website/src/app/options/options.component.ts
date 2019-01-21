@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {OptionPricesService} from "../option-prices.service";
-import { Option } from "../option";
+import {Option, Tickers} from "../option";
 import { MessageService } from '../messages.service';
 import {Stock} from "../stock";
 import {Observable} from "rxjs";
@@ -19,6 +19,7 @@ export class OptionsComponent implements OnInit {
   options: Option[];
   stock: Stock[];
   data: number[];
+  tickers: Tickers;
 
   constructor(
     private optionPriceService: OptionPricesService,
@@ -27,6 +28,7 @@ export class OptionsComponent implements OnInit {
 
 
   ngOnInit() {
+    this.optionPriceService.getAllTickers().subscribe(data=> this.tickers=data);
 
   }
 

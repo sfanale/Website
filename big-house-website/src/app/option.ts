@@ -14,6 +14,11 @@ export class Option {
 
 }
 
+export class Tickers {
+  tickers: string[];
+}
+
+
 export interface OptionINT {
   expiry :string;
   lastprice: string;

@@ -3,7 +3,7 @@ import {ModelResults} from "./model-results";
 import {Stock} from "./stock";
 import { Injectable } from '@angular/core';
 import {catchError} from "rxjs/operators";
-const math = require('mathjs')
+const math = require('mathjs');
 
 @Injectable({
   providedIn: 'root'

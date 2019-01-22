@@ -11,13 +11,11 @@ import {ModelsComponent} from "./models/models.component";
 
 
 const routes : Routes = [
-  {path: 'dashboard', component: DashboardComponent},
-  {path: '', redirectTo:'/dashboard', pathMatch: 'full'},
-  {path: 'research', component: ResearchComponent},
+  {path: '', component: DashboardComponent},
   {path: 'trade/:id', component: TradeComponent},
   {path: 'trade', component: TradeComponent},
   {path: 'account',component:UsersComponent},
-  {path: 'options', component:OptionsComponent},
+  {path: 'research', component:OptionsComponent},
   {path: 'options/detail/:sym', component: OptionDetailComponent},
   {path: 'models', component: ModelsComponent}
 ];

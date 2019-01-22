@@ -7,4 +7,5 @@ export class InsightBlog {
   tags: string;
   image: string;
   views: string;
+  id: string;
 }

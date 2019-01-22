@@ -5,7 +5,8 @@
     <div class="col-lg-6">
       <mat-form-field class="input" appearance="fill">
         <mat-label>Symbol</mat-label>
-      <input #symbol matInput type="text" placeholder="Enter Stock Symbol..." id="symbol">
+      <input #symbol type="text" id="autocomplete-input" class="autocomplete" placeholder="Enter Stock Symbol...">
+        <label for="autocomplete-input">Symbol</label>
       </mat-form-field>
     </div>
     <div class="col-lg-2">
@@ -61,4 +62,16 @@
 </table>
 </div>
 
+<script>
+  $(document).ready(function(){
+    $('input.autocomplete').autocomplete({
+      data: {
+        "Apple": null,
+        "Microsoft": null,
+        "Google": 'https://placehold.it/250x250'
+      },
+    });
+  });
+
+</script>
 

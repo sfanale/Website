@@ -5,13 +5,9 @@ import { Tickers} from "./option";
 import { Observable, of } from 'rxjs';
 
 
-
-
-
 const httpOptions = {
   headers: new HttpHeaders({ 'Response-Type': 'application/json' })
 };
-
 
 
 @Injectable({
@@ -19,9 +15,7 @@ const httpOptions = {
 })
 export class InsightsService {
 
-
   private insightsurl = 'http://insights.fanaleresearch.com/api';  // url to endpoint
-
 
   constructor(
     private http: HttpClient
@@ -32,7 +26,7 @@ export class InsightsService {
     return this.http.get<InsightBlog[]>(url);
   }
 
-  postBlog (body:InsightBlog){
+  postBlog(body:InsightBlog) {
     console.log((body));
     const url = `${this.insightsurl}/post/blog`;
     return this.http.post(url,(body), {headers:{ 'Content-Type': 'application/json', 'Access-Control-Allow-Origin':'*'}}).subscribe();

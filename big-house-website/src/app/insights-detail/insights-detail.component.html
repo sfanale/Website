@@ -1,7 +1,17 @@
-<h1>{{blogdata.title}}</h1>
-<h2>{{blogdata.author}}</h2>
-<h3>{{blogdata.description}}</h3>
+<div class="container">
+  <div class="section">
+    <div class="col s6">
+      <h2>{{blogdata.title}}</h2>
+      <h3><i>{{blogdata.description}}</i></h3>
+      <h5>{{blogdata.author}}</h5>
+    </div>
+    <div class="col s6">
+      <p>{{blogdata.date}}</p>
+      <p>{{blogdata.views}}</p>
+    </div>
+  </div>
+  <div class="col s8">
+    <markdown>{{blogdata.content}}</markdown>
+  </div>
+</div>
 
-<p>{{blogdata.date}}</p>
-<p>{{blogdata.views}}</p>
-<p>{{blogdata.content}}</p>

@@ -4,6 +4,8 @@ import {InsightBlog} from "../insight.blog";
 import {Route} from "@angular/router";
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
+import { MarkdownModule } from 'ngx-markdown';
+
 
 @Component({
   selector: 'app-insights-detail',

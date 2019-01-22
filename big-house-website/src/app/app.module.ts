@@ -65,6 +65,7 @@ import { LearnComponent } from './learn/learn.component';
 import { InsightsComponent } from './insights/insights.component';
 import { InsightsDetailComponent } from './insights-detail/insights-detail.component';
 import { InsightsCreateComponent } from './insights-create/insights-create.component';
+import { MarkdownModule } from 'ngx-markdown';
 
 
 @NgModule({
@@ -130,6 +131,7 @@ import { InsightsCreateComponent } from './insights-create/insights-create.compo
     MatToolbarModule,
     MatTooltipModule,
     MatTreeModule,
+    MarkdownModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]

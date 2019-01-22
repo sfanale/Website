@@ -28,7 +28,8 @@ export class InsightsDetailComponent implements OnInit {
   getBlog() {
     const id = this.route.snapshot.paramMap.get('id');
     this.insightsService.getOneBlog(id).subscribe(data =>{
-      this.blogdata = data
+      this.blogdata = data;
+      console.log(data);
     });
   }
 

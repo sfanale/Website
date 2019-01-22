@@ -1,0 +1,17 @@
+<h1>Insights</h1>
+
+
+<div class="col s8">
+  <table class="table table-hover">
+    <tbody>
+    <tr *ngFor="let blog of Blogs">
+      <td>
+        <p><a routerLink="{{blog.id}}">{{blog.title}}</a></p>
+        <p>{{blog.description}}</p>
+        <p>{{blog.date}}</p>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+

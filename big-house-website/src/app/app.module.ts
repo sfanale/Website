@@ -60,6 +60,12 @@ import { OptionsComponent } from './options/options.component';
 import { OptionDetailComponent } from './option-detail/option-detail.component';
 import { ModelsComponent } from './models/models.component';
 import {MatMomentDateModule} from "@angular/material-moment-adapter";
+import { StockDetailComponent } from './stock-detail/stock-detail.component';
+import { LearnComponent } from './learn/learn.component';
+import { InsightsComponent } from './insights/insights.component';
+import { InsightsDetailComponent } from './insights-detail/insights-detail.component';
+import { InsightsCreateComponent } from './insights-create/insights-create.component';
+import { MarkdownModule } from 'ngx-markdown';
 
 
 @NgModule({
@@ -74,6 +80,11 @@ import {MatMomentDateModule} from "@angular/material-moment-adapter";
     OptionsComponent,
     OptionDetailComponent,
     ModelsComponent,
+    StockDetailComponent,
+    LearnComponent,
+    InsightsComponent,
+    InsightsDetailComponent,
+    InsightsCreateComponent,
   ],
   imports: [
     BrowserModule,
@@ -120,6 +131,7 @@ import {MatMomentDateModule} from "@angular/material-moment-adapter";
     MatToolbarModule,
     MatTooltipModule,
     MatTreeModule,
+    MarkdownModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]

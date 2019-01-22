@@ -10,8 +10,14 @@ export class Option {
   ask: string;
   openinterest:string;
   volume:string;
+  prices_arr: number[];
 
 }
+
+export class Tickers {
+  ticker: string;
+}
+
 
 export interface OptionINT {
   expiry :string;

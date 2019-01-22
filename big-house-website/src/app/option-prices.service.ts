@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {BrowserModule} from "@angular/platform-browser";
 import {HttpClient, HttpHeaders, HttpResponse} from '@angular/common/http';
-
+import { Tickers} from "./option";
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import {Stock} from "./stock";
@@ -20,7 +20,7 @@ const httpOptions = {
 export class OptionPricesService {
 
   private optionsurl = 'http://data.fanaleresearch.com/api/options';  // url to local options endpoint
-  private stocksurl = 'http://0.0.0.0:5000/api/quotes';  // url to local options endpoint
+  private stocksurl = 'http://data.fanaleresearch.com/api/quotes';  // url to local options endpoint
 
 
 
@@ -38,7 +38,7 @@ export class OptionPricesService {
   }
 
 
-  getOption (ticker:string, strike:string, expiry:string) :Observable<Option[]>  {
+  getOption (ticker:string, strike:string, expiry:string):Observable<Option[]>  {
     const url = `${this.optionsurl}/${ticker}&${strike}&${expiry}`;
     return this.http.get<Option[]>(url)
       .pipe(
@@ -47,13 +47,21 @@ export class OptionPricesService {
       );
   }
 
-  getContract (contractsymbol:string) :Observable<Option[]> {
+  getContract (contractsymbol:string):Observable<Option[]> {
     const url = `${this.optionsurl}/detail/${contractsymbol}`;
     return this.http.get<Option[]>(url)
       .pipe(
         tap(_ => this.log('fetched contract details')),
         catchError(this.handleError('getContract', []))
       );
+  }
+
+  getAllTickers(): Observable<Tickers[]> {
+    const url = `${this.optionsurl}/getAllTickers`;
+    return this.http.get<Tickers[]>(url).pipe(
+      tap(_ => this.log('fetched tickers')),
+      catchError(this.handleError('getAllTickers', []))
+    );
   }
 
 

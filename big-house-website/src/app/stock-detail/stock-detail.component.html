@@ -1,0 +1,48 @@
+<h1>{{stock[0].symbol | uppercase }} Details</h1>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6">
+      <h3>Contract Information</h3>
+      <p>Underlying Symbol: {{stock[0].symbol }}</p>
+      <p>Strike: {{stock[stock.length-1].close}}</p>
+      <p>Volume: {{stock[stock.length-1].volume }}</p>
+    </div>
+  </div>
+  <div class="row">
+    <h3>Graph Options</h3>
+  </div>
+  <div class="row">
+    <div class="col-md-2">
+      <button class="btn btn-outline-success btn-md my-button" (click)="bollingerBands()">Bolinger Bands</button>
+    </div>
+    <div class="col-md-2">
+      <button class="btn btn-outline-success btn-md my-button" (click)="macd_line()">MACD</button>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+<mat-card>
+  <canvas id="canvas">{{ chart }}</canvas>
+</mat-card>
+</div>
+
+<div class="container">
+  <table class="table">
+    <thead>
+    <tr>
+      <th>Last Price</th>
+      <th>Price Date</th>
+      <th>Volume</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let row of stock">
+      <td>{{row.close}}</td>
+      <td>{{row.pricedate *1000 | date }}</td>
+      <td>{{row.volume}}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>

@@ -4,7 +4,7 @@ import {Location} from "@angular/common";
 import {OptionPricesService} from "../option-prices.service";
 import {ActivatedRoute} from "@angular/router";
 import {optionstools} from "../options-tools";
-import {Chart} from 'chart.js'
+import {Chart} from 'chart.js';
 
 
 @Component({

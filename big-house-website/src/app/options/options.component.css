@@ -1,22 +1,4 @@
-.container {
-  text-align: center;
-  padding-top: 20px;
-}
 
-mat-card-header {
-  padding-top: 10px;
-}
-
-
-mat-card-title {
-  font-size: 48px;
-}
-
-mat-card {
-  text-align: center;
-  padding-left: 15%;
-  padding-right: 15%;
-}
 
 .input {
   width: 100%;

@@ -1,12 +1,12 @@
 <h1>{{stock[0].symbol | uppercase }} Details</h1>
 
-<div>
+<div class="container">
   <div class="row">
     <div class="col-sm-6">
       <h3>Contract Information</h3>
       <p>Underlying Symbol: {{stock[0].symbol }}</p>
-      <p>Strike: {{stock[0].close}}</p>
-      <p>Volume: {{stock[0].volume }}</p>
+      <p>Strike: {{stock[stock.length-1].close}}</p>
+      <p>Volume: {{stock[stock.length-1].volume }}</p>
     </div>
   </div>
   <div class="row">
@@ -22,12 +22,13 @@
   </div>
 </div>
 
+<div class="container">
 <mat-card>
   <canvas id="canvas">{{ chart }}</canvas>
 </mat-card>
+</div>
 
-
-<mat-card>
+<div class="container">
   <table class="table">
     <thead>
     <tr>
@@ -44,4 +45,4 @@
     </tr>
     </tbody>
   </table>
-</mat-card>
+</div>

@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import {OptionPricesService} from "../option-prices.service";
 import {Option, Tickers} from "../option";
 import { MessageService } from '../messages.service';
 import {Stock} from "../stock";
 import {Observable} from "rxjs";
-
+import * as $ from 'jquery';
 // This is not really an option page so much as a search page
 
 
@@ -21,7 +21,8 @@ export class OptionsComponent implements OnInit {
   options: Option[];
   stock: Stock[];
   data: number[];
-  tickers: Tickers;
+  tickers: Tickers[];
+  keys = { 'AAPL': null, 'DB':null, 'GOOGL':null, 'MSFT':null};
 
   constructor(
     private optionPriceService: OptionPricesService,
@@ -29,10 +30,29 @@ export class OptionsComponent implements OnInit {
   ) { }
 
 
-  ngOnInit() {
-    this.optionPriceService.getAllTickers().subscribe(data=> this.tickers=data);
 
+
+  ngOnInit() {
+    document.addEventListener('DOMContentLoaded', function() {
+      var elems = document.querySelectorAll('.datepicker');
+      var instances_date = M.Datepicker.init(elems, {autoClose:true});
+    });
+    document.addEventListener('DOMContentLoaded', function() {
+      var elems = document.querySelectorAll('.autocomplete');
+      var instances_auto = M.Autocomplete.init(elems, {data:{ 'AAPL': null, 'DB':null, 'GOOGL':null, 'MSFT':null}});
+    });
+    this.optionPriceService.getAllTickers().subscribe(data=> {
+      this.tickers = data;
+      console.log(data);
+      let formated_data={};
+      for (let i of data) {
+        formated_data[i.toString()] = null;
+      }
+      console.log(formated_data);
+
+    });
   }
+
 
 
   getOption(ticker:string, strike:string, expiry: string): void {
@@ -42,9 +62,13 @@ export class OptionsComponent implements OnInit {
         console.log('Got ya');
         d = '';
     }
+    console.log(ticker);
     console.log(strike);
-    this.optionPriceService.getOption(ticker, strike, d).subscribe(data => {this.options = data} );
-    this.optionPriceService.getStock(ticker).subscribe(data=>{this.stock = data});
+    this.optionPriceService.getOption(ticker, strike, d).subscribe(data => {this.options = data;} );
+    this.optionPriceService.getStock(ticker).subscribe(data=>{
+      this.stock = data;
+      console.log(data);
+    });
     // this.messageService.add(this.options[0].symbol);
   }
 

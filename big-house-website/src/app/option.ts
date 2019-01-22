@@ -15,7 +15,7 @@ export class Option {
 }
 
 export class Tickers {
-  tickers: string[];
+  ticker: string;
 }
 
 

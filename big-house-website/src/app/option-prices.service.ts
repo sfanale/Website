@@ -56,9 +56,12 @@ export class OptionPricesService {
       );
   }
 
-  getAllTickers(): Observable<Tickers> {
-    const url = `${this.optionsurl}/alltickers`;
-    return this.http.get<Tickers>(url);
+  getAllTickers(): Observable<Tickers[]> {
+    const url = `${this.optionsurl}/getAllTickers`;
+    return this.http.get<Tickers[]>(url).pipe(
+      tap(_ => this.log('fetched tickers')),
+      catchError(this.handleError('getAllTickers', []))
+    );
   }
 
 

@@ -1,47 +1,39 @@
 <mat-card-title>Research</mat-card-title>
 
-<mat-card>
+<div class="card">
   <div class="row">
-    <div class="col-lg-6">
-      <mat-form-field class="input" appearance="fill">
-        <mat-label>Symbol</mat-label>
-      <input #symbol type="text" id="autocomplete-input" class="autocomplete" placeholder="Enter Stock Symbol...">
+    <div class="col m6 s12">
+      <input #symbol type="text" id="autocomplete-input" class="autocomplete" data-target="auto-content" placeholder="Enter Stock Symbol...">
         <label for="autocomplete-input">Symbol</label>
-      </mat-form-field>
     </div>
-    <div class="col-lg-2">
-      <mat-form-field class="input" appearance="fill">
-        <mat-label>Strike Price</mat-label>
-      <input #strike matInput type="text" placeholder="Strike Price"  id="strike">
-      </mat-form-field>
+    <div class="col m2 s12">
+      <input #strike type="text"  id="strike">
+      <label for="strike">Strike Price</label>
     </div>
-    <div class="col-lg-3">
-      <mat-form-field appearance="fill">
-        <mat-label>Minimum Expiration Date</mat-label>
-        <input #expiry matInput [matDatepicker]="picker" placeholder="Choose a date">
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-      </mat-form-field>
+    <div class="col m3 s12">
+      <input #expiry type="text" class="datepicker" id="expiry">
+      <label for="expiry">Minimum Expiration Date</label>
     </div>
-    <div class="col-lg-1">
-      <button mat-stroked-button class="btn btn-outline-success btn-md my-button" (click)="getOption(symbol.value, strike.value, expiry.value)">SEARCH</button>
+    <div class="col m1 s12">
+      <button class="btn btn-outline-success btn-md my-button" (click)="getOption(symbol.value, strike.value, expiry.value)">SEARCH</button>
     </div>
-  </div>
-</mat-card>
-
-<mat-divider></mat-divider>
-
-<div>
-  <div class="col-sm-4">
-    <p>Symbol: <a routerLink="/research/stocks/{{stock[0].symbol}}">{{stock[0].symbol}}</a></p>
-  </div>
-  <div class="col-sm-4">
-    <p>Last Price: {{stock[0].close}}</p>
-  </div>
-  <div class="col-sm-4">
-    <p>Volume: {{stock[0].volume}}</p>
   </div>
 </div>
+
+<div class="divider"></div>
+
+  <div class="section">
+  <div class="col s4">
+    <p>Symbol: <a routerLink="/research/stocks/{{stock[0].symbol}}">{{stock[0].symbol}}</a></p>
+  </div>
+  <div class="col s4">
+    <p>Last Price: {{stock[0].close}}</p>
+  </div>
+  <div class="col s4">
+    <p>Volume: {{stock[0].volume}}</p>
+  </div>
+  </div>
+
 
 <div>
 <table class="table table-hover">
@@ -62,16 +54,6 @@
 </table>
 </div>
 
-<script>
-  $(document).ready(function(){
-    $('input.autocomplete').autocomplete({
-      data: {
-        "Apple": null,
-        "Microsoft": null,
-        "Google": 'https://placehold.it/250x250'
-      },
-    });
-  });
 
-</script>
+
 

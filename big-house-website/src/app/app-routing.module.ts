@@ -13,6 +13,8 @@ import {LearnComponent} from "./learn/learn.component";
 import {InsightsComponent} from "./insights/insights.component";
 import {InsightsCreateComponent} from "./insights-create/insights-create.component";
 import {InsightsDetailComponent} from "./insights-detail/insights-detail.component";
+import {LearnCreateComponent} from "./learn-create/learn-create.component";
+import {LearnDetailComponent} from "./learn-detail/learn-detail.component";
 
 
 const routes : Routes = [
@@ -27,8 +29,10 @@ const routes : Routes = [
   {path: 'research/learn', component:LearnComponent},
   {path: 'insights', component:InsightsComponent},
   {path: 'insights/create', component:InsightsCreateComponent},
-  {path: 'insights/:id', component:InsightsDetailComponent}
-
+  {path: 'insights/:id', component:InsightsDetailComponent},
+  {path: 'learn', component:LearnComponent},
+  {path: 'learn/:id', component:LearnDetailComponent},
+  {path: 'learn/create', component:LearnCreateComponent}
 ];
 
 @NgModule({

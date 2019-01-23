@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {InsightBlog} from "../insight.blog";
+import {InsightsService} from "../insights.service";
 
 
 @Component({
@@ -8,11 +10,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
+  blog:InsightBlog;
 
-
-  constructor() { }
+  constructor(
+    private insightsService: InsightsService
+  ) { }
 
   ngOnInit() {
+    this.getBlog();
+  }
+
+  getBlog() {
+    this.insightsService.getOneBlog('3').subscribe(data=>{this.blog=data;});
   }
 
 }

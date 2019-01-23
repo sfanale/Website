@@ -7,3 +7,7 @@
 #stock-chart{
   height: 15%;
 }
+
+#ticker-link{
+  color: green;
+}

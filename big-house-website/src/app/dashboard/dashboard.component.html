@@ -15,56 +15,86 @@
 </div>
 
 
-<div class="row content-section1">
-  <div class="col s12 grey lighten-3">
+<div class="section">
+  <div class="col s12">
     <div class="row">
       <div class="col s12 l6">
-          <div class="grey lighten-4" id="large-content-square">
-            <h5 class="blue-grey-text text-darken-3 center-align">Research. Model. Trade.</h5>
-            <p class="flow-text blue-grey-text text-darken-3">Never before has it been so easy to perform intelligent
-              market
-              research. Finally, the hassle
+        <div class="card" id="large-card">
+          <div class="card-image waves-effect waves-block waves-light">
+            <img class="activator" src="../../assets/IMG_1823.jpeg">
+          </div>
+          <div class="card-content">
+            <span class="card-title activator grey-text text-darken-4">Research. Model. Trade.<i class="material-icons right">more_vert</i></span>
+          </div>
+          <div class="card-reveal">
+            <span class="card-title grey-text text-darken-4">Get To The Next Level<i class="material-icons right">close</i></span>
+            <p>Never before has it been so easy to perform intelligent market research. Finally, the hassle
               of spending hours building tools and custom models and back-testing them yourself is over. Stop making
               uninformed investments. Trade like a Quant.
             </p>
-            <p class="center-align">
-              <i class="large material-icons blue-grey-text text-darken-3 center-align">timeline</i>
-            </p>
           </div>
+        </div>
+
       </div>
       <div class="col s12 l3">
-        <!-- <div class="container">JL -->
-        <div class="small-content-wrapper" id="small-content-wrapper-left">
-          <div class="grey lighten-4 small-top-content-square">
-            <h5><a class="blue-grey-text text-darken-3 center-align" routerLink="/research">Research</a></h5>
-            <p class="small-content-square-text blue-grey-text text-darken-3">Use the research portal to obtain
-              valuable insight and gain the edge
-              in options trading.</p>
+        <div class="card small">
+          <div class="card-image waves-effect waves-block waves-light">
+            <img class="activator" src="../../assets/IMG_1823.jpeg">
+          </div>
+          <div class="card-content">
+            <span class="card-title activator grey-text text-darken-4"><a routerLink="/research">Research</a><i class="material-icons right">more_vert</i></span>
+          </div>
+          <div class="card-reveal">
+            <span class="card-title grey-text text-darken-4">Research<i class="material-icons right">close</i></span>
+            <p>Use the research portal to obtain valuable insight in both stocks and options.</p>
           </div>
         </div>
       </div>
           <div class="col s12 l3">
-          <div class="grey lighten-4 small-bottom-content-square">
-            <h5><a class="blue-grey-text text-darken-3 center-align" routerLink="/trade">Trade</a></h5>
-            <p class="small-content-square-text blue-grey-text text-darken-3">Implement your market knowldge.</p>
-          </div>
+            <div class="card small">
+              <div class="card-image waves-effect waves-block waves-light">
+                <img class="activator" src="../../assets/IMG_1823.jpeg">
+              </div>
+              <div class="card-content">
+                <span class="card-title activator grey-text text-darken-4"><a routerLink="/trade">Trade</a><i class="material-icons right">more_vert</i></span>
+              </div>
+              <div class="card-reveal">
+                <span class="card-title grey-text text-darken-4">Trade<i class="material-icons right">close</i></span>
+                <p>Leverage your research right into real trades. Or, build a custom model and take the quantitative approach.
+                The choice is yours. </p>
+              </div>
+            </div>
         </div>
 
       <div class="col s12 l3">
-          <div class="small-content-wrapper" id="small-content-wrapper-right">
-            <div class="grey lighten-4 small-top-content-square" id="small-top-content-square-right">
-              <h5><a class="blue-grey-text text-darken-3 center-align" routerLink="/model">Model</a></h5>
-              <p class="small-content-square-text blue-grey-text text-darken-3">See beyond the superficial, find
-                meaningful and lucrative trends with our powerful modeling tools.</p>
-            </div>
+        <div class="card small">
+          <div class="card-image waves-effect waves-block waves-light">
+            <img class="activator" src="../../assets/IMG_1823.jpeg">
           </div>
+          <div class="card-content">
+            <span class="card-title activator grey-text text-darken-4"><a routerLink="/model">Model</a><i class="material-icons right">more_vert</i></span>
+          </div>
+          <div class="card-reveal">
+            <span class="card-title grey-text text-darken-4">Model<i class="material-icons right">close</i></span>
+            <p>See beyond the superficial, find meaningful and lucrative strategies with our powerful modeling tools.</p>
+          </div>
+        </div>
+
       </div>
-            <div class="col s12 l3">
-            <div class="grey lighten-4 small-bottom-content-square" id="small-bottom-content-square-right">
-              <h5><a class="blue-grey-text text-darken-3 center-align" routerLink="/insights">Insights</a></h5>
-              <p class="small-content-square-text blue-grey-text text-darken-3">The latest news, commentaries, and info
-                you need to improve your portfolio.</p>
-            </div>
+            <div class="col s12 l3 ">
+              <div class="card small">
+                <div class="card-image waves-effect waves-block waves-light">
+                  <img class="activator" src="../../assets/IMG_1823.jpeg">
+                </div>
+                <div class="card-content">
+                  <span class="card-title activator grey-text text-darken-4"><a routerLink="/insights/{{blog.id}}">Insights</a><i class="material-icons right">more_vert</i></span>
+                </div>
+                <div class="card-reveal">
+                  <span class="card-title grey-text text-darken-4">{{blog.title}}<i class="material-icons right">close</i></span>
+                  <p>{{blog.description}}</p>
+                </div>
+              </div>
+
           </div>
           </div>
         </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 import {OptionPricesService} from "../option-prices.service";
 import {Option, Tickers} from "../option";
 import { MessageService } from '../messages.service';
@@ -34,20 +34,16 @@ export class OptionsComponent implements OnInit {
   constructor(
     private optionPriceService: OptionPricesService,
     private messageService: MessageService
-  ) { }
+  ) {
+
+  }
 
 
 
 
   ngOnInit() {
-    document.addEventListener('DOMContentLoaded', function() {
-      var elems = document.querySelectorAll('.datepicker');
-      var instances = M.Datepicker.init(elems, {autoClose:true});
-    });
-    document.addEventListener('DOMContentLoaded', function() {
-      var elems = document.querySelectorAll('.autocomplete');
-      var instances = M.Autocomplete.init(elems, {data:{ 'AAPL': null, 'DB':null, 'GOOGL':null, 'MSFT':null}});
-    });
+
+
     this.optionPriceService.getAllTickers().subscribe(data=> {
       this.tickers = data;
       console.log(data);
@@ -59,6 +55,8 @@ export class OptionsComponent implements OnInit {
 
     });
   }
+
+
 
 
 

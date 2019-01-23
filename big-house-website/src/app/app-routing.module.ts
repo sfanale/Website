@@ -21,10 +21,6 @@ const routes : Routes = [
   {path: 'trade', component: TradeComponent},
   {path: 'account',component:UsersComponent},
   {path: 'research', component:OptionsComponent},
-<<<<<<< HEAD
-  {path: 'options/detail/:sym', component: OptionDetailComponent},
-  {path: 'models', component: ModelsComponent}
-=======
   {path: 'research/options/:sym', component: OptionDetailComponent},
   {path: 'models', component: ModelsComponent},
   {path: 'research/stocks/:sym', component:StockDetailComponent},
@@ -32,7 +28,7 @@ const routes : Routes = [
   {path: 'insights', component:InsightsComponent},
   {path: 'insights/create', component:InsightsCreateComponent},
   {path: 'insights/:id', component:InsightsDetailComponent}
->>>>>>> 32281449c78f479881b9733dece94b9cb694741f
+
 ];
 
 @NgModule({

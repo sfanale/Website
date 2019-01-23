@@ -6,6 +6,9 @@ import {Stock} from "../stock";
 import {Observable} from "rxjs";
 import * as $ from 'jquery';
 import {Chart} from 'chart.js';
+import * as M from '../../../node_modules/materialize-css';
+
+
 // This is not really an option page so much as a search page
 
 
@@ -39,11 +42,11 @@ export class OptionsComponent implements OnInit {
   ngOnInit() {
     document.addEventListener('DOMContentLoaded', function() {
       var elems = document.querySelectorAll('.datepicker');
-      var instances_date = M.Datepicker.init(elems, {autoClose:true});
+      var instances = M.Datepicker.init(elems, {autoClose:true});
     });
     document.addEventListener('DOMContentLoaded', function() {
       var elems = document.querySelectorAll('.autocomplete');
-      var instances_auto = M.Autocomplete.init(elems, {data:{ 'AAPL': null, 'DB':null, 'GOOGL':null, 'MSFT':null}});
+      var instances = M.Autocomplete.init(elems, {data:{ 'AAPL': null, 'DB':null, 'GOOGL':null, 'MSFT':null}});
     });
     this.optionPriceService.getAllTickers().subscribe(data=> {
       this.tickers = data;

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {InsightsService} from "../insights.service";
-import {InsightBlog} from "../insight.blog";
+import {LearnBlog} from "../insight.blog";
 
 @Component({
   selector: 'app-learn-create',
@@ -17,16 +17,18 @@ export class LearnCreateComponent implements OnInit {
   ngOnInit() {
   }
 
-  save(author:string, title:string, date:string, description:string, tags:string, content:string, image:string) {
-    let body = new InsightBlog;
-    console.log(typeof author);
-    body.author = author;
+  save(title:string, description:string, tags:string, content:string, image:string) {
+    let body = new LearnBlog();
+    let tags_list = tags.split('+');
+    let tags_temp =[];
+    for (let i of tags_list){
+      tags_temp.push(i);
+    }
     body.title = title;
-    body.date = date;
     body.description = description;
-    body.tags = tags;
+    body.tags = tags_temp;
     body.content = content;
     body.image = image;
-    this.insightsService.postBlog(body);
+    this.insightsService.postLearn(body);
   }
 }

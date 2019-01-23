@@ -1,30 +1,52 @@
 /* DashboardComponent's private CSS styles */
 
+
+#jumbo-content {
+  width:100%;
+  opacity: .85;
+}
+
 a {
   text-decoration: none;
 }
 
-mat-card{
-  padding-left: 15%;
-  padding-right: 15%;
+#large-content-square {
+  padding:10%;
+  margin-top: 75px;
+  width:510px;
+  height:524px
 }
 
+.small-top-content-square {
+  margin-top: 75px;
+  width: 255px;
+  height: 255px;
+  padding:5%
+}
+.small-bottom-content-square {
+  margin-top: 17px;
+  margin-bottom: 130px;
+  width: 255px;
+  height: 255px;
+  padding:5%
 
-mat-card-title {
-  font-size: 36px;
 }
 
-mat-card-subtitle {
-  font-size: 24px;
+#small-top-content-square-right  {
+  margin-left:-128px
 }
 
-.jumbotron {
-  background-image: url("https://s3.amazonaws.com/real-fun-estate-mediaassets/IMG_0009+2.jpeg");
+#small-bottom-content-square-right {
+  margin-left:-128px
+}
+
+.jumbo {
+  background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url("https://s3.amazonaws.com/real-fun-estate-mediaassets/IMG_0009+2.jpeg");
   background-size: cover;
-  background-repeat: no-repeat;
-  padding-top: 30%;
-  padding-bottom: 10%;
+  height:575px
 }
+ 
+ 
 
 .h1 {
   color: #ffffff;

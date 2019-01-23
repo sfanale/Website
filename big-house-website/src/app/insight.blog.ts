@@ -9,3 +9,12 @@ export class InsightBlog {
   views: string;
   id: string;
 }
+
+export class LearnBlog {
+  title: string;
+  description: string;
+  content: string;
+  tags: string[];
+  image: string;
+  id: string;
+}

@@ -1,15 +1,11 @@
 <mat-card-title>Models</mat-card-title>
 
-<mat-card>
+<div class="container">
   <div class="row">
-    <div class="col-md-8">
-      <mat-form-field appearance="fill">
-        <mat-label>Tickers</mat-label>
-      <input #tickers matInput class="input" type="text" id="tickers">
-        <mat-hint>To use multiple tickers, try "AAPL+GS+IVV+FB"</mat-hint>
-      </mat-form-field>
-    </div>
-    <div class="col-md-4">
+    <div class="col s12 m8 input-field">
+      <input #tickers class="input" type="text" id="tickers">
+      <label for="tickers">Symbols</label>    </div>
+    <div class="col s12 m4">
       <mat-radio-group [(ngModel)]="asset_type">
         <mat-radio-button value="stocks">Stocks</mat-radio-button>
         <mat-radio-button value="options">Options</mat-radio-button>
@@ -19,21 +15,18 @@
   </div>
 
   <div class="row">
-    <div class="col-md-4">
-      <mat-form-field appearance="fill">
-        <mat-label>Model Type</mat-label>
+    <div class="col s12 m4 input-field">
       <mat-select #modeltype id="order-type">
         <mat-option value="sharpe">Sharpe Ratio</mat-option>
       </mat-select>
-      </mat-form-field>
     </div>
-    <div class="col-md-4">
+    <div class="col s12 m4">
       <mat-form-field appearance="fill">
         <mat-label>Optimization Range (weeks)</mat-label>
       <input #opt_range matInput class="input" type="number" id="optimization_range">
       </mat-form-field>
     </div>
-    <div class="col-md-4">
+    <div class="col s12 m4">
       <mat-form-field appearance="fill">
         <mat-label>Optimization Frequency (weeks)</mat-label>
       <input #opt_freq matInput class="input" type="number" id="optimization_frequency">
@@ -43,7 +36,7 @@
 
 <div class="form-group">
   <div class="row">
-    <div class="col-md-4">
+    <div class="col s12 m6">
       <mat-form-field appearance="fill">
         <mat-label>Filter Type</mat-label>
       <mat-select  id="filter-type">
@@ -51,27 +44,29 @@
       </mat-select>
       </mat-form-field>
     </div>
-    <div class="col-md-4">
+    <div class="col s12 m4">
       <mat-form-field appearance="fill">
         <mat-label>Required time until expiration (weeks)</mat-label>
       <input #filter matInput type="number" id="filter_range">
       </mat-form-field>
     </div>
-    <div class="col-md-2">
+    <div class="col s12 m2">
       <button mat-stroked-button class="btn btn-outline-success btn-md my-button" (click)="run(tickers.value,
        opt_range.value, filter.value, opt_freq.value, asset_type)">BUILD</button>
     </div>
   </div>
 </div>
-</mat-card>
 
 
-<mat-card  class="loading">
+
+<div  class="loading row">
+  <div class="col s12 m10 push-m1">
     <mat-spinner color="accent" class="loading" *ngIf="loading"></mat-spinner>
   <canvas id="canvas">{{ chart }}</canvas>
-</mat-card>
+  </div>
+</div>
 
-<mat-card>
+<div class="row">
     <table class="table table-hover">
       <thead>
       <tr>
@@ -86,4 +81,5 @@
       </tr>
       </tbody>
     </table>
-</mat-card>
+</div>
+</div>

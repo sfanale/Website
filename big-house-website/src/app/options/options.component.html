@@ -1,9 +1,10 @@
 <mat-card-title>Research</mat-card-title>
 
-<div class="card">
+<div class="container">
+  <div class="card">
   <div class="row">
     <div class="col m6 s12 input-field">
-      <input #symbol type="text" id="autocomplete" class="autocomplete" placeholder="Enter Stock Symbol...">
+      <input #symbol type="text" id="autocomplete" class="autocomplete">
       <label for="autocomplete">Symbol</label>
     </div>
     <div class="col m2 s12 input-field">
@@ -17,27 +18,26 @@
     <div class="col m1 s12">
       <button class="btn btn-outline-success btn-md my-button" (click)="getOption(symbol.value, strike.value, expiry.value)">SEARCH</button>
     </div>
-  </div>
 </div>
+  </div>
 
 <div class="divider"></div>
 
-<div class="container">
-<div class="section">
+<div class="card" id="stock-chart">
   <div class="row">
-  <div class="col s6">
+  <div class="col s2">
     <p>Symbol: <a routerLink="/research/stocks/{{stock[0].symbol}}">{{stock[0].symbol}}</a></p>
     <p>Last Price: {{stock[stock.length-1].close}}</p>
     <p>Volume: {{stock[stock.length-1].volume}}</p>
   </div>
-    <div class="col s6">
+    <div class="col s10">
     <canvas id="canvas">{{chart}}</canvas>
     </div>
   </div>
 </div>
-</div>
 
-<div class="container">
+<div class="card">
+<div class="row">
 <table class="table table-hover">
   <thead>
   <tr>
@@ -55,7 +55,7 @@
   </tbody>
 </table>
 </div>
-
-
+</div>
+</div>
 
 

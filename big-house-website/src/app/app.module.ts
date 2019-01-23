@@ -66,6 +66,8 @@ import { InsightsComponent } from './insights/insights.component';
 import { InsightsDetailComponent } from './insights-detail/insights-detail.component';
 import { InsightsCreateComponent } from './insights-create/insights-create.component';
 import { MarkdownModule } from 'ngx-markdown';
+import { LearnDetailComponent } from './learn-detail/learn-detail.component';
+import { LearnCreateComponent } from './learn-create/learn-create.component';
 
 
 
@@ -87,6 +89,8 @@ import { MarkdownModule } from 'ngx-markdown';
     InsightsComponent,
     InsightsDetailComponent,
     InsightsCreateComponent,
+    LearnDetailComponent,
+    LearnCreateComponent,
   ],
   imports: [
     BrowserModule,

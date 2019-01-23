@@ -1,8 +1,8 @@
 
 
 .wrapper {
-  margin-left: 50px;
-  margin-right: 50px;
+  margin-left: 3%;
+  margin-right: 3%;
 }
 .nav-link li a:hover, .navbar-nav li.active a {
   color: #f4511e !important;

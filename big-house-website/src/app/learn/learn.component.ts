@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {LearnBlog} from "../insight.blog";
+import {InsightsService} from "../insights.service";
 
 @Component({
   selector: 'app-learn',
@@ -7,9 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LearnComponent implements OnInit {
 
-  constructor() { }
+
+  Blogs:LearnBlog[];
+
+  constructor(
+    private insightsService: InsightsService
+  ) { }
 
   ngOnInit() {
+    this.getAllBlogs();
+  }
+
+  getAllBlogs() {
+    this.insightsService.getAllLearn().subscribe(data => {
+      this.Blogs = data;
+    })
   }
 
 }

@@ -41,9 +41,9 @@ a {
 }
 */
 .jumbo {
-  background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url("https://s3.amazonaws.com/real-fun-estate-mediaassets/IMG_0009+2.jpeg");
+  background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) );
   background-size: cover;
-  height:575px
+  height:575px;
 }
  
  

@@ -4,16 +4,28 @@
     <nav class="nav-extended">
       <div class="nav-wrapper grey lighten-5">
         <a routerLink="" class="brand-logo blue-grey-text text-darken-3">Fanale Research</a>
+        <a href="#" data-target="mobile-demo" class="sidenav-trigger blue-grey-text text-darken-3"><i class="material-icons">menu</i></a>
         <ul id="nav-mobile" class="right hide-on-med-and-down blue-grey-text text-darken-3">
           <li><a routerLink=""><i class="material-icons left blue-grey-text text-darken-3">home</i></a></li>
           <li><a class="blue-grey-text text-darken-3" routerLink="/research">Research</a></li>
           <li><a class="blue-grey-text text-darken-3" routerLink="/models">Models</a></li>
           <li><a class="blue-grey-text text-darken-3" routerLink="/insights">Insights</a></li>
+          <li><a class="blue-grey-text text-darken-3" routerLink="/learn">Learn</a></li>
           <li><a class="blue-grey-text text-darken-3" routerLink="/trade">Trade</a></li>
           <li><a class="blue-grey-text text-darken-3" routerLink="/account">Account</a></li>
         </ul>
       </div>
     </nav>
+
+
+    <ul class="sidenav" id="mobile-demo">
+      <li><a routerLink="/research" >Sass</a></li>
+      <li><a routerLink="/models">Components</a></li>
+      <li><a routerLink="/insights">Javascript</a></li>
+      <li><a routerLink="/learn">Mobile</a></li>
+    </ul>
+
+
 
     <router-outlet></router-outlet>
   </div>

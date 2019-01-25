@@ -37,6 +37,7 @@
     "moment": "^2.23.0",
     "ngx-markdown": "^7.1.1",
     "popper.js": "^1.14.6",
+    "puppeteer": "^1.11.0",
     "rxjs": "^6.3.3",
     "tslib": "^1.9.0",
     "web-animations-js": "^2.3.1",

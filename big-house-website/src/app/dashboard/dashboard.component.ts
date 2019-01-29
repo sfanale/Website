@@ -18,9 +18,12 @@ export class DashboardComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    var elems = document.querySelectorAll('.slider');
+    var elems = document.querySelectorAll('#big-slider');
     let options ={height:600};
-    var instances = M.Slider.init(elems, options);
+    let instances = M.Slider.init(elems, options);
+    let elems2 = document.querySelectorAll('.small-slider');
+    let options2 ={indicators:false, height:250};
+    var instances2 = M.Slider.init(elems2, options2);
     this.getBlog();
   }
 

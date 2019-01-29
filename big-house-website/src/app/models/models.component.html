@@ -1,10 +1,11 @@
-<mat-card-title>Models</mat-card-title>
-
 <div class="container">
+  <div class="card">
   <div class="row">
     <div class="col s12 m8 input-field">
-      <input #tickers class="input" type="text" id="tickers">
-      <label for="tickers">Symbols</label>    </div>
+      <input #tickers class="validate" type="text" id="tickers">
+      <label for="tickers">Symbols</label>
+      <span class="helper-text" data-error="wrong" data-success="right">Ex. GS+AAPL+IVV+NFLX</span>
+    </div>
     <div class="col s12 m4">
       <mat-radio-group [(ngModel)]="asset_type">
         <mat-radio-button value="stocks">Stocks</mat-radio-button>
@@ -13,73 +14,65 @@
       </mat-radio-group>
     </div>
   </div>
-
   <div class="row">
     <div class="col s12 m4 input-field">
-      <mat-select #modeltype id="order-type">
-        <mat-option value="sharpe">Sharpe Ratio</mat-option>
-      </mat-select>
+      <select #modeltype id="order-type">
+        <option value="sharpe" selected>Sharpe Ratio</option>
+      </select>
+      <label>Model Type</label>
     </div>
-    <div class="col s12 m4">
-      <mat-form-field appearance="fill">
-        <mat-label>Optimization Range (weeks)</mat-label>
-      <input #opt_range matInput class="input" type="number" id="optimization_range">
-      </mat-form-field>
+    <div class="col s12 m4 input-field">
+      <input #opt_range class="validate" type="number" id="optimization_range">
+      <label for="optimization_range">Training Window (weeks)</label>
     </div>
-    <div class="col s12 m4">
-      <mat-form-field appearance="fill">
-        <mat-label>Optimization Frequency (weeks)</mat-label>
-      <input #opt_freq matInput class="input" type="number" id="optimization_frequency">
-      </mat-form-field>
+    <div class="col s12 m4 input-field">
+      <input #opt_freq class="validate" type="number" id="optimization_frequency">
+      <label for="optimization_frequency">Re-optimization Frequency</label>
     </div>
   </div>
-
-<div class="form-group">
-  <div class="row">
-    <div class="col s12 m6">
-      <mat-form-field appearance="fill">
-        <mat-label>Filter Type</mat-label>
-      <mat-select  id="filter-type">
-        <mat-option value="expiry">Expiration Date Range</mat-option>
-      </mat-select>
-      </mat-form-field>
-    </div>
-    <div class="col s12 m4">
-      <mat-form-field appearance="fill">
-        <mat-label>Required time until expiration (weeks)</mat-label>
-      <input #filter matInput type="number" id="filter_range">
-      </mat-form-field>
-    </div>
-    <div class="col s12 m2">
-      <button mat-stroked-button class="btn btn-outline-success btn-md my-button" (click)="run(tickers.value,
-       opt_range.value, filter.value, opt_freq.value, asset_type)">BUILD</button>
+  <div class="form-group">
+    <div class="row">
+      <div class="col s12 m6 input-field">
+        <select id="filter-type">
+          <option value="expiry" selected>Expiration Date Range</option>
+        </select>
+        <label>Filter Type</label>
+      </div>
+      <div class="col s12 m4 input-field">
+        <input #filter class="validate" type="number" id="filter_range">
+        <label for="filter_range">Required Option Lifetime (weeks)</label>
+      </div>
+      <div class="col s12 m2">
+        <a class="btn-floating btn-large waves-effect waves-light red" (click)="run(tickers.value,
+         opt_range.value, filter.value, opt_freq.value, asset_type)"><i class="material-icons">add</i></a>
+      </div>
     </div>
   </div>
-</div>
-
-
-
-<div  class="loading row">
-  <div class="col s12 m10 push-m1">
-    <mat-spinner color="accent" class="loading" *ngIf="loading"></mat-spinner>
-  <canvas id="canvas">{{ chart }}</canvas>
   </div>
-</div>
 
-<div class="row">
-    <table class="table table-hover">
-      <thead>
-      <tr>
-        <th>Dates</th>
-        <th>Ending Total</th>
-      </tr>
-      </thead>
-      <tbody *ngFor="let row of results">
-      <tr *ngFor="let r of row.dates; let i = index">
-        <td>{{row.dates[i]}}</td>
-        <td>{{row.daily_tot[i]}}</td>
-      </tr>
-      </tbody>
-    </table>
-</div>
+
+    <div class="card">
+    <div  class="loading row">
+      <div class="col s12 m10 push-m1">
+        <mat-spinner color="accent" class="loading" *ngIf="loading"></mat-spinner>
+      <canvas id="canvas">{{ chart }}</canvas>
+      </div>
+    </div>
+    <div class="row">
+        <table class="table table-hover">
+          <thead>
+          <tr>
+            <th>Dates</th>
+            <th>Ending Total</th>
+          </tr>
+          </thead>
+          <tbody *ngFor="let row of results">
+          <tr *ngFor="let r of row.dates; let i = index">
+            <td>{{row.dates[i]}}</td>
+            <td>{{row.daily_tot[i]}}</td>
+          </tr>
+          </tbody>
+        </table>
+    </div>
+  </div>
 </div>

@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import * as M from '../../node_modules/materialize-css/dist/js/materialize.min.js';
+import '../../node_modules/autotrack/autotrack.js'
 
 
 
@@ -13,7 +14,7 @@ export class AppComponent implements OnInit{
 
   ngOnInit() {
     var elems = document.querySelectorAll('.sidenav');
-    let options = {};
+    let options = {edge : "right"};
     var instances = M.Sidenav.init(elems, options);
   }
 

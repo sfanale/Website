@@ -68,6 +68,7 @@ import { InsightsCreateComponent } from './insights-create/insights-create.compo
 import { MarkdownModule } from 'ngx-markdown';
 import { LearnDetailComponent } from './learn-detail/learn-detail.component';
 import { LearnCreateComponent } from './learn-create/learn-create.component';
+import '../../node_modules/autotrack/autotrack.js'
 
 
 

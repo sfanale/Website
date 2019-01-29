@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {InsightBlog} from "../insight.blog";
 import {InsightsService} from "../insights.service";
+import * as M from '../../../node_modules/materialize-css/dist/js/materialize.min.js';
 
 
 @Component({

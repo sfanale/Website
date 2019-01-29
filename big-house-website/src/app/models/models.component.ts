@@ -5,6 +5,8 @@ import { Observable} from "rxjs";
 import { ModelResults} from "../model-results";
 import { Chart } from "chart.js";
 import { FormGroup, FormBuilder, Validators} from "@angular/forms";
+import * as M from '../../../node_modules/materialize-css/dist/js/materialize.min.js';
+
 
 @Component({
   selector: 'app-models',
@@ -32,6 +34,10 @@ export class ModelsComponent implements OnInit {
 
 
   ngOnInit() {
+    var elems = document.querySelectorAll('select');
+    let options ={};
+    var instances = M.FormSelect.init(elems, options);
+
     this.firstFormGroup = this._formBuilder.group({
       firstCtrl: ['', Validators.required]
     });
@@ -47,6 +53,8 @@ export class ModelsComponent implements OnInit {
     this.loading = true;
     this.modelService.runModel(assets, opt_range.toString(), expiry_range.toString(), opt_freq.toString(), asset_type ).subscribe(data=> {
       this.results = data;
+      this.dates=[];
+      this.values=[];
 
       for ( let row of this.results) {
         this.dates = this.dates.concat(row.dates);

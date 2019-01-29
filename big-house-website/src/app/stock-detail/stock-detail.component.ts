@@ -64,11 +64,19 @@ export class StockDetailComponent implements OnInit {
           },
           scales: {
             xAxes: [{
+                  type: 'time',
+                  time: {
+                    unit: 'month'
+                  },
               display: true
             }],
             yAxes: [{
               display: true
             }],
+          },
+          hover:{
+            intersect: false,
+            mode: 'x'
           }
         }
       });

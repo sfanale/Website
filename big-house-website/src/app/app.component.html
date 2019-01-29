@@ -4,7 +4,7 @@
     <nav class="nav-extended">
       <div class="nav-wrapper grey lighten-5">
         <a routerLink="" class="brand-logo blue-grey-text text-darken-3">Fanale Research</a>
-        <a href="#" data-target="mobile-demo" class="sidenav-trigger blue-grey-text text-darken-3"><i class="material-icons">menu</i></a>
+        <a href="#" data-target="mobile-demo" class="sidenav-trigger blue-grey-text text-darken-3 right"><i class="material-icons">menu</i></a>
         <ul id="nav-mobile" class="right hide-on-med-and-down blue-grey-text text-darken-3">
           <li><a routerLink=""><i class="material-icons left blue-grey-text text-darken-3">home</i></a></li>
           <li><a class="blue-grey-text text-darken-3" routerLink="/research">Research</a></li>
@@ -19,10 +19,13 @@
 
 
     <ul class="sidenav" id="mobile-demo">
-      <li><a routerLink="/research" >Sass</a></li>
-      <li><a routerLink="/models">Components</a></li>
-      <li><a routerLink="/insights">Javascript</a></li>
-      <li><a routerLink="/learn">Mobile</a></li>
+      <li><a class="sidenav-close" routerLink="">Home</a> </li>
+      <li><a class="sidenav-close" routerLink="/research" >Research</a></li>
+      <li><a class="sidenav-close" routerLink="/models">Models</a></li>
+      <li><a class="sidenav-close" routerLink="/insights">Insights</a></li>
+      <li><a class="sidenav-close" routerLink="/learn">Learn</a></li>
+      <li><a class="sidenav-close" routerLink="/trade">Trade</a> </li>
+      <li><a class="sidenav-close" routerLink="/account">Account</a> </li>
     </ul>
 
 
@@ -34,24 +37,23 @@
     <div class="container">
       <div class="row">
         <div class="col l6 s12">
-          <h5 class="white-text">Footer Content</h5>
-          <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+          <h5 class="white-text">Fanale Research</h5>
+          <p class="grey-text text-lighten-4">We in no way recommend any of the assets listed on this site unless stated
+            otherwise. Trading is risky, and trading options can increase that risk. Please trade responsibly.
+          </p>
+          <p class="grey-text text-lighten-4">Big thank you to Jeff, Calvin, and Daniel.</p>
         </div>
         <div class="col l4 offset-l2 s12">
-          <h5 class="white-text">Links</h5>
+          <h5 class="white-text">Helpful Links</h5>
           <ul>
-            <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
-            <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
-            <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
-            <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
+            <li><a class="grey-text text-lighten-3" href="http://data.fanaleresearch.com">My Data</a></li>
           </ul>
         </div>
       </div>
     </div>
     <div class="footer-copyright">
       <div class="container">
-        © 2019 Copyright Text
-        <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+        © 2019 Copyright. All Rights Reserved.
       </div>
     </div>
   </footer>

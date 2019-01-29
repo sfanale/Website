@@ -9,37 +9,7 @@
 a {
   text-decoration: none;
 }
-/*
-#large-content-square {
-  padding:10%;
-  margin-top: 75px;
-  width:510px;
-  height:524px
-}
 
-.small-top-content-square {
-  margin-top: 75px;
-  width: 255px;
-  height: 255px;
-  padding:5%
-}
-.small-bottom-content-square {
-  margin-top: 17px;
-  margin-bottom: 130px;
-  width: 255px;
-  height: 255px;
-  padding:5%
-
-}
-
-#small-top-content-square-right  {
-  margin-left:-128px
-}
-
-#small-bottom-content-square-right {
-  margin-left:-128px
-}
-*/
 .jumbo {
   background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) );
   background-size: cover;
@@ -102,6 +72,7 @@ p {
   color: #ff9500;  /*Apple Orange*/
   font-size: 200px;
 }
+
 
 
 

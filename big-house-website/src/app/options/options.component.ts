@@ -8,7 +8,6 @@ import * as $ from 'jquery';
 import {Chart} from 'chart.js';
 import * as M from '../../../node_modules/materialize-css/dist/js/materialize.min.js';
 
-
 // This is not really an option page so much as a search page
 
 
@@ -88,7 +87,7 @@ export class OptionsComponent implements OnInit {
       this.prices=[];
       this.dates=[];
       for (let i of data) {
-        this.prices.push(i.close);
+        this.prices.push(i.regularmarketprice);
         let d_temp = new Date(i.pricedate*1000);
         console.log(d_temp.getMonth());
         this.dates = this.dates.concat((d_temp.getMonth()+1)+'/'+ d_temp.getDate()+'/'+d_temp.getFullYear());

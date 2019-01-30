@@ -39,7 +39,7 @@ export class StockDetailComponent implements OnInit {
       console.log(data);
 
       for (let i of data) {
-        this.prices.push(i.close);
+        this.prices.push(i.regularmarketprice);
         let d_temp = new Date(i.pricedate*1000);
         console.log(d_temp.getMonth());
         this.dates = this.dates.concat((d_temp.getMonth()+1)+'/'+ d_temp.getDate()+'/'+d_temp.getFullYear());

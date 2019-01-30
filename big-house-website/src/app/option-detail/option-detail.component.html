@@ -1,3 +1,5 @@
+
+
 <h1>{{option[0].contractsymbol | uppercase}} Details</h1>
 
 <div class="container">
@@ -27,25 +29,3 @@
   </div>
 </div>
 
-
-
-<div>
-  <table class="table">
-    <thead>
-    <tr>
-      <th>Last Price</th>
-      <th>Price Date</th>
-      <th>Calc Price</th>
-      <th>Open Interest</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let row of option; let i = index">
-      <td>{{row.lastprice}}</td>
-      <td>{{row.pricedate *1000 | date }}</td>
-      <td>{{row.bid}}</td>
-      <td>{{row.openinterest}}</td>
-    </tr>
-    </tbody>
-  </table>
-</div>

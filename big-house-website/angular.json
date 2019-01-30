@@ -20,7 +20,18 @@
             "tsConfig": "src/tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/sitemap1.txt",
+              "src/sitemap2.txt",
+              "src/sitemap3.txt",
+              "src/sitemap4.txt",
+              "src/sitemap5.txt",
+              "src/sitemap6.txt",
+              "src/sitemap7.txt",
+              "src/sitemap8.txt",
+              "src/sitemap9.txt",
+              "src/sitemap10.txt",
+              "src/robots.txt"
             ],
             "styles": [
               {

@@ -1,3 +1,5 @@
+
+
 <div class="container">
   <div class="card">
   <div class="row">
@@ -24,8 +26,8 @@
   <div class="row">
   <div class="col s12 m2">
     <h5><a id="ticker-link" routerLink="/research/stocks/{{stock[0].symbol}}">{{stock[0].symbol.toUpperCase()}}</a></h5>
-    <p>{{stock[stock.length-1].close | currency}}</p>
-    <p>{{"Vol: " + stock[stock.length-1].volume}} </p>
+    <p>{{stock[stock.length-1].regularmarketprice | currency}}</p>
+    <p>{{"Vol: " + stock[stock.length-1].regularmarketvolume}} </p>
   </div>
     <div class="col s12 m10">
     <canvas id="canvas">{{chart}}</canvas>

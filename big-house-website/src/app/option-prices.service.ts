@@ -64,6 +64,13 @@ export class OptionPricesService {
     );
   }
 
+  getMovers(direction:string): Observable<Stock[]> {
+    const url = `${this.stocksurl}/movers/${direction}`;
+    return this.http.get<Stock[]>(url).pipe( tap(_=> this.log('fetched stock info')),
+      catchError(this.handleError('getStock', []))
+    );
+  }
+
 
 
   private handleError<T> (operation = 'operation', result?: T) {

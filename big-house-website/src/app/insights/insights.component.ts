@@ -22,7 +22,7 @@ export class InsightsComponent implements OnInit {
   getAllBlogs() {
     this.insightsService.getAllBlogs().subscribe(data => {
       this.Blogs = data;
-    })
+    });
   }
 
 

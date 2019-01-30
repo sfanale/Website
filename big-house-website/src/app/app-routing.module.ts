@@ -21,6 +21,7 @@ const routes : Routes = [
  //  {path: 'trade/:id', component: TradeComponent},
  //  {path: 'trade', component: TradeComponent},
  //  {path: 'account',component:UsersComponent},
+  {path: 'explore', component:ResearchComponent},
   {path: 'research', component:OptionsComponent},
   {path: 'research/options/:sym', component: OptionDetailComponent},
   {path: 'models', component: ModelsComponent},

@@ -88,7 +88,7 @@ export class OptionsComponent implements OnInit {
       this.dates=[];
       for (let i of data) {
         this.prices.push(i.regularmarketprice);
-        let d_temp = new Date(i.pricedate*1000);
+        let d_temp = new Date(parseFloat(i.pricedate)*1000);
         console.log(d_temp.getMonth());
         this.dates = this.dates.concat((d_temp.getMonth()+1)+'/'+ d_temp.getDate()+'/'+d_temp.getFullYear());
       }

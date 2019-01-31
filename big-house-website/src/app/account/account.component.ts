@@ -1,7 +1,7 @@
 import {Component, OnInit, Input, OnChanges, Output} from '@angular/core';
 import {User } from "../user";
-import {UserService} from "../user.service";
-import {loggedInUser} from "../user.service";
+import {UserService} from "../_services/user.service";
+import {loggedInUser} from "../_services/user.service";
 
 @Component({
   selector: 'app-account',

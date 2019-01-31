@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {InsightsService} from "../insights.service";
+import {InsightsService} from "../_services/insights.service";
 import {InsightBlog} from "../insight.blog";
 import {Route} from "@angular/router";
 import { ActivatedRoute } from '@angular/router';

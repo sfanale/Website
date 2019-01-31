@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ModelService} from "../model.service";
-import { MessageService } from "../messages.service";
+import { ModelService} from "../_services/model.service";
+import { MessageService } from "../_services/messages.service";
 import { Observable} from "rxjs";
 import { ModelResults} from "../model-results";
 import { Chart } from "chart.js";

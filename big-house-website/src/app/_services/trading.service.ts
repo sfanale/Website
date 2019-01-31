@@ -4,9 +4,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 
-import {TradeInfo} from "./tradeinfo";
+import {TradeInfo} from "../tradeinfo";
 import { MessageService } from './messages.service';
-import {Property} from "./property";
+import {Property} from "../property";
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })

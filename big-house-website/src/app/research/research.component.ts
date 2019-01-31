@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import {MatPaginator, MatSort, MatTableDataSource, Sort, MatSortModule} from '@angular/material';
-import {OptionPricesService} from "../option-prices.service";
-import {InsightsService} from "../insights.service";
+import {OptionPricesService} from "../_services/option-prices.service";
+import {InsightsService} from "../_services/insights.service";
 import {Chart} from 'chart.js';
 import * as M from '../../../node_modules/materialize-css/dist/js/materialize.min.js';
 import {InsightBlog} from "../insight.blog";

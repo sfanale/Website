@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
-import {InsightBlog, LearnBlog} from "./insight.blog";
+import {InsightBlog, LearnBlog} from "../insight.blog";
 import {HttpClient, HttpHeaders, HttpResponse} from '@angular/common/http';
-import { Tickers} from "./option";
+import { Tickers} from "../option";
 import { Observable, of } from 'rxjs';
 
 

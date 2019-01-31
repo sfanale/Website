@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { UserService} from "../user.service";
-import {MessageService} from "../messages.service";
+import { UserService} from "../_services/user.service";
+import {MessageService} from "../_services/messages.service";
 import {MessageGroup} from "../messages";
 
 

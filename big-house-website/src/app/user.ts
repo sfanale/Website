@@ -9,5 +9,15 @@ export class User {
   admin: boolean;
   premium: boolean;
   confirmed: boolean;
+  token: string;
+
+}
+
+export class Post {
+  content: string;
+  userid: string;
+  comments: object[];
+  views: string;
+  likes: string;
 
 }

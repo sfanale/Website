@@ -1,7 +1,7 @@
 import { Component, OnInit, OnChanges } from '@angular/core';
-import {OptionPricesService} from "../option-prices.service";
+import {OptionPricesService} from "../_services/option-prices.service";
 import {Option, Tickers} from "../option";
-import { MessageService } from '../messages.service';
+import { MessageService } from '../_services/messages.service';
 import {Stock} from "../stock";
 import {Observable} from "rxjs";
 import * as $ from 'jquery';

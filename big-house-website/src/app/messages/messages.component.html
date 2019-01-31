@@ -4,8 +4,8 @@
       <div class="card">
         <ul class="collection" >
           <li class="collection-header"><h4>Messages</h4></li>
-          <li routerLink="/messages/{{i.id}}" class="collection-item" *ngFor="let i of message_groups">
-            <span class="title">{{i.user1}}, {{i.user2}},{{i.user3}}</span>
+          <li routerLink="/inbox/{{i.id}}" class="collection-item" *ngFor="let i of message_groups">
+            <span class="title">{{i.user1name}}, {{i.user2name}},{{i.user3name}}</span>
           </li>
         </ul>
       </div>

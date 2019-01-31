@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { Chart} from 'chart.js';
-import {OptionPricesService} from "../option-prices.service";
+import {OptionPricesService} from "../_services/option-prices.service";
 import {Option} from "../option";
 import {optionstools} from "../options-tools";
 

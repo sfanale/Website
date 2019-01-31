@@ -52,7 +52,7 @@ import { MatAutocompleteModule,
 
 import {CdkTableModule} from '@angular/cdk/table';
 import {CdkTreeModule} from '@angular/cdk/tree';
-
+import {MessagesComponent} from "./messages/messages.component";
 import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 import { UsersComponent } from './users/users.component';
 import { AccountComponent } from './account/account.component';
@@ -68,7 +68,8 @@ import { InsightsCreateComponent } from './insights-create/insights-create.compo
 import { MarkdownModule } from 'ngx-markdown';
 import { LearnDetailComponent } from './learn-detail/learn-detail.component';
 import { LearnCreateComponent } from './learn-create/learn-create.component';
-import '../../node_modules/autotrack/autotrack.js'
+import '../../node_modules/autotrack/autotrack.js';
+import { MessageDetailComponent } from './message-detail/message-detail.component'
 
 
 
@@ -92,6 +93,8 @@ import '../../node_modules/autotrack/autotrack.js'
     InsightsCreateComponent,
     LearnDetailComponent,
     LearnCreateComponent,
+    MessageDetailComponent,
+
   ],
   imports: [
     BrowserModule,

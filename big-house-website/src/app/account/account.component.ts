@@ -1,31 +1,42 @@
 import {Component, OnInit, Input, OnChanges, Output} from '@angular/core';
 import {User } from "../user";
-import {MessageService} from "../messages.service";
-import {TradingService} from "../trading.service";
-import { TradeInfo } from "../tradeinfo";
+import {UserService} from "../user.service";
+import {loggedInUser} from "../user.service";
 
 @Component({
   selector: 'app-account',
   templateUrl: './account.component.html',
   styleUrls: ['./account.component.css']
 })
-export class AccountComponent implements OnChanges{
+export class AccountComponent implements OnInit{
 
-  @Input() user:User;
-  @Input() holdingsTradeInfo:TradeInfo[];
+  user;
+  loggedinuser=loggedInUser;
 
 
+  constructor(private userService: UserService
+  ) { }
 
-  constructor(private messageService:MessageService,
-              private tradingService:TradingService) { }
+  ngOnInit(){
 
-  ngOnChanges() {
-    this.log(this.user.username)
+  }
+
+  login(username:string, password:string) {
+    let body = {'username': username, 'password':password};
+    console.log(body);
+    this.userService.login(body).subscribe(data=>{
+      this.user=data;
+      this.getUserInfo(this.user.id);
+    });
+
+  }
+
+  getUserInfo(id:string) {
+    this.userService.getUserInfo(id).subscribe( data => {
+      this.user = data;
+    });
   }
 
 
-  private log(message: string) {
-    this.messageService.add(`Accounts: ${message}`);
-  }
 
 }

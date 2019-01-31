@@ -15,23 +15,26 @@ import {InsightsCreateComponent} from "./insights-create/insights-create.compone
 import {InsightsDetailComponent} from "./insights-detail/insights-detail.component";
 import {LearnCreateComponent} from "./learn-create/learn-create.component";
 import {LearnDetailComponent} from "./learn-detail/learn-detail.component";
+import {AccountComponent} from "./account/account.component";
+import {MessagesComponent} from "./messages/messages.component";
 
 const routes : Routes = [
   {path: '', component: DashboardComponent},
- //  {path: 'trade/:id', component: TradeComponent},
- //  {path: 'trade', component: TradeComponent},
- //  {path: 'account',component:UsersComponent},
+  //{path: 'trade/:id', component: TradeComponent},
+  {path: 'trade', component: TradeComponent},
+  {path: 'account',component:AccountComponent},
   {path: 'explore', component:ResearchComponent},
   {path: 'research', component:OptionsComponent},
   {path: 'research/options/:sym', component: OptionDetailComponent},
   {path: 'models', component: ModelsComponent},
   {path: 'research/stocks/:sym', component:StockDetailComponent},
   {path: 'insights', component:InsightsComponent},
-  //{path: 'insights/create', component:InsightsCreateComponent},
- // {path: 'insights/:id', component:InsightsDetailComponent},
-  // {path: 'learn', component:LearnComponent},
- //  {path: 'learn/:id', component:LearnDetailComponent},
-  // {path: 'learn/create', component:LearnCreateComponent}
+  {path: 'insights/create', component:InsightsCreateComponent},
+  {path: 'insights/:id', component:InsightsDetailComponent},
+  {path: 'learn', component:LearnComponent},
+  {path: 'learn/:id', component:LearnDetailComponent},
+  {path: 'learn/create', component:LearnCreateComponent},
+  {path: 'inbox', component: MessagesComponent}
 
 ];
 

@@ -1,104 +1,61 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {Observable} from "rxjs";
+import {User} from "./user";
+import {MessageGroup, Messages} from "./messages";
 
 
-import { Observable, of } from 'rxjs';
-import {catchError, map, subscribeOn, tap} from 'rxjs/operators';
-
-import { User } from './user';
-import { MessageService } from './messages.service';
-
-
-/*const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-};
-*/
-export var loggedInUser:User ={
-  username:"",password:'', id:'',name:'', cash:0,totalRentIncome:0,
-    holdings:[{id:0, shares:0, pricePaid:0, rentIncome:0, date:0,return:0}]
-};
+export var loggedInUser;
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  private usersUrl = 'api/users';  // URL to web api
-
-  //private blankUser:User ={username:"loggedout",password:'', id:0,name:'null', cash:0,totalRentIncome:0, holdings:[{id:0, shares:0, pricePaid:0, rentIncome:0, date:0,return:0}]};
-  //tempUser:User;
-  constructor(private http: HttpClient,
-              private messageService: MessageService) { }
+  private usersUrl = 'http://0.0.0.0:5000/api';
 
 
+  constructor(
+    private http: HttpClient
+  ) { }
 
-  getUser(username: string): Observable<User> {
-    if (!username.trim()) {
-      // if not search term, return empty hero array.
-      return of();
-    }
-    const url = `${this.usersUrl}/${username}`;
-    this.log(url);
-    return this.http.get<User>(url).pipe(
-      tap(_ => this.log(`fetched user id=${username}`)),
-      catchError(this.handleError<User>(`getUser id=${username}`))
-    );
+
+  login(body): Observable<User> {
+    const url = `${this.usersUrl}/login`;
+    console.log((body));
+    return this.http.post(url,(body), {headers:{ 'Content-Type': 'application/json', 'Access-Control-Allow-Origin':'*'}});
   }
 
-  changeUser(username: string, password:string):Observable<User> {
-    if (!username.trim()) {
-      // if not search term, return empty hero array.
-      return of();
-    }
-    const url = `${this.usersUrl}/${username}`;
-    //this.http.get<User>(url).subscribe( user =>this.tempUser=user);
-    /*
-    if(setTimeout(()=> this.tempUser.password!=password,2000)) {
-      this.log('incorrect password');
-      return of(this.blankUser);
-    }
-    */
-    this.http.get<User>(url).subscribe(user=>loggedInUser=user);
-    this.log('changed user');
-    return this.http.get<User>(url).pipe(
-      tap(_ => this.log(`fetched user id=${username}`)),
-      catchError(this.handleError<User>(`getUser id=${username}`))
-    );
-    //this.loggedInUser = this.tempUser;
-    /*
+  create_user(body) {
+    const url = `${this.usersUrl}/create`;
+    console.log((body));
 
-    */
-  }
-  // TODO add the ability to log in and check password to change user
-
-
-
-
-
-
-  /**
-   * Handle Http operation that failed.
-   * Let the app continue.
-   * @param operation - name of the operation that failed
-   * @param result - optional value to return as the observable result
-   */
-  private handleError<T> (operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
-
-      // TODO: send the error to remote logging infrastructure
-      console.error(error); // log to console instead
-
-      // TODO: better job of transforming error for user consumption
-      this.log(`${operation} failed: ${error.message}`);
-
-      // Let the app keep running by returning an empty result.
-      return of(result as T);
-    };
+    return this.http.post(url, (body), {
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*'
+      }
+    })
+      .subscribe();
   }
 
-  private log(message: string) {
-    this.messageService.add(`UserService: ${message}`);
+  getUserInfo(id:string): Observable<User> {
+    const url =  `${this.usersUrl}/getinfo/${id}`;
+    return this.http.get(url);
   }
+
+  get_message_groups(id:string): Observable<MessageGroup[]> {
+    const url =  `${this.usersUrl}/messages/get_groups/${id}`;
+
+    return this.http.get(url);
+  }
+
+
+  get_chat(id:string): Observable<Messages[]> {
+    const url =  `${this.usersUrl}/messages/get_chat/${id}`;
+    return this.http.get(url);
+  }
+
 }
 
 

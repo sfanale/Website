@@ -28,9 +28,13 @@ export class UserService {
 
 
 
-  getUserInfo(id:string): Observable<User> {
-    const url =  `${this.usersUrl}/getinfo/${id}`;
-    return this.http.get<User>(url);
+  getUserInfo(token:string): Observable<User> {
+    const url =  `${this.usersUrl}/getinfo`;
+    let httpOptions = {
+      headers: new HttpHeaders({ 'Response-Type': 'application/json', "Authorization": `Bearer ${token}`,
+        'Access-Control-Allow-Origin':'*'})
+    };
+    return this.http.get<User>(url, httpOptions);
   }
 
   getUserInfo_by_username(username:string): Observable<User> {
@@ -38,10 +42,14 @@ export class UserService {
     return this.http.get<User>(url);
   }
 
-  get_message_groups(id:string): Observable<MessageGroup[]> {
-    const url =  `${this.usersUrl}/messages/get_groups/${id}`;
+  get_message_groups(token:string): Observable<MessageGroup[]> {
+    const url =  `${this.usersUrl}/messages/get_groups`;
+    let httpOptions = {
+      headers: new HttpHeaders({ 'Response-Type': 'application/json', "Authorization": `Bearer ${token}`,
+        'Access-Control-Allow-Origin':'*'})
+    };
 
-    return this.http.get<MessageGroup[]>(url);
+    return this.http.get<MessageGroup[]>(url, httpOptions);
   }
 
 

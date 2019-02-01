@@ -2,6 +2,8 @@ import {Component, OnInit, Input, OnChanges, Output} from '@angular/core';
 import {User } from "../user";
 import {UserService} from "../_services/user.service";
 import {loggedInUser} from "../_services/user.service";
+import {AuthenticationService} from "../_services/authentication.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-account',
@@ -11,28 +13,31 @@ import {loggedInUser} from "../_services/user.service";
 export class AccountComponent implements OnInit{
 
   user;
-  loggedinuser=loggedInUser;
 
 
-  constructor(private userService: UserService
+  constructor(private userService: UserService,
+              private authService: AuthenticationService,
+              private router: Router,
   ) { }
 
   ngOnInit(){
+    if (this.authService.currentUserValue) {
+      console.log(this.authService.currentUserValue);
+      let token = this.authService.currentUserValue.token;
+      this.getUserInfo(token);
+    }
 
   }
 
-  login(username:string, password:string) {
-    let body = {'username': username, 'password':password};
-    console.log(body);
-    this.userService.login(body).subscribe(data=>{
-      this.user=data;
-      this.getUserInfo(this.user.id);
-    });
-
+  logout() {
+    this.authService.logout();
+    this.router.navigate(['/']);
   }
 
-  getUserInfo(id:string) {
-    this.userService.getUserInfo(id).subscribe( data => {
+
+
+  getUserInfo(token:string) {
+    this.userService.getUserInfo(token).subscribe( data => {
       this.user = data;
     });
   }

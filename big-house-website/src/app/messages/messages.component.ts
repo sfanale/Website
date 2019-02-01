@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { UserService} from "../_services/user.service";
 import {MessageService} from "../_services/messages.service";
 import {MessageGroup} from "../messages";
+import {AuthenticationService} from "../_services/authentication.service";
 
 
 @Component({
@@ -13,16 +14,25 @@ export class MessagesComponent implements OnInit {
 
   message_groups: MessageGroup[];
 
+
+
   constructor(
-    private userService: UserService
+    private userService: UserService,
+    private authService: AuthenticationService
   ) { }
 
   ngOnInit() {
-    this.getMessageGroups('2');
+    if (this.authService.currentUserValue) {
+      console.log(this.authService.currentUserValue);
+      let token = this.authService.currentUserValue.token;
+      this.getMessageGroups(token);
+    }
+
+
   }
 
-  getMessageGroups(id:string) {
-    this.userService.get_message_groups(id).subscribe(data=>{
+  getMessageGroups(token:string) {
+    this.userService.get_message_groups(token).subscribe(data=>{
       this.message_groups = data;
     })
   }

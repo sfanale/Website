@@ -1,9 +1,4 @@
-<div *ngIf="!user" class="container">
-  <a routerLink="/login">Login</a><br>
-  <a routerLink="/register">Register</a>
-</div>
-
-<div *ngIf="user" class="container">
+<div class="container">
   <div class="row">
     <div class="col push-s6 s6">
       <div class="card">
@@ -13,6 +8,9 @@
           {{user.admin}}<br>
           {{user.email}}<br>
         </p>
+      </div>
+      <div class="col m2 s4">
+        <button class="btn waves-effect waves-light" (click)="logout()">Log Out</button>
       </div>
     </div>
   </div>

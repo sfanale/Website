@@ -38,8 +38,8 @@ const routes : Routes = [
   {path: 'learn', component:LearnComponent},
   {path: 'learn/:id', component:LearnDetailComponent},
   {path: 'learn/create', component:LearnCreateComponent},
-  {path: 'inbox', component: MessagesComponent},
-  {path: 'inbox/:id', component:MessageDetailComponent},
+  {path: 'inbox', component: MessagesComponent, canActivate: [AuthGuard]},
+  {path: 'inbox/:id', component:MessageDetailComponent, canActivate: [AuthGuard]},
   {path: 'user/:username', component: UserDetailComponent},
   {path: 'register', component:RegisterComponent},
   {path: 'login', component:LoginComponent}

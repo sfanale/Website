@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col push-s6 s6">
+    <div class="col push-s3 s6">
       <div class="card">
         <p>{{user.id}}<br>
           {{user.firstname}}<br>
@@ -9,11 +9,23 @@
           {{user.email}}<br>
         </p>
       </div>
+    </div>
+  </div>
+  <div class="row">
       <div class="col m2 s4">
         <button class="btn waves-effect waves-light" (click)="logout()">Log Out</button>
+      </div>
+  </div>
+    <div class="row">
+      <div class="col m4 s4">
+        <button routerLink="/inbox" class="btn waves-effect waves-light">Inbox</button>
+      </div>
+      <div class="col m4 s4">
+        <button routerLink="/explore" class="btn waves-effect waves-light">Explore</button>
+      </div>
+      <div class="col m4 s4">
+        <button routerLink="/user/{{user.username}}" class="btn waves-effect waves-light">My Profile</button>
       </div>
     </div>
   </div>
 
-
-</div>

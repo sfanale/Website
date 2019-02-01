@@ -3,6 +3,7 @@ import { HttpRequest, HttpResponse, HttpHandler, HttpEvent, HttpInterceptor, HTT
 import { Observable, of, throwError } from 'rxjs';
 import { delay, mergeMap, materialize, dematerialize } from 'rxjs/operators';
 
+
 @Injectable()
 export class FakeBackendInterceptor implements HttpInterceptor {
 
@@ -16,7 +17,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
     return of(null).pipe(mergeMap(() => {
 
       // authenticate
-      if (request.url.endsWith('/users/authenticate') && request.method === 'POST') {
+      if (request.url.endsWith('/users/authenticatez') && request.method === 'POST') {
         // find if any user matches login credentials
         let filteredUsers = users.filter(user => {
           return user.username === request.body.username && user.password === request.body.password;
@@ -125,9 +126,11 @@ export class FakeBackendInterceptor implements HttpInterceptor {
   }
 }
 
+
 export let fakeBackendProvider = {
   // use fake backend in place of Http service for backend-less development
   provide: HTTP_INTERCEPTORS,
   useClass: FakeBackendInterceptor,
   multi: true
 };
+

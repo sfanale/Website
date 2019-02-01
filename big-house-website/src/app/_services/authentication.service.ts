@@ -15,22 +15,27 @@ export class AuthenticationService {
     this.currentUser = this.currentUserSubject.asObservable();
   }
 
-  private usersURL = 'http://0.0.0.0:5000/api';
+  private usersURL = 'http://0.0.0.0:5000';
 
   public get currentUserValue(): User {
     return this.currentUserSubject.value;
   }
 
   login(username: string, password: string) {
-    return this.http.post<any>(`${this.usersURL}/users/authenticate`, { username, password })
+    console.log(username);
+    const url = `${this.usersURL}/users/authenticate`;
+    console.log(url);
+    let body = {"username": username, "password":password};
+    return this.http.post<any>(url, body)
       .pipe(map(user => {
         // login successful if there's a jwt token in the response
         if (user && user.token) {
+          console.log(user);
           // store user details and jwt token in local storage to keep user logged in between page refreshes
           localStorage.setItem('currentUser', JSON.stringify(user));
           this.currentUserSubject.next(user);
         }
-
+        console.log('no user');
         return user;
       }));
   }

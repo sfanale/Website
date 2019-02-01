@@ -12,7 +12,7 @@ export var loggedInUser;
 })
 export class UserService {
 
-  private usersUrl = 'http://0.0.0.0:5000/api';
+  private usersUrl = 'http://0.0.0.0:5000';
 
 
   constructor(
@@ -20,10 +20,10 @@ export class UserService {
   ) { }
 
 
-  login(body): Observable<User> {
-    const url = `${this.usersUrl}/login`;
-    console.log((body));
-    return this.http.post<User>(url,(body), {headers:{ 'Content-Type': 'application/json', 'Access-Control-Allow-Origin':'*'}});
+  login(body) {
+    const url = `${this.usersUrl}/users/authenticate`;
+    console.log(body);
+    return this.http.post(url, body).subscribe();
   }
 
 

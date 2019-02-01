@@ -73,7 +73,12 @@ export class UserService {
 
   register(user: User) {
     // todo: implement this. Change path on backend
-    return this.http.post(`${this.usersUrl}/users/create`, user);
+    console.log(user);
+    let httpOptions = {
+      headers: new HttpHeaders({ 'Response-Type': 'application/json',
+        'Access-Control-Allow-Origin':'*'})
+    };
+    return this.http.post(`${this.usersUrl}/users/create`, user, httpOptions);
   }
 
   update(user: User) {

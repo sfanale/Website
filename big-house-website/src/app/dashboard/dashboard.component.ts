@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { InsightBlog } from "../insight.blog";
 import { InsightsService } from "../_services/insights.service";
 import * as M from '../../../node_modules/materialize-css/dist/js/materialize.min.js';
+import {AuthenticationService} from "../_services/authentication.service";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -14,7 +16,9 @@ export class DashboardComponent implements OnInit {
   blog: InsightBlog;
 
   constructor(
-    private insightsService: InsightsService
+    private insightsService: InsightsService,
+    private authService: AuthenticationService,
+    private router: Router,
   ) { }
 
   ngOnInit() {
@@ -28,6 +32,9 @@ export class DashboardComponent implements OnInit {
     let options3 = { indicators: false, height: 523 };
     let instances3 = M.Slider.init(elems3, options3);
     this.getBlog();
+    if (this.authService.currentUserValue) {
+      this.router.navigate(['/explore']);
+    }
 
   }
 

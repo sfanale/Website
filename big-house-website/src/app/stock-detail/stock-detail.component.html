@@ -1,24 +1,107 @@
 
 
-<h1>{{stock[0].symbol | uppercase }} Details</h1>
+<h3 class="center-align">{{stock[0].longname | uppercase }}</h3>
+<h5 class="center-align">{{stock[stock.length-1].regularmarketprice | currency}}</h5>
+<p class="center-align">Volume: {{stock[stock.length-1].regularmarketvolume }}</p>
 
-<div class="container">
+
   <div class="row">
-    <div class="col s12 m4">
-      <p>Last Close: {{stock[stock.length-1].regularmarketprice | currency}}</p>
-      <p>Volume: {{stock[stock.length-1].regularmarketvolume }}</p>
-    </div>
-  </div>
-  <div class="s12">
-    <canvas id="canvas">{{ chart }}</canvas>
-  </div>
-  <div class="row">
-    <div class="col s4">
-      <button class="btn btn-outline-success btn-md my-button" (click)="bollingerBands()">Bolinger Bands</button>
-    </div>
-    <div class="col s4">
-      <button class="btn btn-outline-success btn-md my-button" (click)="macd_line()">MACD</button>
+    <div class="col s12 m8 push-m2">
+      <div class="chip" (click)="five_day()">
+        5 day
+      </div>
+      <div class="chip" (click)="one_month()">
+        1 month
+      </div>
+      <div class="chip" (click)="three_month()">
+        3 month
+      </div>
+      <div class="chip" (click)="one_year()">
+        1 year
+      </div>
+      <div class="chip" (click)="two_year()">
+        2 year
+      </div>
+      <div class="chip" (click)="all_time()">
+        all
+      </div>
     </div>
   </div>
 
+  <div class="row">
+    <div class="col s12 m8 push-m2">
+    <div class="chip" (click)="bollingerBands()">
+      Bolinger Bands
+    </div>
+    <div class="chip" (click)="macd_line()">
+      MACD Line
+    </div>
+  </div>
+  </div>
+
+  <div class="row">
+    <div class="col s12 m8 push-m2">
+      <canvas id="canvas">{{ chart }}</canvas>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col s12 m4 push-m3">
+      <p>EPS Forward: {{stock[stock.length-1].epsforward}}<br>
+        EPS Trailing: {{stock[stock.length-1].epstrailing12months}}<br>
+        Price to Book: {{stock[stock.length-1].pricetobook}}<br>
+        Book Value: {{stock[stock.length-1].bookvalue}}
+      </p>
+    </div>
+    <div class="col s12 m4 push-m3">
+      <p>
+        Market Cap: {{stock[stock.length-1].marketcap / 1000000000 | currency}} Billion<br>
+        Shares Outstanding:     {{stock[stock.length-1].sharesoutstanding}}<br>
+        Next Earnings:      {{stock[stock.length-1].earningstimestamp * 1000| date}}<br>
+        Dividend Yield:     {{stock[stock.length-1].trailingannualdividendyield}}
+      </p>
+    </div>
+  </div>
+
+
+<div class="row">
+  <div class="col s12 m6 push-m3">
+    <ul class="collection">
+      <li class="collection-header"><h4>{{stock[stock.length-1].longname}} News</h4></li>
+      <li class="collection-item avatar">
+        <img src="../../assets/IMG_1095.jpeg" alt="" class="circle">
+        <span class="title">Title</span>
+        <p>First Line <br>
+          Second Line
+        </p>
+        <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+      </li>
+      <li class="collection-item avatar">
+        <i class="material-icons circle">folder</i>
+        <span class="title">Title</span>
+        <p>First Line <br>
+          Second Line
+        </p>
+        <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+      </li>
+      <li class="collection-item avatar">
+        <i class="material-icons circle green">insert_chart</i>
+        <span class="title">Title</span>
+        <p>First Line <br>
+          Second Line
+        </p>
+        <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+      </li>
+      <li class="collection-item avatar">
+        <i class="material-icons circle red">play_arrow</i>
+        <span class="title">Title</span>
+        <p>First Line <br>
+          Second Line
+        </p>
+        <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+      </li>
+    </ul>
+  </div>
 </div>
+
+

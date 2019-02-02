@@ -8,6 +8,7 @@ import * as $ from 'jquery';
 import {Chart} from 'chart.js';
 import * as M from '../../../node_modules/materialize-css/dist/js/materialize.min.js';
 
+
 // This is not really an option page so much as a search page
 
 
@@ -29,6 +30,7 @@ export class OptionsComponent implements OnInit {
   chart=[];
   prices=[];
   dates=[];
+  flag = false;
 
   constructor(
     private optionPriceService: OptionPricesService,
@@ -71,6 +73,7 @@ export class OptionsComponent implements OnInit {
 
 
   getOption(ticker:string, strike:string, expiry: string): void {
+    this.flag = true;
     let d = (new Date(expiry).getTime()/1000).toString();
     console.log(d);
     if (d == 'NaN') {
@@ -83,46 +86,43 @@ export class OptionsComponent implements OnInit {
 
     this.optionPriceService.getStock(ticker).subscribe(data=>{
       this.stock = data;
-      console.log(data);
       this.prices=[];
       this.dates=[];
       for (let i of data) {
         this.prices.push(i.regularmarketprice);
         let d_temp = new Date(parseFloat(i.pricedate)*1000);
-        console.log(d_temp.getMonth());
         this.dates = this.dates.concat((d_temp.getMonth()+1)+'/'+ d_temp.getDate()+'/'+d_temp.getFullYear());
       }
-      console.log(this.prices);
-
-      this.chart = new Chart('canvas', {
-        type: 'line',
-        data: {
-          labels: this.dates,
-          datasets: [
-            {
-              data: this.prices,
-              borderColor: "#66bb6a",
-              fill: false
-            }
-          ]
-        },
-        options: {
-          legend: {
-            display: false
+        this.chart = new Chart('canvas', {
+          type: 'line',
+          data: {
+            labels: this.dates,
+            datasets: [
+              {
+                data: this.prices,
+                borderColor: "#66bb6a",
+                fill: false
+              }
+            ]
           },
-          scales: {
-            xAxes: [{
+          options: {
+            legend: {
               display: false
-            }],
-            yAxes: [{
-              display: false
-            }],
+            },
+            scales: {
+              xAxes: [{
+                display: false
+              }],
+              yAxes: [{
+                display: false
+              }],
+            }
           }
-        }
-      });
-    });
-    // this.messageService.add(this.options[0].symbol);
+        });
+    }
+    );
   }
+
 
 
 

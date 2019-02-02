@@ -12,7 +12,7 @@ export var loggedInUser;
 })
 export class UserService {
 
-  private usersUrl = 'http://0.0.0.0:5000';
+  private usersUrl = 'http://users.fanaleresearch.com';
 
 
   constructor(

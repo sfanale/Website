@@ -15,7 +15,7 @@ export class AuthenticationService {
     this.currentUser = this.currentUserSubject.asObservable();
   }
 
-  private usersURL = 'http://0.0.0.0:5000';
+  private usersURL = 'http://users.fanaleresearch.com';
 
   public get currentUserValue(): User {
     return this.currentUserSubject.value;

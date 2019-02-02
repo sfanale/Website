@@ -54,7 +54,10 @@ export class StockDetailComponent implements OnInit {
             {
               data: this.prices,
               borderColor: "#66bb6a",
-              fill: false
+              fill: false,
+              borderWidth:2,
+              pointRadius:0,
+              hitRadius:5
             }
           ]
         },
@@ -68,14 +71,16 @@ export class StockDetailComponent implements OnInit {
                   time: {
                     unit: 'month'
                   },
-              display: true
+              display: true,
+              color: 'rgba(0, 0, 0, 0)'
             }],
             yAxes: [{
-              display: true
+              display: true,
+              color: 'rgba(0, 0, 0, 0)'
             }],
           },
           hover:{
-            intersect: false,
+            intersect: true,
             mode: 'x'
           }
         }
@@ -161,4 +166,27 @@ export class StockDetailComponent implements OnInit {
     console.log(this.optionTools.macd(this.prices, this.dates));
   }
 
+  five_day() {
+
+  }
+
+  one_month() {
+
+  }
+
+  three_month() {
+
+  }
+
+  one_year() {
+
+  }
+
+  two_year() {
+
+  }
+
+  all_time() {
+
+  }
 }

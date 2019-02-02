@@ -1,3 +1,11 @@
 .container {
   width: 100%;
 }
+
+.collection{
+  border: none;
+}
+
+.collection-item{
+  background: none;
+}

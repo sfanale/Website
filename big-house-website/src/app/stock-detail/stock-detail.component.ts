@@ -101,17 +101,26 @@ export class StockDetailComponent implements OnInit {
           {
             data: bands.prices,
             borderColor: "#66bb6a",
-            fill: false
+            fill: false,
+            borderWidth:2,
+            pointRadius:0,
+            hitRadius:5
           },
           {
             data: bands.upper,
             borderColor: "#42a5f5",
-            fill: false
+            fill: false,
+            borderWidth:2,
+            pointRadius:0,
+            hitRadius:5
           },
           {
             data: bands.lower,
             borderColor: "#ef5350",
-            fill: false
+            fill: false,
+            borderWidth:2,
+            pointRadius:0,
+            hitRadius:5
           }
         ]
       },
@@ -121,10 +130,16 @@ export class StockDetailComponent implements OnInit {
         },
         scales: {
           xAxes: [{
-            display: true
+            type: 'time',
+            time: {
+              unit: 'month'
+            },
+            display: true,
+            color: 'rgba(0, 0, 0, 0)'
           }],
           yAxes: [{
-            display: true
+            display: true,
+            color: 'rgba(0, 0, 0, 0)'
           }],
         }
       }

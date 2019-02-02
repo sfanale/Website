@@ -1,18 +1,19 @@
 
-<div class="outer-page grey lighten-4">
-  <div class="wrapper">
-    <nav class="nav-extended">
-      <div class="nav-wrapper grey lighten-5">
+<!-- <div class="outer-page grey lighten-4 show-on-medium-and-up"> -->
+  <div class="row">
+  <div class="wrapper col s12 m10 push-m1">
+    <nav class="nav-extended white lighten-5">
+      <!-- <div class="nav-wrapper grey lighten-5">-->
         <a routerLink="" class="brand-logo blue-grey-text text-darken-3">Fanale Research</a>
         <a href="#" data-target="mobile-demo" class="sidenav-trigger blue-grey-text text-darken-3 right"><i class="material-icons">menu</i></a>
         <ul id="nav-mobile" class="right hide-on-med-and-down blue-grey-text text-darken-3">
           <li><a routerLink=""><i class="material-icons left blue-grey-text text-darken-3">home</i></a></li>
-          <li><a class="blue-grey-text text-darken-3" routerLink="/research" routerLinkActive="active">Research</a></li>
-          <li><a class="blue-grey-text text-darken-3" routerLink="/models">Model</a></li>
-          <li><a class="blue-grey-text text-darken-3" routerLink="/trade" routerLinkActive="active">Trade</a></li>
+          <li><a class="nav-link blue-grey-text text-darken-3" routerLink="/research" routerLinkActive="active">Research</a></li>
+          <li><a class="nav-link blue-grey-text text-darken-3" routerLink="/models">Model</a></li>
+          <li><a class="nav-link blue-grey-text text-darken-3" routerLink="/trade" routerLinkActive="active">Trade</a></li>
           <li><a class="blue-grey-text text-darken-3" routerLink="/account">Account</a></li>
         </ul>
-      </div>
+      <!--</div>-->
     </nav>
 
 
@@ -23,9 +24,13 @@
       <li><a class="sidenav-close" routerLink="/trade">Trade</a> </li>
       <li><a class="sidenav-close" routerLink="/account">Account</a> </li>
     </ul>
+  </div>
+  </div>
 
-
+  <div class="row">
+  <div class="col s12 m10 push-m1">
     <router-outlet></router-outlet>
+  </div>
   </div>
 
   <footer class="page-footer grey darken-1">
@@ -52,6 +57,6 @@
       </div>
     </div>
   </footer>
-</div>
+<!-- </div> -->
 
 

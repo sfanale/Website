@@ -1,31 +1,51 @@
+<div class="row">
+ <h1>{{option[0].contractsymbol}} Details</h1>
+ <p>Underlying Symbol: {{option[0].symbol}}</p>
+  <p>Strike: {{option[0].strike}}</p>
+  <p>Expiration Date: {{option[0].expiry*1000 | date}}</p>
+  <p>{{option[0].type}}</p>
+</div>
 
-
-<h1>{{option[0].contractsymbol | uppercase}} Details</h1>
-
-<div class="container">
-  <div class="row">
-    <div class="col s6">
-      <p>Underlying Symbol: {{option[0].symbol}}</p>
-      <p>Strike: {{option[0].strike}}</p>
-      <p>Expiration Date: {{option[0].expiry*1000 | date}}</p>
-      <p>{{option[0].type}}</p>
+<div class="row">
+  <div class="col s12 m8 push-m2">
+    <div class="chip" (click)="five_day()">
+      5 day
     </div>
-  </div>
-  <div class="row">
-    <div>
-      <canvas id="canvas">{{ chart }}</canvas>
+    <div class="chip" (click)="one_month()">
+      1 month
     </div>
-  </div>
-    <div class="row">
-    <div class="col s3">
-      <button class="btn btn-outline-success btn-md my-button" (click)="graphOpenInterest()">Open Interest</button>
+    <div class="chip" (click)="three_month()">
+      3 month
     </div>
-      <div class="col s3">
-      <button class="btn btn-outline-success btn-md my-button" (click)="graphPrice()">Prices</button>
+    <div class="chip" (click)="one_year()">
+      1 year
     </div>
-      <div class="col s3">
-        <button class="btn btn-outline-success btn-md my-button" (click)="graphCalcPrice()">Calculated Prices</button>
-      </div>
+    <div class="chip" (click)="two_year()">
+      2 year
+    </div>
+    <div class="chip" (click)="all_time()">
+      all
+    </div>
   </div>
 </div>
+
+<div class="row">
+  <div class="col s12 m8 push-m2">
+    <div class="chip" (click)="graphCalcPrice()">
+      Calc Price
+    </div>
+    <div class="chip" (click)="graphOpenInterest()">
+      Open Interest
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col s12 m8 push-m2">
+    <canvas id="canvas">{{ chart }}</canvas>
+  </div>
+</div>
+
+
+
 

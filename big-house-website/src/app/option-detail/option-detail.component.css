@@ -1,17 +1,15 @@
-mat-card {
-padding-left: 15%;
-padding-right: 15%;
-text-align: center;
-}
-
-mat-card-title {
-  font-size: 48px;
-}
-
-mat-form-field {
-  width: 100%
-}
-
 .container {
   width: 100%;
+}
+
+.collection{
+  border: none;
+}
+
+.collection-item{
+  background: none;
+}
+
+a{
+  color:black;
 }

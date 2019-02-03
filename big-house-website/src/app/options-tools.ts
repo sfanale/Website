@@ -12,14 +12,14 @@ import * as math from 'mathjs';
 export class optionstools {
 
   getCalPrice(price_row:Option) {
-    return (parseFloat(price_row.bid)+parseFloat(price_row.ask))/2;
+    return (price_row.bid+price_row.ask)/2;
   }
 
   getRets(asset:Option[]) {
     let i = 1;
     let rets=[];
     while (i < asset.length) {
-      rets.push(parseFloat(asset[i].lastprice)/parseFloat(asset[i-1].lastprice));
+      rets.push(asset[i].lastprice/asset[i-1].lastprice);
       i+=1;
     }
     return rets;
@@ -45,7 +45,7 @@ export class optionstools {
   getAvailableDates(contract_list:Option[]) {
     let results= new Set;
     for (let contract of contract_list) {
-      let d_temp = new Date(parseFloat(contract.expiry)*1000);
+      let d_temp = new Date(parseFloat(contract.expiration)*1000);
       let date_key = d_temp.getMonth()+'/'+ d_temp.getDate()+'/'+d_temp.getFullYear();
       if (date_key !in results) {
         results.add(date_key);
@@ -57,7 +57,7 @@ export class optionstools {
   getAvailableStrikes(contract_list:Option[]) {
     let results = new Set;
     for ( let contract of contract_list) {
-      let strike = parseFloat(contract.strike)
+      let strike = contract.strike;
       if ( strike !in results) {
         results.add(strike);
       }
@@ -78,7 +78,7 @@ export class optionstools {
       upper.push(sma + (sig*2));
       lower.push(sma - (sig*2));
       d.push(dates[i]);
-      price.push(prices[i])
+      price.push(prices[i]);
       i++;
     }
     return { upper:upper, lower:lower, dates:d, prices:price } ;

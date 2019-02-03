@@ -1,21 +1,31 @@
 export class Option {
-  expiry :string;
-  lastprice: string;
-  timestamp:string;
-  symbol: string;
-  strike: string;
-  pricedate: number;
+  ask: number;
+  bid: number;
+  change: number;
+  contractsize: string;
   contractsymbol: string;
-  bid: string;
-  ask: string;
-  openinterest:string;
-  volume:string;
-  prices_arr: number[];
+  currency: string;
+  expiration: string;
+  id:string;
+  impliedvolatility:number;
+  industry: string;
+  inthemoney: boolean;
+  lastprice: number;
+  lasttradedate: string;
+  openinterest: number;
+  optiontype: string;
+  percentchange: number;
+  pricedate: string;
+  sector: string;
+  strike: number;
+  underlyingsymbol: string;
+  volume: number;
+
 
 }
 
 export class Tickers {
-  ticker: string;
+  underlyingsymbol: string;
 }
 
 

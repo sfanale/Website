@@ -1,9 +1,6 @@
 <div class="row">
- <h1>{{option[0].contractsymbol}} Details</h1>
- <p>Underlying Symbol: {{option[0].symbol}}</p>
-  <p>Strike: {{option[0].strike}}</p>
-  <p>Expiration Date: {{option[0].expiry*1000 | date}}</p>
-  <p>{{option[0].type}}</p>
+ <h3 class="center-align">{{stock[0].shortname}} {{option[0].strike | currency}} {{option[0].optiontype}} for {{option[0].expiration*1000 | date}}</h3>
+
 </div>
 
 <div class="row">
@@ -31,8 +28,11 @@
 
 <div class="row">
   <div class="col s12 m8 push-m2">
+    <div class="chip" (click)="graphPrice()">
+      Real Price
+    </div>
     <div class="chip" (click)="graphCalcPrice()">
-      Calc Price
+      Calculated Price
     </div>
     <div class="chip" (click)="graphOpenInterest()">
       Open Interest
@@ -43,6 +43,26 @@
 <div class="row">
   <div class="col s12 m8 push-m2">
     <canvas id="canvas">{{ chart }}</canvas>
+  </div>
+</div>
+
+
+
+<div class="row">
+  <div class="col s12 m6 push-m3">
+    <h4>{{stock[stock.length-1].longname}} News</h4>
+    <ul class="collection" *ngFor="let row of news">
+      <li  class="collection-item avatar"><a href="{{row.url}}">
+        <img src="{{row.urlToImage}}" alt="" class="circle">
+        <h5>{{row.title}}</h5>
+        <p>{{row.author}} - {{row.source.name}} <br>
+          {{row.description}}
+        </p>
+      </a>
+
+      </li>
+
+    </ul>
   </div>
 </div>
 

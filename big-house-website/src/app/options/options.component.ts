@@ -7,6 +7,7 @@ import {Observable} from "rxjs";
 import * as $ from 'jquery';
 import {Chart} from 'chart.js';
 import * as M from '../../../node_modules/materialize-css/dist/js/materialize.min.js';
+import {Router} from "@angular/router";
 
 
 // This is not really an option page so much as a search page
@@ -31,10 +32,12 @@ export class OptionsComponent implements OnInit {
   prices=[];
   dates=[];
   flag = false;
+  formatted_tickers;
 
   constructor(
     private optionPriceService: OptionPricesService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private router: Router,
   ) {
 
   }
@@ -56,8 +59,10 @@ export class OptionsComponent implements OnInit {
       console.log(data);
       let formated_data={};
       for (let i of data) {
-        formated_data[`${i}`] = null;
+
+        formated_data[`${i['underlyingsymbol']}`] = null;
       }
+      this.formatted_tickers = formated_data;
       console.log(formated_data);
       var elems = document.querySelectorAll('.autocomplete');
       var autocomp = M.Autocomplete.init(elems, {data:formated_data});
@@ -81,6 +86,9 @@ export class OptionsComponent implements OnInit {
 
   getOption(ticker:string, strike:string, expiry: string, event=null): void {
     if (event==null || event.keyCode==13) {
+      if (ticker in this.formatted_tickers && (expiry=='' || strike=='')) {
+        this.router.navigate([`/research/stocks/${ticker}`]);
+      }
       this.flag = true;
       let d = (new Date(expiry).getTime() / 1000).toString();
       console.log(d);
@@ -140,6 +148,7 @@ export class OptionsComponent implements OnInit {
           });
         }
       );
+
     }
     else {
       console.log(event.keyCode);

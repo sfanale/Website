@@ -10,6 +10,7 @@ export class User {
   premium: boolean;
   confirmed: boolean;
   token: string;
+  holdings: holding[];
 
 }
 
@@ -20,4 +21,10 @@ export class Post {
   views: string;
   likes: string;
 
+}
+
+export class holding {
+  symbol: string;
+  pricepaid: string;
+  amount: string;
 }

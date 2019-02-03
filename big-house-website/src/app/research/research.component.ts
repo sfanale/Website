@@ -5,6 +5,7 @@ import {InsightsService} from "../_services/insights.service";
 import {Chart} from 'chart.js';
 import * as M from '../../../node_modules/materialize-css/dist/js/materialize.min.js';
 import {InsightBlog} from "../insight.blog";
+import {NewsService} from "../_services/news.service";
 
 
 @Component({
@@ -18,6 +19,7 @@ export class ResearchComponent implements OnInit {
   market_data={};
   insights:InsightBlog[];
   charts=[];
+  news=[];
   relevant_tickers1 = ['AAPL', 'FB', 'GOOGL'];
   relevant_tickers2 =['AMZN', 'NFLX', 'MSFT'];
   relevant_tickers3 = ['TSLA', 'MDB', 'JPM'];
@@ -27,8 +29,8 @@ export class ResearchComponent implements OnInit {
 
   constructor(
     private optionPriceService: OptionPricesService,
-    private insightsService: InsightsService
-    // private newsService: NewsService
+    private insightsService: InsightsService,
+    private newsService: NewsService
   ) {}
 
   ngOnInit() {
@@ -103,6 +105,15 @@ export class ResearchComponent implements OnInit {
   }
 
   getNews() {
+    let subjects = ['AAPL', 'FB', 'GOOGL', 'SP500'];
+    console.log(subjects);
+    for (let subject of subjects) {
+      console.log(subject);
+      this.newsService.get_news(subject).subscribe(data => {
+        this.news.push(data);
+        console.log(data);
+      })
+    }
   }
 
   getInsights() {

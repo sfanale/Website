@@ -6,6 +6,7 @@ import {OptionPricesService} from "../_services/option-prices.service";
 import {Option} from "../option";
 import {optionstools} from "../options-tools";
 import {Stock} from "../stock";
+import {NewsService} from "../_services/news.service";
 
 @Component({
   selector: 'app-option-detail',
@@ -19,12 +20,14 @@ export class OptionDetailComponent implements OnInit {
     private location : Location,
     private optionPricesService: OptionPricesService,
     private route: ActivatedRoute,
-    private optionTools: optionstools
+    private optionTools: optionstools,
+    private newsService: NewsService
   ) { }
 
   ngOnInit() {
     this.getOptionDetails();
-    this.getStockDetails()
+    this.getStockDetails();
+    this.getNews();
 
   }
 
@@ -40,17 +43,32 @@ export class OptionDetailComponent implements OnInit {
   volume=[];
   returns=[];
   calcrets=[];
+  news;
+  open_interest_toggle=false;
+  price_type = 'real';
+
+  getNews(){
+    let sym =this.route.snapshot.paramMap.get('sym');
+    sym= sym.split(/([0-9]+)/)[0];
+    this.newsService.get_news(sym).subscribe(data=>{
+      this.news=data.articles.slice(0,5);
+    });
+  }
 
   getOptionDetails(): void {
     const sym = this.route.snapshot.paramMap.get('sym');
     this.optionPricesService.getContract(sym).subscribe(data=> {
       this.option = data;
-
+      console.log(data);
       for ( let row of this.option) {
-        let d_temp = new Date(row.pricedate*1000);
+        let d_temp = new Date(parseFloat(row.pricedate)*1000);
         this.dates = this.dates.concat((d_temp.getMonth()+1)+'/'+ d_temp.getDate()+'/'+d_temp.getFullYear());
         this.prices.push(row.lastprice);
-        this.calc_prices.push((parseFloat(row.bid )+ parseFloat(row.ask)) / 2);
+        let calc =(row.bid + row.ask) / 2;
+        if (calc == 0){
+          calc = row.lastprice;
+        }
+        this.calc_prices.push(calc);
         this.open_interest.push(row.openinterest);
         this.volume.push(row.volume);
       }
@@ -105,9 +123,6 @@ export class OptionDetailComponent implements OnInit {
     console.log(sym);
     this.optionPricesService.getStock(sym).subscribe(data => {
       this.stock = data;
-
-      console.log(data);
-
       for (let i of data) {
         this.stock_prices.push(i.regularmarketprice);
         let d_temp = new Date(parseFloat(i.pricedate) * 1000);
@@ -118,124 +133,142 @@ export class OptionDetailComponent implements OnInit {
   }
 
   five_day(){
-    this.remove_chart_data(this.chart);
+    let new_data;
+    if (this.price_type == 'calc'){
+      new_data = this.calc_prices.slice(this.calc_prices.length - 6, this.calc_prices.length - 1);
+    }
+    else {
+      new_data = this.prices.slice(this.prices.length - 6, this.prices.length - 1);
+    }
+    let new_label = this.dates.slice(this.dates.length-6,this.dates.length-1);
+    this.chart.data.datasets[0].data = new_data;
+    this.chart.data.labels = new_label;
+    this.chart.options.scales.xAxes[0].time.unit = 'day';
+    this.chart.update();
+  }
 
-    let new_data=
-      {
-        data: this.prices.slice(1).slice(-5),
-        borderColor: "#3cba9f",
+
+  one_month() {
+    let new_data;
+    if (this.price_type == 'calc'){
+      new_data = this.calc_prices.slice(this.calc_prices.length - 21, this.calc_prices.length - 1);
+    }
+    else {
+      new_data = this.prices.slice(this.prices.length - 21, this.prices.length - 1);
+    }
+    let new_label = this.dates.slice(this.dates.length-21,this.dates.length-1);
+    this.chart.data.datasets[0].data = new_data;
+    this.chart.data.labels = new_label;
+    this.chart.options.scales.xAxes[0].time.unit = 'day';
+    this.chart.update();
+  }
+
+  three_month() {
+    let new_data;
+    if (this.price_type == 'calc'){
+      new_data = this.calc_prices.slice(this.calc_prices.length - 61, this.calc_prices.length - 1);
+    }
+    else {
+      new_data = this.prices.slice(this.prices.length - 61, this.prices.length - 1);
+    }
+    let new_label = this.dates.slice(this.dates.length-61,this.dates.length-1);
+    this.chart.data.datasets[0].data = new_data;
+    this.chart.data.labels = new_label;
+    this.chart.options.scales.xAxes[0].time.unit = 'month';
+    this.chart.update();
+  }
+
+  one_year() {
+    let new_data;
+    if (this.price_type == 'calc'){
+      new_data = this.calc_prices;
+    }
+    else {
+      new_data = this.prices;
+    }
+    let new_label = this.dates;
+    this.chart.data.datasets[0].data = new_data;
+    this.chart.data.labels = new_label;
+    this.chart.options.scales.xAxes[0].time.unit = 'month';
+    this.chart.update();
+
+  }
+
+  two_year() {
+    let new_data;
+    if (this.price_type == 'calc'){
+      new_data = this.calc_prices;
+    }
+    else {
+      new_data = this.prices;
+    }
+    let new_label = this.dates;
+    this.chart.data.datasets[0].data = new_data;
+    this.chart.data.labels = new_label;
+    this.chart.options.scales.xAxes[0].time.unit = 'month';
+    this.chart.update();
+  }
+
+  all_time() {
+    let new_data;
+    if (this.price_type == 'calc'){
+      new_data = this.calc_prices;
+    }
+    else {
+      new_data = this.prices;
+    }
+    let new_label = this.dates;
+    this.chart.data.datasets[0].data = new_data;
+    this.chart.data.labels = new_label;
+    this.chart.options.scales.xAxes[0].time.unit = 'month';
+    this.chart.update();
+  }
+
+  graphOpenInterest(): void {
+    if (!this.open_interest_toggle) {
+      this.chart.data.datasets.push({
+        data: this.open_interest,
+        borderColor: "#7e57c2",
+        label: 'Open Interest',
+        yAxisID: 'Open Interest',
         fill: false,
         borderWidth: 2,
         pointRadius: 0,
         hitRadius: 5
-      };
-    let new_label = this.dates.slice(1).slice(-5);
-    this.add_chart_data(this.chart, new_data, new_label);
-
-  }
-
-  remove_chart_data(chart){
-    chart.data.labels.pop();
-    chart.data.datasets.forEach((dataset) => {
-      dataset.data.pop();
-    });
-    chart.update();
-  }
-
-  add_chart_data(chart, data, label){
-    chart.data.labels.push(label);
-    chart.data.datasets.forEach((dataset) => {
-      dataset.data.push(data);
-    });
-    chart.update();
-  }
-
-
-  graphOpenInterest(): void {
-    this.chart = new Chart('canvas', {
-      type: 'line',
-      data: {
-        labels: this.dates,
-        datasets: [
-          {
-            data: this.open_interest,
-            borderColor: "#3cba9f",
-            fill: false
-          }
-        ]
-      },
-      options: {
-        legend: {
-          display: false
-        },
-        scales: {
-          xAxes: [{
-            display: true
-          }],
-          yAxes: [{
-            display: true
-          }],
-        }
-      }
-    });
+      });
+      this.chart.options.scales.yAxes.push({id: 'Open Interest',
+        type: 'linear',
+        position: 'right',
+      });
+      this.chart.update();
+      this.open_interest_toggle = true;
+    }
+    else {
+      this.chart.data.datasets.pop();
+      this.chart.options.scales.yAxes.pop();
+      this.chart.update();
+      this.open_interest_toggle = false;
+    }
   }
 
   graphPrice(): void {
-    this.chart = new Chart('canvas', {
-      type: 'line',
-      data: {
-        labels: this.dates,
-        datasets: [
-          {
-            data: this.prices,
-            borderColor: "#3cba9f",
-            fill: false
-          }
-        ]
-      },
-      options: {
-        legend: {
-          display: false
-        },
-        scales: {
-          xAxes: [{
-            display: true
-          }],
-          yAxes: [{
-            display: true
-          }],
-        }
-      }
-    });
+    let new_data= this.prices;
+    let new_label = this.dates;
+    this.chart.data.datasets[0].data = new_data;
+    this.chart.data.labels = new_label;
+    this.chart.options.scales.xAxes[0].time.unit = 'month';
+    this.chart.update();
+    this.price_type = 'real';
   }
 
   graphCalcPrice(): void {
-    this.chart = new Chart('canvas', {
-      type: 'line',
-      data: {
-        labels: this.dates,
-        datasets: [
-          {
-            data: this.calc_prices,
-            borderColor: "#3cba9f",
-            fill: false
-          }
-        ]
-      },
-      options: {
-        legend: {
-          display: false
-        },
-        scales: {
-          xAxes: [{
-            display: true
-          }],
-          yAxes: [{
-            display: true
-          }],
-        }
-      }
-    });
+    let new_data= this.calc_prices;
+    let new_label = this.dates;
+    this.chart.data.datasets[0].data = new_data;
+    this.chart.data.labels = new_label;
+    this.chart.options.scales.xAxes[0].time.unit = 'month';
+    this.chart.update();
+    this.price_type = 'calc';
   }
 
 }

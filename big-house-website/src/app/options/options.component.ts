@@ -8,6 +8,8 @@ import * as $ from 'jquery';
 import {Chart} from 'chart.js';
 import * as M from '../../../node_modules/materialize-css/dist/js/materialize.min.js';
 import {Router} from "@angular/router";
+import {NewsService} from "../_services/news.service";
+import {News} from "../news";
 
 
 // This is not really an option page so much as a search page
@@ -30,14 +32,22 @@ export class OptionsComponent implements OnInit {
   keys = { 'AAPL': null, 'DB':null, 'GOOGL':null, 'MSFT':null};
   chart=[];
   prices=[];
+  news: News[];
   dates=[];
   flag = false;
   formatted_tickers;
+  big_movers: Stock[] =[];
+  strike_dates_prices = {};
+  strike_dates;
+  options_to_show_calls={};
+  options_to_show_puts={};
+  selected_date;
 
   constructor(
     private optionPriceService: OptionPricesService,
     private messageService: MessageService,
     private router: Router,
+    private newsService: NewsService
   ) {
 
   }
@@ -47,14 +57,11 @@ export class OptionsComponent implements OnInit {
   ngOnInit() {
     var elems = document.querySelectorAll('.datepicker');
     var datepicker = M.Datepicker.init(elems, {autoClose:true});
-
-
+    this.getMovers();
+    this.getNews();
     let data= {};
 
-    //autocomp.open();
-
-    this.init();
-    this.optionPriceService.getAllTickers().subscribe(data=> {
+      this.optionPriceService.getAllTickers().subscribe(data=> {
       this.tickers = data;
       console.log(data);
       let formated_data={};
@@ -75,31 +82,67 @@ export class OptionsComponent implements OnInit {
     ,1000 );
   }
 
-
-  init() {
-
-
+  getNews(){
+    this.newsService.get_news('US Economy').subscribe(data=>{
+      this.news=data.articles.slice(0,15);
+    });
   }
 
+
+  getMovers() {
+    this.optionPriceService.getMovers('up').subscribe(data=> {
+      console.log(data);
+      this.big_movers = this.big_movers.concat(data);
+
+    });
+    this.optionPriceService.getMovers('down').subscribe(data => {
+      this.big_movers = this.big_movers.concat(data);
+    });
+  }
+
+
+  show_options(date:string){
+    this.selected_date = date;
+    for (let contract of this.options) {
+      if (contract.expiration == date) {
+        if (contract.optiontype == 'call') {
+          this.options_to_show_calls[contract.strike]= contract;
+        }
+        else{
+          this.options_to_show_puts[contract.strike]= contract;
+        }
+      }
+    }
+    console.log(this.options_to_show_puts);
+  }
 
 
 
   getOption(ticker:string, strike:string, expiry: string, event=null): void {
     if (event==null || event.keyCode==13) {
-      if (ticker.toUpperCase() in this.formatted_tickers && (expiry=='' || strike=='')) {
+      if (ticker.toUpperCase() in this.formatted_tickers && expiry=='' && strike=='') {
         this.router.navigate([`/research/stocks/${ticker}`]);
       }
       this.flag = true;
       let d = (new Date(expiry).getTime() / 1000).toString();
-      console.log(d);
       if (d == 'NaN') {
-        console.log('Got ya');
         d = '';
       }
-      console.log(ticker);
-      console.log(strike);
+
       this.optionPriceService.getOption(ticker, strike, d).subscribe(data => {
         this.options = data;
+        for (let contract of data) {
+          if (contract.expiration in this.strike_dates_prices) {
+            this.strike_dates_prices[contract.expiration] = this.strike_dates_prices[contract.expiration].concat(contract.strike);
+          }
+          else {
+            this.strike_dates_prices[contract.expiration] = [contract.strike];
+          }
+        }
+        this.strike_dates = Object.keys(this.strike_dates_prices);
+
+        console.log(this.strike_dates_prices);
+
       });
 
       this.optionPriceService.getStock(ticker).subscribe(data => {

@@ -8,6 +8,23 @@ input[type="text"]{
   background-color: ghostwhite;
 }
 
+#card-row{
+  overflow-x:scroll;
+  width:100%;
+  display:inline-flex;
+}
+
+.price-card-div {
+  padding-right: 25px;
+  padding-left: 5px;
+}
+
+.price-card{
+  width:150px;
+  height: 150px;
+  background-color: ghostwhite;
+}
+
 #stock-chart{
   height: 15%;
 }
@@ -15,4 +32,30 @@ input[type="text"]{
 #ticker-link{
   color: green;
 }
+
+
+.container {
+  width: 100%;
+}
+
+.collection{
+  border: none;
+}
+
+.collection-item{
+  background: none;
+}
+
+a{
+  color:black;
+}
+
+.positive{
+  color: #00c853;
+}
+
+.negative{
+  color: #d50000;
+}
+
 

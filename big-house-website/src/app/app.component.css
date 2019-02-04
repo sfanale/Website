@@ -1,16 +1,21 @@
 
 
-.nav-link li a:hover, .navbar-nav li.active a {
-  color: #f4511e !important;
-  background-color: #fff !important;
-}
-
 .brand-logo{
   overflow: hidden;
   white-space: nowrap;
 }
 
+a.active {
+  color: #00c853;
+}
 
+#register{
+  background-color: #00e676 ;
+}
+
+#register2{
+  background-color: #00e676 ;
+}
 
 /* AppComponent's private CSS styles
 

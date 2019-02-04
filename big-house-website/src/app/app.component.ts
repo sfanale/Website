@@ -17,7 +17,7 @@ export class AppComponent implements OnInit{
 
   currentUser: User;
   currentUserSubscription: Subscription;
-  users: User[] = [];
+  users: User[] = null;
 
   constructor(
     private authenticationService: AuthenticationService,

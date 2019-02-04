@@ -91,12 +91,21 @@ export class OptionsComponent implements OnInit {
 
   getMovers() {
     this.optionPriceService.getMovers('up').subscribe(data=> {
-      console.log(data);
-      this.big_movers = this.big_movers.concat(data);
+      let res = [];
+      for(let i of data){
+        i.regularmarketchangepercent = Math.floor(parseFloat(i.regularmarketchangepercent)).toString();
+        res.push(i);
+      }
+      this.big_movers = this.big_movers.concat(res);
 
     });
     this.optionPriceService.getMovers('down').subscribe(data => {
-      this.big_movers = this.big_movers.concat(data);
+      let res = [];
+      for(let i of data){
+        i.regularmarketchangepercent = Math.floor(parseFloat(i.regularmarketchangepercent)).toString();
+        res.push(i);
+      }
+      this.big_movers = this.big_movers.concat(res);
     });
   }
 

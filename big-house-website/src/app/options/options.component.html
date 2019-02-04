@@ -72,6 +72,7 @@
   </div>
 
 <div class="row">
+  <div class="col s12 m8 push-m2">
 <table class="table center">
   <thead>
   <tr>
@@ -82,12 +83,13 @@
   </thead>
   <tbody>
   <tr *ngFor="let strike of strike_dates_prices[selected_date]">
-    <td><a>{{options_to_show_calls[strike]}}</a></td>
+    <td><a routerLink="/research/options/{{options_to_show_calls[strike].contractsymbol}}">{{options_to_show_calls[strike].lastprice}}</a></td>
     <td>{{strike}}</td>
-    <td>{{options_to_show_puts[strike]}}</td>
+    <td><a routerLink="/research/options/{{options_to_show_puts[strike].contractsymbol}}"> {{options_to_show_puts[strike].lastprice}}</a></td>
   </tr>
   </tbody>
 </table>
+  </div>
 </div>
 </div>
 </div>
@@ -101,19 +103,16 @@
         <div id="card-row">
           <div class="price-card-div" *ngFor="let stock of big_movers">
             <div *ngIf="stock.regularmarketchange >0; else elseCard" class="card price-card" routerLink="/research/stocks/{{stock.symbol}}">
-              <h4 class="center-align">{{stock.symbol}}</h4>
-              <h5 class="center-align">{{stock.regularmarketprice}}</h5>
-              <p class="positive center-align"> +{{stock.regularmarketchangepercent}}%<br>
-              +{{stock.regularmarketchange | currency}}
-              </p>
+              <p>{{stock.shortname}}<br> </p>
+              <h5 class="positive ">{{stock.symbol}}<br>
+                +{{stock.regularmarketchangepercent}}%
+              </h5>
             </div>
             <ng-template #elseCard>
               <div  class="card price-card" routerLink="/research/stocks/{{stock.symbol}}">
-                <h4 class="center-align">{{stock.symbol}}</h4>
-                <h5 class="center-align">{{stock.regularmarketprice}}</h5>
-                <p class="negative center-align"> {{stock.regularmarketchangepercent}}%<br>
-                  {{stock.regularmarketchange | currency}}
-                </p>
+                <p>{{stock.shortname}}<br> </p>
+                <h5 class="negative pin-bottom">{{stock.symbol}}<br>
+                 {{stock.regularmarketchangepercent}}%</h5>
               </div>
             </ng-template>
           </div>
@@ -134,6 +133,7 @@
 
     <div class="row">
       <div class="col s12 m8 push-m2">
+        <h4>Popular Groups</h4>
         <div class="chip">
           chip
         </div>

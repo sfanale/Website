@@ -22,7 +22,22 @@ input[type="text"]{
 .price-card{
   width:150px;
   height: 150px;
-  background-color: ghostwhite;
+}
+
+.price-card p {
+  padding: 5px;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+
+}
+
+.price-card h5{
+  position: absolute;
+  bottom: 0;
+}
+
+.table {
+  max-height: 500px;
+  overflow-y: scroll;
 }
 
 #stock-chart{

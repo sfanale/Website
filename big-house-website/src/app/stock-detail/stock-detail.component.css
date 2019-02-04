@@ -13,3 +13,11 @@
 a{
   color:black;
 }
+
+#positive{
+  color: #00c853;
+}
+
+#negative{
+  color: #d50000;
+}

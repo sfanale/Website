@@ -2,7 +2,9 @@
 
 <h3 class="center-align">{{stock[0].shortname | uppercase }}</h3>
 <h5 class="center-align">{{stock[stock.length-1].regularmarketprice | currency}}</h5>
-<p class="center-align">Volume: {{stock[stock.length-1].regularmarketvolume }}</p>
+<p class="center-align" id="price-change">{{movementsymbol}}{{stock[stock.length-1].regularmarketchange | currency}}<br>
+  {{movementsymbol}}{{stock[stock.length-1].regularmarketchangepercent}}%</p>
+
 
 
   <div class="row">

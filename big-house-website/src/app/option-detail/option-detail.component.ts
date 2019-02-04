@@ -90,7 +90,8 @@ export class OptionDetailComponent implements OnInit {
               fill: false,
               borderWidth: 2,
               pointRadius: 0,
-              hitRadius: 5
+              hitRadius: 5,
+              lineTension:0
             }
           ]
         },
@@ -234,7 +235,8 @@ export class OptionDetailComponent implements OnInit {
         fill: false,
         borderWidth: 2,
         pointRadius: 0,
-        hitRadius: 5
+        hitRadius: 5,
+        lineTension:0
       });
       this.chart.options.scales.yAxes.push({id: 'Open Interest',
         type: 'linear',

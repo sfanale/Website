@@ -22,6 +22,8 @@ export class StockDetailComponent implements OnInit {
   news;
   b_bands_toggle=false;
   b_band_dates;
+  b_band;
+  movementsymbol='';
 
 
   constructor(
@@ -48,7 +50,6 @@ export class StockDetailComponent implements OnInit {
     this.optionPricesService.getStock(sym).subscribe( data => {
       this.stock = data;
 
-      console.log(data);
 
       for (let i of data) {
         this.prices.push(i.regularmarketprice);
@@ -56,7 +57,6 @@ export class StockDetailComponent implements OnInit {
         console.log(d_temp.getMonth());
         this.dates = this.dates.concat((d_temp.getMonth()+1)+'/'+ d_temp.getDate()+'/'+d_temp.getFullYear());
       }
-      console.log(this.dates);
 
       this.chart = new Chart('canvas', {
         type: 'line',
@@ -65,11 +65,12 @@ export class StockDetailComponent implements OnInit {
           datasets: [
             {
               data: this.prices,
-              borderColor: "#66bb6a",
+              borderColor: "#00c853",
               fill: false,
               borderWidth:2,
               pointRadius:0,
-              hitRadius:5
+              hitRadius:5,
+              lineTension:0
             }
           ]
         },
@@ -98,7 +99,18 @@ export class StockDetailComponent implements OnInit {
         }
       });
 
+      if (parseFloat(this.stock[this.stock.length-1].regularmarketchange) >= 0) {
+        document.getElementById('price-change').id = 'positive';
+        this.movementsymbol = '+';
+      }
+      else {
+        document.getElementById('price-change').id = 'negative';
+        this.movementsymbol = '';
+      }
+
     });
+
+
   }
 
   bollingerBands() {
@@ -108,28 +120,34 @@ export class StockDetailComponent implements OnInit {
     if (!this.b_bands_toggle) {
     bands = this.optionTools.bollingerBands(this.prices, this.dates);
     this.b_band_dates = bands.dates;
+    this.b_band = bands;
+
     new_data = [{
         data: bands.prices,
-        borderColor: "#66bb6a",
+        borderColor: "#00c853",
         fill: false,
         borderWidth:2,
         pointRadius:0,
-        hitRadius:5
+        hitRadius:5,
+        lineTension:0
       },{
         data: bands.upper,
         borderColor: "#42a5f5",
         fill: false,
         borderWidth:2,
         pointRadius:0,
-        hitRadius:5
+        hitRadius:5,
+      lineTension:0
       },{
       data: bands.lower,
-      borderColor: "#ef5350",
+      borderColor: "#d50000",
       fill: false,
       borderWidth:2,
       pointRadius:0,
-      hitRadius:5
+      hitRadius:5,
+      lineTension:0
   }];
+
     this.b_bands_toggle = true;
     new_label = bands.dates;
     }
@@ -137,11 +155,12 @@ export class StockDetailComponent implements OnInit {
     new_data = [
       {
         data: this.prices,
-        borderColor: "#66bb6a",
+        borderColor: "#00c853",
         fill: false,
         borderWidth:2,
         pointRadius:0,
-        hitRadius:5
+        hitRadius:5,
+        lineTension:0
       }
     ];
     new_label = this.dates;
@@ -163,7 +182,7 @@ export class StockDetailComponent implements OnInit {
         datasets: [
           {
             data: this.prices,
-            borderColor: "#66bb6a",
+            borderColor: "#00c853",
             fill: false
           }
         ]
@@ -193,11 +212,37 @@ export class StockDetailComponent implements OnInit {
     let new_label ;
     if (!this.b_bands_toggle) {
       new_label = this.dates.slice(this.dates.length - 6, this.dates.length - 1);
+      this.chart.data.datasets[0].data = new_data;
     }
     else {
       new_label = this.b_band_dates.slice(this.b_band_dates.length - 6, this.b_band_dates.length - 1);
+      new_data = [{
+        data: this.b_band.prices.slice(this.b_band.prices.length-6, this.b_band.prices.length-1),
+        borderColor: "#00c853",
+        fill: false,
+        borderWidth:2,
+        pointRadius:0,
+        hitRadius:5,
+        lineTension:0
+      },{
+        data: this.b_band.upper.slice(this.b_band.prices.length-6, this.b_band.prices.length-1),
+        borderColor: "#00b0ff",
+        fill: false,
+        borderWidth:2,
+        pointRadius:0,
+        hitRadius:5,
+        lineTension:0
+      },{
+        data: this.b_band.lower.slice(this.b_band.prices.length-6, this.b_band.prices.length-1),
+        borderColor: "#d50000",
+        fill: false,
+        borderWidth:2,
+        pointRadius:0,
+        hitRadius:5,
+        lineTension:0
+      }];
+      this.chart.data.datasets = new_data;
     }
-    this.chart.data.datasets[0].data = new_data;
     this.chart.data.labels = new_label;
     this.chart.options.scales.xAxes[0].time.unit = 'day';
     this.chart.update();
@@ -205,15 +250,43 @@ export class StockDetailComponent implements OnInit {
 
 
   one_month() {
-    let new_data = this.prices.slice(this.prices.length - 21, this.prices.length - 1);
+    let new_data;
     let new_label ;
     if (!this.b_bands_toggle) {
       new_label = this.dates.slice(this.dates.length - 21, this.dates.length - 1);
+      new_data = this.prices.slice(this.prices.length - 21, this.prices.length - 1);
+      this.chart.data.datasets[0].data = new_data;
     }
     else {
       new_label = this.b_band_dates.slice(this.b_band_dates.length - 21, this.b_band_dates.length - 1);
+      new_data = [{
+        data: this.b_band.prices.slice(this.b_band.prices.length-21, this.b_band.prices.length-1),
+        borderColor: "#00c853",
+        fill: false,
+        borderWidth:2,
+        pointRadius:0,
+        hitRadius:5,
+        lineTension:0
+      },{
+        data: this.b_band.upper.slice(this.b_band.prices.length-21, this.b_band.prices.length-1),
+        borderColor: "#00b0ff",
+        fill: false,
+        borderWidth:2,
+        pointRadius:0,
+        hitRadius:5,
+        lineTension:0
+      },{
+        data: this.b_band.lower.slice(this.b_band.prices.length-21, this.b_band.prices.length-1),
+        borderColor: "#d50000",
+        fill: false,
+        borderWidth:2,
+        pointRadius:0,
+        hitRadius:5,
+        lineTension:0
+      }];
+      this.chart.data.datasets = new_data;
     }
-    this.chart.data.datasets[0].data = new_data;
+
     this.chart.data.labels = new_label;
     this.chart.options.scales.xAxes[0].time.unit = 'day';
     this.chart.update();
@@ -224,11 +297,37 @@ export class StockDetailComponent implements OnInit {
     let new_label ;
     if (!this.b_bands_toggle) {
       new_label = this.dates.slice(this.dates.length - 61, this.dates.length - 1);
+      this.chart.data.datasets[0].data = new_data;
     }
     else {
       new_label = this.b_band_dates.slice(this.b_band_dates.length - 61, this.b_band_dates.length - 1);
+      new_data = [{
+        data: this.b_band.prices.slice(this.b_band.prices.length-61, this.b_band.prices.length-1),
+        borderColor: "#00c853",
+        fill: false,
+        borderWidth:2,
+        pointRadius:0,
+        hitRadius:5,
+        lineTension:0
+      },{
+        data: this.b_band.upper.slice(this.b_band.prices.length-61, this.b_band.prices.length-1),
+        borderColor: "#00b0ff",
+        fill: false,
+        borderWidth:2,
+        pointRadius:0,
+        hitRadius:5,
+        lineTension:0
+      },{
+        data: this.b_band.lower.slice(this.b_band.prices.length-61, this.b_band.prices.length-1),
+        borderColor: "#d50000",
+        fill: false,
+        borderWidth:2,
+        pointRadius:0,
+        hitRadius:5,
+        lineTension:0
+      }];
+      this.chart.data.datasets = new_data;
     }
-    this.chart.data.datasets[0].data = new_data;
     this.chart.data.labels = new_label;
     this.chart.options.scales.xAxes[0].time.unit = 'month';
     this.chart.update();
@@ -239,11 +338,37 @@ export class StockDetailComponent implements OnInit {
     let new_label ;
     if (!this.b_bands_toggle) {
       new_label = this.dates;
+      this.chart.data.datasets[0].data = new_data;
     }
     else {
       new_label = this.b_band_dates;
+      new_data = [{
+        data: this.b_band.prices,
+        borderColor: "#00c853",
+        fill: false,
+        borderWidth:2,
+        pointRadius:0,
+        hitRadius:5,
+        lineTension:0
+      },{
+        data: this.b_band.upper,
+        borderColor: "#00b0ff",
+        fill: false,
+        borderWidth:2,
+        pointRadius:0,
+        hitRadius:5,
+        lineTension:0
+      },{
+        data: this.b_band.lower,
+        borderColor: "#d50000",
+        fill: false,
+        borderWidth:2,
+        pointRadius:0,
+        hitRadius:5,
+        lineTension:0
+      }];
+      this.chart.data.datasets = new_data;
     }
-    this.chart.data.datasets[0].data = new_data;
     this.chart.data.labels = new_label;
     this.chart.options.scales.xAxes[0].time.unit = 'month';
     this.chart.update();
@@ -255,11 +380,37 @@ export class StockDetailComponent implements OnInit {
     let new_label ;
     if (!this.b_bands_toggle) {
       new_label = this.dates;
+      this.chart.data.datasets[0].data = new_data;
     }
     else {
       new_label = this.b_band_dates;
+      new_data = [{
+        data: this.b_band.prices,
+        borderColor: "#00c853",
+        fill: false,
+        borderWidth:2,
+        pointRadius:0,
+        hitRadius:5,
+        lineTension:0
+      },{
+        data: this.b_band.upper,
+        borderColor: "#00b0ff",
+        fill: false,
+        borderWidth:2,
+        pointRadius:0,
+        hitRadius:5,
+        lineTension:0
+      },{
+        data: this.b_band.lower,
+        borderColor: "#d50000",
+        fill: false,
+        borderWidth:2,
+        pointRadius:0,
+        hitRadius:5,
+        lineTension:0
+      }];
+      this.chart.data.datasets = new_data;
     }
-    this.chart.data.datasets[0].data = new_data;
     this.chart.data.labels = new_label;
     this.chart.options.scales.xAxes[0].time.unit = 'month';
     this.chart.update();
@@ -270,11 +421,37 @@ export class StockDetailComponent implements OnInit {
     let new_label ;
     if (!this.b_bands_toggle) {
       new_label = this.dates;
+      this.chart.data.datasets[0].data = new_data;
     }
     else {
       new_label = this.b_band_dates;
+      new_data = [{
+        data: this.b_band.prices,
+        borderColor: "#00c853",
+        fill: false,
+        borderWidth:2,
+        pointRadius:0,
+        hitRadius:5,
+        lineTension:0
+      },{
+        data: this.b_band.upper,
+        borderColor: "#00b0ff",
+        fill: false,
+        borderWidth:2,
+        pointRadius:0,
+        hitRadius:5,
+        lineTension:0
+      },{
+        data: this.b_band.lower,
+        borderColor: "#d50000",
+        fill: false,
+        borderWidth:2,
+        pointRadius:0,
+        hitRadius:5,
+        lineTension:0
+      }];
+      this.chart.data.datasets = new_data;
     }
-    this.chart.data.datasets[0].data = new_data;
     this.chart.data.labels = new_label;
     this.chart.options.scales.xAxes[0].time.unit = 'month';
     this.chart.update();

@@ -86,7 +86,7 @@ export class OptionsComponent implements OnInit {
 
   getOption(ticker:string, strike:string, expiry: string, event=null): void {
     if (event==null || event.keyCode==13) {
-      if (ticker in this.formatted_tickers && (expiry=='' || strike=='')) {
+      if (ticker.toUpperCase() in this.formatted_tickers && (expiry=='' || strike=='')) {
         this.router.navigate([`/research/stocks/${ticker}`]);
       }
       this.flag = true;

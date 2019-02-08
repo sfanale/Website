@@ -10,7 +10,7 @@
           <li><a class="blue-grey-text text-darken-3" routerLink="/research">Research</a></li>
           <li><a class="blue-grey-text text-darken-3" routerLink="/models">Model</a></li>
           <li><a class="blue-grey-text text-darken-3" routerLink="/trade">Trade</a></li>
-          <li *ngIf="users!=null; else elseblock"><a class="blue-grey-text text-darken-3" routerLink="/account">Account</a></li>
+          <li *ngIf="currentUser!=null; else elseblock"><a class="blue-grey-text text-darken-3" routerLink="/account">Account</a></li>
           <ng-template #elseblock>
             <li><a class="blue-grey-text text-darken-3" routerLink="/login">Login</a> </li>
             <li><a id="register" class="blue-grey-text text-darken-3 btn-large" routerLink="/register">Register</a> </li>
@@ -25,7 +25,7 @@
       <li><a class="sidenav-close" routerLink="/research">Research</a></li>
       <li><a class="sidenav-close" routerLink="/models" >Models</a></li>
       <li><a class="sidenav-close" routerLink="/trade">Trade</a> </li>
-      <li *ngIf="users!=null; else elseblock2"><a class="sidenav-close" routerLink="/account">Account</a> </li>
+      <li *ngIf="currentUser!=null; else elseblock2"><a class="sidenav-close" routerLink="/account">Account</a> </li>
       <ng-template #elseblock2>
         <li><a class="sidenav-close" routerLink="/login">Login</a> </li>
         <li><a id="register2" class="sidenav-close btn-large" routerLink="/register">Register</a> </li>

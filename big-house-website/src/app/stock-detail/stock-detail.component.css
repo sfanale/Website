@@ -14,10 +14,25 @@ a{
   color:black;
 }
 
+.strike-dates{
+  overflow-x:scroll;
+  width:100%;
+  display:inline-flex;
+}
+
 #positive{
   color: #00c853;
 }
 
 #negative{
-  color: #d50000;
+  color: #f44336;
+}
+
+.table-div {
+  height: 500px;
+  overflow-y: scroll;
+}
+
+.strikes{
+ width: 150px;
 }

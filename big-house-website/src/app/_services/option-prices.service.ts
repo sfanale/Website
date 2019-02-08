@@ -19,10 +19,13 @@ const httpOptions = {
 })
 export class OptionPricesService {
 
-  private optionsurl = 'http://data.fanaleresearch.com/api/options';  // url to local options endpoint
-  private stocksurl = 'http://data.fanaleresearch.com/api/quotes';  // url to local options endpoint
+  private optionsurl = 'https://5jpmbqgr8j.execute-api.us-east-1.amazonaws.com/1/options';  // url to local options endpoint
+  private stocksurl = 'https://5jpmbqgr8j.execute-api.us-east-1.amazonaws.com/1/stocks';  // url to local options endpoint
 
-
+  httpOptions = {
+    headers: new HttpHeaders({ 'Response-Type': 'application/json',
+      'Access-Control-Allow-Origin':'*'})
+  };
 
   constructor(
     private http: HttpClient,
@@ -31,7 +34,8 @@ export class OptionPricesService {
 
 
   getStock (ticker:string): Observable<Stock[]> {
-    const url = `${this.stocksurl}/${ticker}`;
+    console.log(ticker);
+    const url = `${this.stocksurl}?operation=read_list&operand1=${ticker}`;
     return this.http.get<Stock[]>(url).pipe( tap(_=> this.log('fetched stock info')),
       catchError(this.handleError('getStock', []))
     );
@@ -39,7 +43,7 @@ export class OptionPricesService {
 
 
   getOption (ticker:string, strike:string, expiry:string):Observable<Option[]>  {
-    const url = `${this.optionsurl}/${ticker}&${strike}&${expiry}`;
+    const url = `${this.optionsurl}?operation=read_list&operand1=${ticker}:${strike}:${expiry}`;
     return this.http.get<Option[]>(url)
       .pipe(
         tap(_ => this.log('fetched prices')),
@@ -48,7 +52,7 @@ export class OptionPricesService {
   }
 
   getContract (contractsymbol:string):Observable<Option[]> {
-    const url = `${this.optionsurl}/detail/${contractsymbol}`;
+    const url = `${this.optionsurl}?operation=read_one_symbol&operand1=${contractsymbol}`;
     return this.http.get<Option[]>(url)
       .pipe(
         tap(_ => this.log('fetched contract details')),
@@ -57,7 +61,7 @@ export class OptionPricesService {
   }
 
   getAllTickers(): Observable<Tickers[]> {
-    const url = `${this.optionsurl}/getAllTickers`;
+    const url = `${this.optionsurl}?operation=get_all_tickers&operand1=null`;
     return this.http.get<Tickers[]>(url).pipe(
       tap(_ => this.log('fetched tickers')),
       catchError(this.handleError('getAllTickers', []))
@@ -65,7 +69,7 @@ export class OptionPricesService {
   }
 
   getMovers(direction:string): Observable<Stock[]> {
-    const url = `${this.stocksurl}/movers/${direction}`;
+    const url = `${this.stocksurl}?operation=movers&operand1=${direction}`;
     return this.http.get<Stock[]>(url).pipe( tap(_=> this.log('fetched stock info')),
       catchError(this.handleError('getStock', []))
     );

@@ -12,42 +12,41 @@ export var loggedInUser;
 })
 export class UserService {
 
-  private usersUrl = 'http://users.fanaleresearch.com';
+  private usersUrl = 'https://5jpmbqgr8j.execute-api.us-east-1.amazonaws.com/1/users';
 
 
   constructor(
     private http: HttpClient
   ) { }
 
-
+  /*
   login(body) {
     const url = `${this.usersUrl}/users/authenticate`;
     console.log(body);
     return this.http.post(url, body).subscribe();
   }
+  */
 
 
 
   getUserInfo(token:string): Observable<User> {
-    const url =  `${this.usersUrl}/getinfo`;
+    const url =  `${this.usersUrl}?operation=user_info&info=null`;
     let httpOptions = {
-      headers: new HttpHeaders({ 'Response-Type': 'application/json', "Authorization": `Bearer ${token}`,
-        'Access-Control-Allow-Origin':'*'})
+      headers: new HttpHeaders({"Authorization": `${token}`})
     };
     return this.http.get<User>(url, httpOptions);
   }
 
   getUserInfo_by_username(username:string): Observable<User> {
-    const url =  `${this.usersUrl}/getinfo_by_name/${username}`;
+    const url =  `${this.usersUrl}?operation=user_info_name&info=${username}`;
     return this.http.get<User>(url);
   }
 
   get_message_groups(token:string): Observable<MessageGroup[]> {
     const url =  `${this.usersUrl}/messages/get_groups`;
     let httpOptions = {
-      headers: new HttpHeaders({ 'Response-Type': 'application/json', "Authorization": `Bearer ${token}`,
-        'Access-Control-Allow-Origin':'*'})
-    };
+      headers: new HttpHeaders({"Authorization": `Bearer ${token}`})
+  };
 
     return this.http.get<MessageGroup[]>(url, httpOptions);
   }
@@ -78,7 +77,7 @@ export class UserService {
       headers: new HttpHeaders({ 'Response-Type': 'application/json',
         'Access-Control-Allow-Origin':'*'})
     };
-    return this.http.post(`${this.usersUrl}/users/create`, user, httpOptions);
+    return this.http.post(`${this.usersUrl}?operation=create_user&info=null`, user);
   }
 
   update(user: User) {

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -15,7 +15,7 @@ export class AuthenticationService {
     this.currentUser = this.currentUserSubject.asObservable();
   }
 
-  private usersURL = 'http://users.fanaleresearch.com';
+  private usersURL = 'https://5jpmbqgr8j.execute-api.us-east-1.amazonaws.com/1/users';
 
   public get currentUserValue(): User {
     return this.currentUserSubject.value;
@@ -23,9 +23,12 @@ export class AuthenticationService {
 
   login(username: string, password: string) {
     console.log(username);
-    const url = `${this.usersURL}/users/authenticate`;
+    const url = `${this.usersURL}?operation=auth&info=null`;
     console.log(url);
     let body = {"username": username, "password":password};
+    let options = {
+      headers: new HttpHeaders({ 'Response-Type': 'application/json','ok':'true'})
+    };
     return this.http.post<any>(url, body)
       .pipe(map(user => {
         // login successful if there's a jwt token in the response

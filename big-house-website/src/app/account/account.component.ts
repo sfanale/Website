@@ -40,6 +40,8 @@ export class AccountComponent implements OnInit{
 
   getUserInfo(token:string) {
     this.userService.getUserInfo(token).subscribe( data => {
+      console.log('response');
+      console.log(data);
       this.user = data;
     }, (e)=>console.log(e))
       //()=>this.parse_holdings());

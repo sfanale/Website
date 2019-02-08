@@ -6,6 +6,7 @@ import {ActivatedRoute} from "@angular/router";
 import {optionstools} from "../options-tools";
 import {Chart} from 'chart.js';
 import {NewsService} from "../_services/news.service";
+import {Option} from "../option";
 
 
 @Component({
@@ -24,6 +25,12 @@ export class StockDetailComponent implements OnInit {
   b_band_dates;
   b_band;
   movementsymbol='';
+  options: Option[];
+  strike_dates_prices = {};
+  strike_dates;
+  options_to_show_calls={};
+  options_to_show_puts={};
+  selected_date;
 
 
   constructor(
@@ -45,8 +52,40 @@ export class StockDetailComponent implements OnInit {
     });
   }
 
+
+  show_options(date:string){
+    this.selected_date = date;
+    for (let contract of this.options) {
+      if (contract.expiration == date) {
+        if (contract.optiontype == 'call') {
+          this.options_to_show_calls[contract.strike]= contract;
+        }
+        else{
+          this.options_to_show_puts[contract.strike]= contract;
+        }
+      }
+    }
+    console.log(this.options_to_show_puts);
+  }
+
   getStockDetails() {
     const sym = this.route.snapshot.paramMap.get('sym');
+    let d = (new Date().getTime() / 1000).toString();
+    this.optionPricesService.getOption(sym,'',d).subscribe( data=> {
+      this.options = data;
+      console.log(data);
+      for (let contract of data) {
+        if (contract.expiration in this.strike_dates_prices) {
+          this.strike_dates_prices[contract.expiration].add(contract.strike);
+        }
+        else {
+          this.strike_dates_prices[contract.expiration] = new Set([contract.strike]);
+        }
+      }
+      this.strike_dates = Object.keys(this.strike_dates_prices);
+      this.show_options(this.strike_dates[0]);
+    });
+
     this.optionPricesService.getStock(sym).subscribe( data => {
       this.stock = data;
 

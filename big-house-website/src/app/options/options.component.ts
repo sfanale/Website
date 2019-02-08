@@ -61,19 +61,20 @@ export class OptionsComponent implements OnInit {
     this.getNews();
     let data= {};
 
-      this.optionPriceService.getAllTickers().subscribe(data=> {
-      this.tickers = data;
-      console.log(data);
-      let formated_data={};
-      for (let i of data) {
+    this.optionPriceService.getAllTickers().subscribe(data=> {
+    this.tickers = data;
+    console.log(data);
+    let formated_data={};
+    for (let i of data) {
 
-        formated_data[`${i['underlyingsymbol']}`] = null;
-      }
-      this.formatted_tickers = formated_data;
-      console.log(formated_data);
-      var elems = document.querySelectorAll('.autocomplete');
-      var autocomp = M.Autocomplete.init(elems, {data:formated_data});
+      formated_data[`${i['underlyingsymbol']}`] = null;
+    }
+    this.formatted_tickers = formated_data;
+    console.log(formated_data);
+    var elems = document.querySelectorAll('.autocomplete');
+    var autocomp = M.Autocomplete.init(elems, {data:formated_data});
     });
+
     setTimeout(function() {
         var elems = document.querySelectorAll('.carousel');
         let options = {};
@@ -142,15 +143,15 @@ export class OptionsComponent implements OnInit {
         this.options = data;
         for (let contract of data) {
           if (contract.expiration in this.strike_dates_prices) {
-            this.strike_dates_prices[contract.expiration] = this.strike_dates_prices[contract.expiration].concat(contract.strike);
+            this.strike_dates_prices[contract.expiration].add(contract.strike);
           }
           else {
-            this.strike_dates_prices[contract.expiration] = [contract.strike];
+            this.strike_dates_prices[contract.expiration] = new Set([contract.strike]);
           }
         }
         this.strike_dates = Object.keys(this.strike_dates_prices);
 
-        console.log(this.strike_dates_prices);
+        this.show_options(this.strike_dates[0]);
 
       });
 

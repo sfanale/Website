@@ -25,6 +25,7 @@ export class AppComponent implements OnInit{
   ) {
     this.currentUserSubscription = this.authenticationService.currentUser.subscribe(user => {
       this.currentUser = user;
+      console.log('Uer');
       console.log(user);
     });
   }

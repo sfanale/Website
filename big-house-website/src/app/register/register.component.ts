@@ -33,7 +33,7 @@ export class RegisterComponent implements OnInit {
       email: ['', Validators.required],
       username: ['', Validators.required],
       password: ['', [Validators.required, Validators.minLength(6)]],
-      a: ['', [Validators.required, Validators.minLength(6)]]
+      accounttype: ['']
     });
   }
 
@@ -54,14 +54,15 @@ export class RegisterComponent implements OnInit {
       .subscribe(
         data => {
           this.alertService.success('Registration successful', true);
+          if (this.f.accounttype.value == 'premium') {
+            this.router.navigate(['/account/subscription']);
+          }
           this.router.navigate(['/login']);
         },
         error => {
           this.alertService.error(error);
           this.loading = false;
         });
-    if (f.accounttype == 'premium') {
 
-    }
   }
 }

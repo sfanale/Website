@@ -21,6 +21,7 @@ import {UserDetailComponent} from "./user-detail/user-detail.component";
 import {AuthGuard} from "./_guards";
 import {RegisterComponent} from "./register/register.component";
 import {LoginComponent} from "./login/login.component";
+import {SubscriptionComponent} from "./subscription/subscription.component";
 
 const routes : Routes = [
   {path: 'about', component: DashboardComponent},
@@ -43,7 +44,8 @@ const routes : Routes = [
   {path: 'inbox/:id', component:MessageDetailComponent, canActivate: [AuthGuard]},
   {path: 'user/:username', component: UserDetailComponent},
   {path: 'register', component:RegisterComponent},
-  {path: 'login', component:LoginComponent}
+  {path: 'login', component:LoginComponent},
+  {path: 'account/subscription', component: SubscriptionComponent}
 
 ];
 

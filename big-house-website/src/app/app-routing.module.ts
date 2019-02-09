@@ -23,12 +23,13 @@ import {RegisterComponent} from "./register/register.component";
 import {LoginComponent} from "./login/login.component";
 
 const routes : Routes = [
-  {path: '', component: DashboardComponent},
+  {path: 'about', component: DashboardComponent},
   //{path: 'trade/:id', component: TradeComponent},
   {path: 'trade', component: TradeComponent},
   {path: 'account',component:AccountComponent , canActivate: [AuthGuard]},
   {path: 'explore', component:ResearchComponent},
   {path: 'research', component:OptionsComponent},
+  {path: '', component:OptionsComponent},
   {path: 'research/options/:sym', component: OptionDetailComponent},
   {path: 'models', component: ModelsComponent},
   {path: 'research/stocks/:sym', component:StockDetailComponent},

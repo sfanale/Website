@@ -1,12 +1,16 @@
 
+
 <!-- <div class="outer-page grey lighten-4 show-on-medium-and-up"> -->
   <div class="row">
   <div class="wrapper col s12 m10 push-m1">
     <nav class="nav-extended white lighten-5" >
-        <a routerLink="" class="brand-logo blue-grey-text text-darken-3">Fanale Research</a>
+        <a routerLink="about" class="brand-logo blue-grey-text text-darken-3">Fanale Research</a>
         <a href="#" data-target="mobile-demo" class="sidenav-trigger blue-grey-text text-darken-3 right"><i class="material-icons">menu</i></a>
         <ul id="nav-mobile" class="right hide-on-med-and-down blue-grey-text text-darken-3">
-          <li><a routerLink=""><i class="material-icons left blue-grey-text text-darken-3 active">home</i></a></li>
+          <li *ngIf="currentUser==null; else elseblock3"><a routerLink=""><i class="material-icons left blue-grey-text text-darken-3 active">home</i></a></li>
+          <ng-template #elseblock3>
+            <li><a routerLink="explore"><i class="material-icons left blue-grey-text text-darken-3 active">home</i></a></li>
+          </ng-template>
           <li><a class="blue-grey-text text-darken-3" routerLink="/research">Research</a></li>
           <li><a class="blue-grey-text text-darken-3" routerLink="/models">Model</a></li>
           <li><a class="blue-grey-text text-darken-3" routerLink="/trade">Trade</a></li>
@@ -21,7 +25,10 @@
 
 
     <ul class="sidenav" id="mobile-demo">
-      <li><a class="sidenav-close" routerLink="">Home</a> </li>
+      <li *ngIf="currentUser==null; else elseblock4"><a class="sidenav-close" routerLink="">Home</a> </li>
+      <ng-template #elseblock4>
+        <li><a routerLink="explore"><i class="material-icons left blue-grey-text text-darken-3 active">home</i></a></li>
+      </ng-template>
       <li><a class="sidenav-close" routerLink="/research">Research</a></li>
       <li><a class="sidenav-close" routerLink="/models" >Models</a></li>
       <li><a class="sidenav-close" routerLink="/trade">Trade</a> </li>
@@ -53,6 +60,7 @@
         <div class="col l4 offset-l2 s12">
           <h5 class="white-text">Helpful Links</h5>
           <ul>
+            <li><a class="grey-text text-lighten-3" routerLink="about">About</a></li>
             <li><a class="grey-text text-lighten-3" href="http://data.fanaleresearch.com">My Data</a></li>
           </ul>
         </div>

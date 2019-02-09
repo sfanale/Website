@@ -32,7 +32,8 @@ export class RegisterComponent implements OnInit {
       lastname: ['', Validators.required],
       email: ['', Validators.required],
       username: ['', Validators.required],
-      password: ['', [Validators.required, Validators.minLength(6)]]
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      a: ['', [Validators.required, Validators.minLength(6)]]
     });
   }
 
@@ -59,5 +60,8 @@ export class RegisterComponent implements OnInit {
           this.alertService.error(error);
           this.loading = false;
         });
+    if (f.accounttype == 'premium') {
+
+    }
   }
 }

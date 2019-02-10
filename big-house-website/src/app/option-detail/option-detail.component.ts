@@ -7,6 +7,7 @@ import {Option} from "../option";
 import {optionstools} from "../options-tools";
 import {Stock} from "../stock";
 import {NewsService} from "../_services/news.service";
+import {Title} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-option-detail',
@@ -21,14 +22,15 @@ export class OptionDetailComponent implements OnInit {
     private optionPricesService: OptionPricesService,
     private route: ActivatedRoute,
     private optionTools: optionstools,
-    private newsService: NewsService
+    private newsService: NewsService,
+    private titleService: Title
   ) { }
 
   ngOnInit() {
     this.getOptionDetails();
     this.getStockDetails();
     this.getNews();
-
+    this.setTitle();
   }
 
   option: Option[];
@@ -53,6 +55,11 @@ export class OptionDetailComponent implements OnInit {
     this.newsService.get_news(sym).subscribe(data=>{
       this.news=data.articles.slice(0,5);
     });
+  }
+
+  setTitle( ) {
+    let sym =this.route.snapshot.paramMap.get('sym');
+    this.titleService.setTitle(sym);
   }
 
   getOptionDetails(): void {

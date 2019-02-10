@@ -136,27 +136,12 @@
     <div class="row">
       <div class="col s12 m8 push-m2">
         <h4>Popular Groups</h4>
-        <div class="chip">
-          chip
+        <div class="chip"  *ngFor="let i of industries">
+          {{i}}
         </div>
-        <div class="chip">
-          chip
-        </div>
-        <div class="chip">
-          chip
-        </div>
-        <div class="chip">
-          chip
-        </div>
-        <div class="chip">
-          chip
-        </div>
-        <div class="chip">
-          chip
-        </div>
-        <div class="chip">
-          chip
-        </div>
+          <div class="chip" *ngFor="let i of sectors">
+            {{i}}
+          </div>
       </div>
     </div>
 

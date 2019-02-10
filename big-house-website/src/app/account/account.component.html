@@ -1,5 +1,25 @@
 <div class="container">
   <div class="row">
+    <div class="col m3 s4 push-m9 push-s6">
+      <button class="btn waves-effect waves-light" (click)="logout()">Log Out</button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col m3 s3">
+      <button routerLink="/inbox" class="btn waves-effect waves-light">Inbox</button>
+    </div>
+    <div class="col m3 s3">
+      <button routerLink="/explore" class="btn waves-effect waves-light">Explore</button>
+    </div>
+    <div class="col m3 s3">
+      <button routerLink="/user/{{user.username}}" class="btn waves-effect waves-light">My Profile</button>
+    </div>
+    <div class="col m3 s3">
+      <button routerLink="/account/subscription" class="btn waves-effect waves-light">Manage Account</button>
+    </div>
+  </div>
+
+  <div class="row">
     <div class="col push-s3 s6">
       <div class="card">
         <p>{{user.id}}<br>
@@ -7,10 +27,16 @@
           {{user.lastname}}<br>
           {{user.admin}}<br>
           {{user.email}}<br>
+          {{user.premium}}
+        </p>
+        <p *ngIf="user.premium">
+          https://5jpmbqgr8j.execute-api.us-east-1.amazonaws.com/1/options?operation=read_one_all&operand1=AAPL
         </p>
       </div>
     </div>
   </div>
+
+
 
   <div class="row">
     <div class="col s12 m8 push-m2">
@@ -21,32 +47,8 @@
   </div>
 
 
-  <div class="row">
-    <form  ngNoForm action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-      <input type="hidden" name="cmd" value="_s-xclick">
-      <input type="hidden" name="hosted_button_id" value="5A9QCCD2KQSLQ">
-      <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_subscribeCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-      <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-    </form>
-  </div>
+
+</div>
 
 
-
-  <div class="row">
-      <div class="col m2 s4">
-        <button class="btn waves-effect waves-light" (click)="logout()">Log Out</button>
-      </div>
-  </div>
-    <div class="row">
-      <div class="col m4 s4">
-        <button routerLink="/inbox" class="btn waves-effect waves-light">Inbox</button>
-      </div>
-      <div class="col m4 s4">
-        <button routerLink="/explore" class="btn waves-effect waves-light">Explore</button>
-      </div>
-      <div class="col m4 s4">
-        <button routerLink="/user/{{user.username}}" class="btn waves-effect waves-light">My Profile</button>
-      </div>
-    </div>
-  </div>
 

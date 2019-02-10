@@ -32,7 +32,7 @@ const routes : Routes = [
   {path: 'research', component:OptionsComponent},
   {path: '', component:OptionsComponent},
   {path: 'research/options/:sym', component: OptionDetailComponent},
-  {path: 'models', component: ModelsComponent},
+  {path: 'models', component: ModelsComponent, canActivate: [AuthGuard]},
   {path: 'research/stocks/:sym', component:StockDetailComponent},
   {path: 'insights', component:InsightsComponent},
   {path: 'insights/create', component:InsightsCreateComponent},
@@ -45,7 +45,7 @@ const routes : Routes = [
   {path: 'user/:username', component: UserDetailComponent},
   {path: 'register', component:RegisterComponent},
   {path: 'login', component:LoginComponent},
-  {path: 'account/subscription', component: SubscriptionComponent}
+  {path: 'account/subscription', component: SubscriptionComponent,  canActivate: [AuthGuard]}
 
 ];
 

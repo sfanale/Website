@@ -42,6 +42,8 @@ export class OptionsComponent implements OnInit {
   options_to_show_calls={};
   options_to_show_puts={};
   selected_date;
+  industries;
+  sectors;
 
   constructor(
     private optionPriceService: OptionPricesService,
@@ -75,12 +77,8 @@ export class OptionsComponent implements OnInit {
     var autocomp = M.Autocomplete.init(elems, {data:formated_data});
     });
 
-    setTimeout(function() {
-        var elems = document.querySelectorAll('.carousel');
-        let options = {};
-        var instances = M.Carousel.init(elems, options);
-      }
-    ,1000 );
+    this.getIndustries();
+    this.getSectors();
   }
 
   getNews(){
@@ -89,6 +87,17 @@ export class OptionsComponent implements OnInit {
     });
   }
 
+  getIndustries() {
+    this.optionPriceService.getIndustries().subscribe(data =>{
+      this.industries = data.slice(10,25);
+    })
+  }
+
+  getSectors() {
+    this.optionPriceService.getSectors().subscribe(data =>{
+      this.sectors = data;
+    })
+  }
 
   getMovers() {
     this.optionPriceService.getMovers('up').subscribe(data=> {

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Directive, OnInit} from '@angular/core';
 import { Stock} from "../stock";
 import {Location} from "@angular/common";
 import {OptionPricesService} from "../_services/option-prices.service";
@@ -7,6 +7,7 @@ import {optionstools} from "../options-tools";
 import {Chart} from 'chart.js';
 import {NewsService} from "../_services/news.service";
 import {Option} from "../option";
+import {Title} from "@angular/platform-browser";
 
 
 @Component({
@@ -38,18 +39,27 @@ export class StockDetailComponent implements OnInit {
     private optionPricesService: OptionPricesService,
     private route: ActivatedRoute,
     private optionTools: optionstools,
-    private newsService: NewsService
+    private newsService: NewsService,
+    private titleService: Title
   ) { }
 
   ngOnInit() {
     this.getStockDetails();
     this.getNews();
+    this.setTitle();
   }
+
+
 
   getNews(){
     this.newsService.get_news(this.route.snapshot.paramMap.get('sym')).subscribe(data=>{
       this.news=data.articles.slice(0,5);
     });
+  }
+
+  setTitle( ) {
+    let sym =this.route.snapshot.paramMap.get('sym');
+    this.titleService.setTitle(sym);
   }
 
 

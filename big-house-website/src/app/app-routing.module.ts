@@ -22,15 +22,15 @@ import {AuthGuard} from "./_guards";
 import {RegisterComponent} from "./register/register.component";
 import {LoginComponent} from "./login/login.component";
 import {SubscriptionComponent} from "./subscription/subscription.component";
+import {DataAPIinfoComponent} from "./data-apiinfo/data-apiinfo.component"
 
 const routes : Routes = [
-  {path: 'about', component: DashboardComponent},
+  {path: '', component: DashboardComponent},
   //{path: 'trade/:id', component: TradeComponent},
   {path: 'trade', component: TradeComponent},
   {path: 'account',component:AccountComponent , canActivate: [AuthGuard]},
   {path: 'explore', component:ResearchComponent},
   {path: 'research', component:OptionsComponent},
-  {path: '', component:OptionsComponent},
   {path: 'research/options/:sym', component: OptionDetailComponent},
   {path: 'models', component: ModelsComponent, canActivate: [AuthGuard]},
   {path: 'research/stocks/:sym', component:StockDetailComponent},
@@ -45,7 +45,8 @@ const routes : Routes = [
   {path: 'user/:username', component: UserDetailComponent},
   {path: 'register', component:RegisterComponent},
   {path: 'login', component:LoginComponent},
-  {path: 'account/subscription', component: SubscriptionComponent,  canActivate: [AuthGuard]}
+  {path: 'account/subscription', component: SubscriptionComponent,  canActivate: [AuthGuard]},
+  {path: 'data', component: DataAPIinfoComponent}
 
 ];
 

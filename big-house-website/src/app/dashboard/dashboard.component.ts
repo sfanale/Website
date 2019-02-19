@@ -3,7 +3,8 @@ import { InsightBlog } from "../insight.blog";
 import { InsightsService } from "../_services/insights.service";
 import * as M from '../../../node_modules/materialize-css/dist/js/materialize.min.js';
 import {AuthenticationService} from "../_services/authentication.service";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
+import {Title} from "@angular/platform-browser";
 
 
 @Component({
@@ -19,6 +20,8 @@ export class DashboardComponent implements OnInit {
     private insightsService: InsightsService,
     private authService: AuthenticationService,
     private router: Router,
+    private route: ActivatedRoute,
+    private titleService: Title
   ) { }
 
   ngOnInit() {
@@ -31,11 +34,18 @@ export class DashboardComponent implements OnInit {
     let elems3 = document.querySelectorAll(".med-slider");
     let options3 = { indicators: false, height: 523 };
     let instances3 = M.Slider.init(elems3, options3);
+    this.setTitle();
     this.getBlog();
     if (this.authService.currentUserValue) {
       this.router.navigate(['/explore']);
     }
 
+
+  }
+
+  setTitle( ) {
+    let sym =this.route.snapshot.paramMap.get('sym');
+    this.titleService.setTitle(sym);
   }
 
   getBlog() {

@@ -1,0 +1,266 @@
+<div class="col s12 m8 push-m2">
+  <div class="row">
+    <h3>Historical Options Data by Fanale Research Group</h3>
+    <blockquote>
+      My primary goal for this project is get historical options data into the hands of fellow Quant enthusiasts as
+      cheaply as possible.<br>
+      -Stephen Fanale, Founder
+    </blockquote>
+    <p> We proudly offer one of the most robust historical option data APIs available on the internet, at the most
+      reasonable price possible. All of our technology was built for the cloud. This allows us to offer highly available,
+      highly scalable services at the lowest possible cost. With our server-less api approach, we can get, store, and
+      deliver data to you quickly and easily. This page will go into detail about the types of requests you can make from
+      our API.<br><br>
+      The first step in gaining access to this data is to <a routerLink="/register">set up an account and subscribe.</a>
+      You will get a confirmation email with instructions on making the most of our API offering. If you already have
+      an account, log in and navigate to your <a routerLink="account/subscription">Subscription Management.</a>
+    </p>
+    <h4>Key Metrics</h4>
+    <ul>
+      <li>Over 6000 supported US tickers, including stocks and common ETFs</li>
+      <li>Over 10,000,000 daily close prices</li>
+      <li>Intraday prices for Top 100 tickers (15 minutes but higher frequency coming!)</li>
+      <li>Supporting information such as Open interest, volume, bid, ask, industry, sector, and implied volatility</li>
+      <li>Prices and extensive supporting information of underlying assets</li>
+      <li>Includes Fanale Research Premium membership</li>
+      <li>More features coming!</li>
+    </ul>
+  </div>
+
+  <div class="row">
+    <h4>API Documentation</h4>
+    <h5>Making Requests</h5>
+    <ul>
+      <li>Python</li>
+      <li>Javascript</li>
+      <li>Java</li>
+      <li>Curl</li>
+    </ul>
+    <h5>Options</h5>
+    <ul>
+      <li>Get Single Contract</li>
+      <li>Get All Contracts by Underlying Ticker</li>
+      <li>Get Contracts by Underlying Ticker, Expiration Date, and/or Strike</li>
+      <li>Get Contracts by Industry</li>
+      <li>Get Contracts by Sector</li>
+      <li>Get All Available Contracts</li>
+    </ul>
+    <h5>Stocks</h5>
+    <ul>
+      <li>Get Single Stock</li>
+      <li>Get Daily Top Movers</li>
+      <li>Get Industries</li>
+      <li>Get Sectors</li>
+      <li>Get Stocks by Industry</li>
+      <li>Get Stocks by Sector</li>
+      <li>Get All Available Tickers</li>
+    </ul>
+  </div>
+
+
+  <h5>Python</h5>
+  <p>r=requests.get("https://data.fanaleresearch.com/options?operation=()&operand1=()", headers=&#123;"Authorization": your_token&#125;)</p>
+  <h5>Typescript</h5>
+  <p>0</p>
+  <h5>Java</h5>
+  <p>0</p>
+  <h5>Curl</h5>
+  <p>0</p>
+
+
+  <h5>Get Single Contract</h5>
+  <strong>Endpoint:</strong>/options/?operation=read_list&operand1=ticker:strike:expiry<br>
+  <strong>Inputs:</strong>
+  <ul>
+    <li>ticker(required) - underlying ticker</li>
+    <li>strike (optional) -Strike price to match</li>
+    <li>expiry - minimum expiration date</li>
+  </ul>
+  <strong>Outputs:</strong>
+  <ul>
+    <li>
+      hi
+    </li>
+  </ul>
+
+  <h5>Get All Contracts by Underlying Ticker</h5>
+  <strong>Endpoint:</strong>/options/?operation=read_list&operand1=ticker:strike:expiry<br>
+  <strong>Inputs:</strong>
+  <ul>
+    <li>ticker(required) - underlying ticker</li>
+    <li>strike (optional) -Strike price to match</li>
+    <li>expiry - minimum expiration date</li>
+  </ul>
+  <strong>Outputs:</strong>
+  <ul>
+    <li>
+      hi
+    </li>
+  </ul>
+
+  <h5>Get Contracts by Underlying Ticker, Expiration Date, and/or Strike</h5>
+  <strong>Endpoint:</strong>/options/?operation=read_list&operand1=ticker:strike:expiry<br>
+  <strong>Inputs:</strong>
+  <ul>
+    <li>ticker(required) - underlying ticker</li>
+    <li>strike (optional) -Strike price to match</li>
+    <li>expiry - minimum expiration date</li>
+  </ul>
+  <strong>Outputs:</strong>
+  <ul>
+    <li>
+      hi
+    </li>
+  </ul>
+
+  <h5>Get Contracts by Industry</h5>
+  <strong>Endpoint:</strong>/options/?operation=read_list&operand1=ticker:strike:expiry<br>
+  <strong>Inputs:</strong>
+  <ul>
+    <li>ticker(required) - underlying ticker</li>
+    <li>strike (optional) -Strike price to match</li>
+    <li>expiry - minimum expiration date</li>
+  </ul>
+  <strong>Outputs:</strong>
+  <ul>
+    <li>
+      hi
+    </li>
+  </ul>
+
+  <h5>Get Contracts by Sector</h5>
+  <strong>Endpoint:</strong>/options/?operation=read_list&operand1=ticker:strike:expiry<br>
+  <strong>Inputs:</strong>
+  <ul>
+    <li>ticker(required) - underlying ticker</li>
+    <li>strike (optional) -Strike price to match</li>
+    <li>expiry - minimum expiration date</li>
+  </ul>
+  <strong>Outputs:</strong>
+  <ul>
+    <li>
+      hi
+    </li>
+  </ul>
+
+  <h5>Get All Available Contracts</h5>
+  <strong>Endpoint:</strong>/options/?operation=read_list&operand1=ticker:strike:expiry<br>
+  <strong>Inputs:</strong>
+  <ul>
+    <li>ticker(required) - underlying ticker</li>
+    <li>strike (optional) -Strike price to match</li>
+    <li>expiry - minimum expiration date</li>
+  </ul>
+  <strong>Outputs:</strong>
+  <ul>
+    <li>
+      hi
+    </li>
+  </ul>
+
+  <h5>Get Single Stock</h5>
+  <strong>Endpoint:</strong>/options/?operation=read_list&operand1=ticker:strike:expiry<br>
+  <strong>Inputs:</strong>
+  <ul>
+    <li>ticker(required) - underlying ticker</li>
+    <li>strike (optional) -Strike price to match</li>
+    <li>expiry - minimum expiration date</li>
+  </ul>
+  <strong>Outputs:</strong>
+  <ul>
+    <li>
+      hi
+    </li>
+  </ul>
+
+  <h5>Get Daily Top Movers</h5>
+  <strong>Endpoint:</strong>/options/?operation=read_list&operand1=ticker:strike:expiry<br>
+  <strong>Inputs:</strong>
+  <ul>
+    <li>ticker(required) - underlying ticker</li>
+    <li>strike (optional) -Strike price to match</li>
+    <li>expiry - minimum expiration date</li>
+  </ul>
+  <strong>Outputs:</strong>
+  <ul>
+    <li>
+      hi
+    </li>
+  </ul>
+
+  <h5>Get Industries</h5>
+  <strong>Endpoint:</strong>/options/?operation=read_list&operand1=ticker:strike:expiry<br>
+  <strong>Inputs:</strong>
+  <ul>
+    <li>ticker(required) - underlying ticker</li>
+    <li>strike (optional) -Strike price to match</li>
+    <li>expiry - minimum expiration date</li>
+  </ul>
+  <strong>Outputs:</strong>
+  <ul>
+    <li>
+      hi
+    </li>
+  </ul>
+
+  <h5>Get Sectors</h5>
+  <strong>Endpoint:</strong>/options/?operation=read_list&operand1=ticker:strike:expiry<br>
+  <strong>Inputs:</strong>
+  <ul>
+    <li>ticker(required) - underlying ticker</li>
+    <li>strike (optional) -Strike price to match</li>
+    <li>expiry - minimum expiration date</li>
+  </ul>
+  <strong>Outputs:</strong>
+  <ul>
+    <li>
+      hi
+    </li>
+  </ul>
+
+  <h5>Get Stocks by Industry</h5>
+  <strong>Endpoint:</strong>/options/?operation=read_list&operand1=ticker:strike:expiry<br>
+  <strong>Inputs:</strong>
+  <ul>
+    <li>ticker(required) - underlying ticker</li>
+    <li>strike (optional) -Strike price to match</li>
+    <li>expiry - minimum expiration date</li>
+  </ul>
+  <strong>Outputs:</strong>
+  <ul>
+    <li>
+      hi
+    </li>
+  </ul>
+
+  <h5>Get Stocks by Sector</h5>
+  <strong>Endpoint:</strong>/options/?operation=read_list&operand1=ticker:strike:expiry<br>
+  <strong>Inputs:</strong>
+  <ul>
+    <li>ticker(required) - underlying ticker</li>
+    <li>strike (optional) -Strike price to match</li>
+    <li>expiry - minimum expiration date</li>
+  </ul>
+  <strong>Outputs:</strong>
+  <ul>
+    <li>
+      hi
+    </li>
+  </ul>
+
+  <h5>Get All Available Tickers</h5>
+  <strong>Endpoint:</strong>/options/?operation=read_list&operand1=ticker:strike:expiry<br>
+  <strong>Inputs:</strong>
+  <ul>
+    <li>ticker(required) - underlying ticker</li>
+    <li>strike (optional) -Strike price to match</li>
+    <li>expiry - minimum expiration date</li>
+  </ul>
+  <strong>Outputs:</strong>
+  <ul>
+    <li>
+      hi
+    </li>
+  </ul>
+
+</div>

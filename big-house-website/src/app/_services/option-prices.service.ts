@@ -77,12 +77,12 @@ export class OptionPricesService {
 
   getIndustries() {
     const url = `${this.stocksurl}?operation=industries&operand1=null`;
-    return this.http.get(url);
+    return this.http.get<string[]>(url);
   }
 
   getSectors() {
     const url = `${this.stocksurl}?operation=sectors&operand1=null`;
-    return this.http.get(url);
+    return this.http.get<string[]>(url);
   }
 
 

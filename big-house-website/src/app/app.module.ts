@@ -78,6 +78,7 @@ import { JwtInterceptor, ErrorInterceptor } from './_helpers';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { SubscriptionComponent } from './subscription/subscription.component';
+import { DataAPIinfoComponent } from './data-apiinfo/data-apiinfo.component';
 
 
 
@@ -106,6 +107,7 @@ import { SubscriptionComponent } from './subscription/subscription.component';
     LoginComponent,
     RegisterComponent,
     SubscriptionComponent,
+    DataAPIinfoComponent,
 
   ],
   imports: [

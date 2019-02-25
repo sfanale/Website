@@ -70,7 +70,8 @@ import { LearnCreateComponent } from './learn-create/learn-create.component';
 import '../../node_modules/autotrack/autotrack.js';
 import { MessageDetailComponent } from './message-detail/message-detail.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
-import { AlertComponent } from './alert/alert.component'
+import { AlertComponent } from './alert/alert.component';
+
 
 // used to create fake backend
 import { fakeBackendProvider } from './_helpers';
@@ -79,7 +80,6 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { SubscriptionComponent } from './subscription/subscription.component';
 import { DataAPIinfoComponent } from './data-apiinfo/data-apiinfo.component';
-
 
 
 @NgModule({
@@ -107,11 +107,10 @@ import { DataAPIinfoComponent } from './data-apiinfo/data-apiinfo.component';
     LoginComponent,
     RegisterComponent,
     SubscriptionComponent,
-    DataAPIinfoComponent,
-
+    DataAPIinfoComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({appId: 'Fanale-Research'}),
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
@@ -164,12 +163,8 @@ import { DataAPIinfoComponent } from './data-apiinfo/data-apiinfo.component';
 
     // provider used to create fake backend
     fakeBackendProvider],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+
 })
 export class AppModule { }
-
-
-
-
-
 platformBrowserDynamic().bootstrapModule(AppModule);

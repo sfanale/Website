@@ -57,9 +57,9 @@
     </div>
     <div class="col s12 m4 push-m3">
       <p>
-        Market Cap: {{stock[stock.length-1].marketcap / 1000000000 | currency}} Billion<br>
+        Market Cap: {{(stock[stock.length-1].marketcap |number) / 1000000000 | currency}} Billion<br>
         Shares Outstanding:     {{stock[stock.length-1].sharesoutstanding}}<br>
-        Next Earnings:      {{stock[stock.length-1].earningstimestamp * 1000| date}}<br>
+        Next Earnings:      {{(stock[stock.length-1].earningstimestamp|number )* 1000| date}}<br>
         Dividend Yield:     {{stock[stock.length-1].trailingannualdividendyield}}
       </p>
     </div>

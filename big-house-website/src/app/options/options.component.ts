@@ -10,7 +10,7 @@ import * as M from '../../../node_modules/materialize-css/dist/js/materialize.mi
 import {Router} from "@angular/router";
 import {NewsService} from "../_services/news.service";
 import {News} from "../news";
-
+import {Meta, Title} from "@angular/platform-browser";
 
 // This is not really an option page so much as a search page
 
@@ -49,7 +49,9 @@ export class OptionsComponent implements OnInit {
     private optionPriceService: OptionPricesService,
     private messageService: MessageService,
     private router: Router,
-    private newsService: NewsService
+    private newsService: NewsService,
+    private meta: Meta,
+    private title: Title
   ) {
 
   }
@@ -79,6 +81,11 @@ export class OptionsComponent implements OnInit {
 
     this.getIndustries();
     this.getSectors();
+
+    this.title.setTitle("Fanale Research");
+    this.meta.updateTag({ name: 'description', content: 'Research stock and options'});
+    this.meta.updateTag({ name: 'keywords', content: 'Options, Stocks, free options, historical options,' +
+        ' option charts, options research, options data'});
   }
 
   getNews(){

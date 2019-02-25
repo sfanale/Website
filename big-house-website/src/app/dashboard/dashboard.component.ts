@@ -4,7 +4,7 @@ import { InsightsService } from "../_services/insights.service";
 import * as M from '../../../node_modules/materialize-css/dist/js/materialize.min.js';
 import {AuthenticationService} from "../_services/authentication.service";
 import {ActivatedRoute, Router} from "@angular/router";
-import {Title} from "@angular/platform-browser";
+import {Title, Meta} from "@angular/platform-browser";
 
 
 @Component({
@@ -21,7 +21,8 @@ export class DashboardComponent implements OnInit {
     private authService: AuthenticationService,
     private router: Router,
     private route: ActivatedRoute,
-    private titleService: Title
+    private title: Title,
+    private meta: Meta
   ) { }
 
   ngOnInit() {
@@ -34,19 +35,19 @@ export class DashboardComponent implements OnInit {
     let elems3 = document.querySelectorAll(".med-slider");
     let options3 = { indicators: false, height: 523 };
     let instances3 = M.Slider.init(elems3, options3);
-    this.setTitle();
     this.getBlog();
     if (this.authService.currentUserValue) {
       this.router.navigate(['/explore']);
     }
 
+    this.title.setTitle("Fanale Research");
+    this.meta.updateTag({ name: 'description', content: 'Research stock and options'});
+    this.meta.updateTag({ name: 'keywords', content: 'Options, Stocks, free options, historical options, ' +
+        'option charts, options research, options data'});
+
 
   }
 
-  setTitle( ) {
-    let sym =this.route.snapshot.paramMap.get('sym');
-    this.titleService.setTitle(sym);
-  }
 
   getBlog() {
     this.insightsService.getOneBlog('3').subscribe(data => { this.blog = data; });

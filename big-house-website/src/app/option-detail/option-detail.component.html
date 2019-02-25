@@ -1,5 +1,5 @@
 <div class="row">
- <h3 class="center-align">{{stock[0].shortname}} {{option[0].strike | currency}} {{option[0].optiontype}} for {{option[0].expiration*1000 | date}}</h3>
+ <h3 class="center-align">{{stock[0].shortname}} {{option[0].strike | currency}} {{option[0].optiontype}} for {{(option[0].expiration| number)*1000 | date}}</h3>
 
 </div>
 

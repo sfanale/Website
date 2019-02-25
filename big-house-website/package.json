@@ -4,10 +4,20 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build && ng run big-house-website:server --output-hashing=none",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "webpack:server": "webpack --config webpack.server.config.js --progress --colors",
+    "build:client-and-server-bundles": "ng build && ng run big-house-website:server",
+    "build:prerender": "npm run build:client-and-server-bundles && npm run compile:server && npm run generate:prerender",
+    "build:ssr": "npm run build:client-and-server-bundles && npm run compile:server",
+    "compile:server": "tsc -p ./src/tsconfig.server.json",
+    "generate:prerender": "cd dist && node prerender",
+    "serve:prerender": "cd dist/browser && http-server",
+    "serve:ssr": "node dist/server/main.js",
+    "postbuild": "npm run render",
+    "render": "ts-node prerender.ts"
   },
   "private": true,
   "dependencies": {
@@ -23,6 +33,7 @@
     "@angular/platform-browser": "^7.2.0",
     "@angular/platform-browser-dynamic": "^7.2.0",
     "@angular/router": "^7.2.0",
+    "@nguniversal/module-map-ngfactory-loader": "^7.1.0",
     "@types/googlemaps": "^3.30.16",
     "@types/mathjs": "^4.4.5",
     "@types/prismjs": "^1.9.0",
@@ -40,9 +51,11 @@
     "popper.js": "^1.14.6",
     "puppeteer": "^1.11.0",
     "rxjs": "^6.3.3",
+    "ts-loader": "^5.3.3",
     "tslib": "^1.9.0",
     "web-animations-js": "^2.3.1",
     "webpack": "^4.28.4",
+    "webpack-cli": "^3.2.3",
     "zone.js": "~0.8.27"
   },
   "devDependencies": {
@@ -50,6 +63,7 @@
     "@angular/cli": "~7.2.1",
     "@angular/compiler-cli": "^7.2.0",
     "@angular/language-service": "^7.2.0",
+    "@angular/platform-server": "^7.2.6",
     "@types/jasmine": "~3.3.5",
     "@types/jasminewd2": "~2.0.6",
     "@types/node": "^10.12.18",
@@ -62,8 +76,8 @@
     "karma-jasmine": "~2.0.1",
     "karma-jasmine-html-reporter": "^1.4.0",
     "protractor": "~5.4.2",
-    "ts-node": "~7.0.1",
+    "ts-node": "^7.0.1",
     "tslint": "~5.12.1",
-    "typescript": "~3.2.2"
+    "typescript": "^3.2.4"
   }
 }

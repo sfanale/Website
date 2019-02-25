@@ -13,6 +13,7 @@ export class InsightBlog {
 export class LearnBlog {
   title: string;
   description: string;
+  date: string;
   content: string;
   tags: string[];
   image: string;

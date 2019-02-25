@@ -17,7 +17,7 @@
     </p>
     <h4>Key Metrics</h4>
     <ul>
-      <li>Over 6000 supported US tickers, including stocks and common ETFs</li>
+      <li>Over 6000 supported US tickers, including stocks and all Blackrock ETFs</li>
       <li>Over 10,000,000 daily close prices</li>
       <li>Intraday prices for Top 100 tickers (15 minutes but higher frequency coming!)</li>
       <li>Supporting information such as Open interest, volume, bid, ask, industry, sector, and implied volatility</li>
@@ -69,36 +69,69 @@
 
 
   <h5>Get Single Contract</h5>
-  <strong>Endpoint:</strong>/options/?operation=read_list&operand1=ticker:strike:expiry<br>
+  <strong>Endpoint:</strong>/options/?operation=get_one_contract&operand1=contract<br>
   <strong>Inputs:</strong>
   <ul>
-    <li>ticker(required) - underlying ticker</li>
-    <li>strike (optional) -Strike price to match</li>
-    <li>expiry - minimum expiration date</li>
+    <li>contract symbol (required) - underlying ticker</li>
   </ul>
   <strong>Outputs:</strong>
   <ul>
-    <li>
-      hi
-    </li>
+    <li>pricedate: EST Unix timestamp </li>
+    <li>underlyingsymbol: symbol of underlying asset </li>
+    <li>ask: </li>
+    <li>bid: </li>
+    <li>change: </li>
+    <li>contractsize: </li>
+    <li>contractsymbol: </li>
+    <li>currency: </li>
+    <li>expiration: </li>
+    <li>impliedvolatility: </li>
+    <li>inthemoney: true/false of in the money</li>
+    <li>lastprice: last real trade price</li>
+    <li>lasttradedate: </li>
+    <li>openinterest: </li>
+    <li>percentchange: </li>
+    <li>strike: </li>
+    <li>volume: </li>
+    <li>optiontype: call or put </li>
+    <li>industry: industry name string  </li>
+    <li>sector: sector name string </li>
+    <li>pricetype: intraday or close prices </li>
   </ul>
 
   <h5>Get All Contracts by Underlying Ticker</h5>
-  <strong>Endpoint:</strong>/options/?operation=read_list&operand1=ticker:strike:expiry<br>
+  <strong>Endpoint:</strong>/options/?operation=get_all_by_ticker&operand1=ticker<br>
   <strong>Inputs:</strong>
   <ul>
     <li>ticker(required) - underlying ticker</li>
-    <li>strike (optional) -Strike price to match</li>
-    <li>expiry - minimum expiration date</li>
+    <!-- <li>date range (optional) - minimum expiration date</li> -->
   </ul>
   <strong>Outputs:</strong>
   <ul>
-    <li>
-      hi
-    </li>
+    <li>pricedate: EST Unix timestamp </li>
+    <li>underlyingsymbol: symbol of underlying asset </li>
+    <li>ask: </li>
+    <li>bid: </li>
+    <li>change: </li>
+    <li>contractsize: </li>
+    <li>contractsymbol: </li>
+    <li>currency: </li>
+    <li>expiration: </li>
+    <li>impliedvolatility: </li>
+    <li>inthemoney: true/false of in the money</li>
+    <li>lastprice: last real trade price</li>
+    <li>lasttradedate: </li>
+    <li>openinterest: </li>
+    <li>percentchange: </li>
+    <li>strike: </li>
+    <li>volume: </li>
+    <li>optiontype: call or put </li>
+    <li>industry: industry name string  </li>
+    <li>sector: sector name string </li>
+    <li>pricetype: intraday or close prices </li>
   </ul>
 
-  <h5>Get Contracts by Underlying Ticker, Expiration Date, and/or Strike</h5>
+  <h5>Get List of Contracts by Underlying Ticker, Expiration Date, and/or Strike</h5>
   <strong>Endpoint:</strong>/options/?operation=read_list&operand1=ticker:strike:expiry<br>
   <strong>Inputs:</strong>
   <ul>
@@ -108,9 +141,12 @@
   </ul>
   <strong>Outputs:</strong>
   <ul>
-    <li>
-      hi
-    </li>
+    contractsymbol, expiration, strike, optiontype, lastprice
+    <li>contractsymbol: </li>
+    <li>expiration: </li>
+    <li>lastprice: last real trade price</li>
+    <li>strike: </li>
+    <li>optiontype: call or put </li>
   </ul>
 
   <h5>Get Contracts by Industry</h5>
@@ -123,9 +159,27 @@
   </ul>
   <strong>Outputs:</strong>
   <ul>
-    <li>
-      hi
-    </li>
+    <li>pricedate: EST Unix timestamp </li>
+    <li>underlyingsymbol: symbol of underlying asset </li>
+    <li>ask: </li>
+    <li>bid: </li>
+    <li>change: </li>
+    <li>contractsize: </li>
+    <li>contractsymbol: </li>
+    <li>currency: </li>
+    <li>expiration: </li>
+    <li>impliedvolatility: </li>
+    <li>inthemoney: true/false of in the money</li>
+    <li>lastprice: last real trade price</li>
+    <li>lasttradedate: </li>
+    <li>openinterest: </li>
+    <li>percentchange: </li>
+    <li>strike: </li>
+    <li>volume: </li>
+    <li>optiontype: call or put </li>
+    <li>industry: industry name string  </li>
+    <li>sector: sector name string </li>
+    <li>pricetype: intraday or close prices </li>
   </ul>
 
   <h5>Get Contracts by Sector</h5>
@@ -138,9 +192,27 @@
   </ul>
   <strong>Outputs:</strong>
   <ul>
-    <li>
-      hi
-    </li>
+    <li>pricedate: EST Unix timestamp </li>
+    <li>underlyingsymbol: symbol of underlying asset </li>
+    <li>ask: </li>
+    <li>bid: </li>
+    <li>change: </li>
+    <li>contractsize: </li>
+    <li>contractsymbol: </li>
+    <li>currency: </li>
+    <li>expiration: </li>
+    <li>impliedvolatility: </li>
+    <li>inthemoney: true/false of in the money</li>
+    <li>lastprice: last real trade price</li>
+    <li>lasttradedate: </li>
+    <li>openinterest: </li>
+    <li>percentchange: </li>
+    <li>strike: </li>
+    <li>volume: </li>
+    <li>optiontype: call or put </li>
+    <li>industry: industry name string  </li>
+    <li>sector: sector name string </li>
+    <li>pricetype: intraday or close prices </li>
   </ul>
 
   <h5>Get All Available Contracts</h5>
@@ -163,8 +235,6 @@
   <strong>Inputs:</strong>
   <ul>
     <li>ticker(required) - underlying ticker</li>
-    <li>strike (optional) -Strike price to match</li>
-    <li>expiry - minimum expiration date</li>
   </ul>
   <strong>Outputs:</strong>
   <ul>
@@ -177,9 +247,7 @@
   <strong>Endpoint:</strong>/options/?operation=read_list&operand1=ticker:strike:expiry<br>
   <strong>Inputs:</strong>
   <ul>
-    <li>ticker(required) - underlying ticker</li>
-    <li>strike (optional) -Strike price to match</li>
-    <li>expiry - minimum expiration date</li>
+    <li>direction (required) - movement direction</li>
   </ul>
   <strong>Outputs:</strong>
   <ul>
@@ -190,32 +258,16 @@
 
   <h5>Get Industries</h5>
   <strong>Endpoint:</strong>/options/?operation=read_list&operand1=ticker:strike:expiry<br>
-  <strong>Inputs:</strong>
-  <ul>
-    <li>ticker(required) - underlying ticker</li>
-    <li>strike (optional) -Strike price to match</li>
-    <li>expiry - minimum expiration date</li>
-  </ul>
   <strong>Outputs:</strong>
   <ul>
-    <li>
-      hi
-    </li>
+    <li>Industries: list of all industries</li>
   </ul>
 
   <h5>Get Sectors</h5>
   <strong>Endpoint:</strong>/options/?operation=read_list&operand1=ticker:strike:expiry<br>
-  <strong>Inputs:</strong>
-  <ul>
-    <li>ticker(required) - underlying ticker</li>
-    <li>strike (optional) -Strike price to match</li>
-    <li>expiry - minimum expiration date</li>
-  </ul>
   <strong>Outputs:</strong>
   <ul>
-    <li>
-      hi
-    </li>
+    <li>Sectors: list of all sectors</li>
   </ul>
 
   <h5>Get Stocks by Industry</h5>

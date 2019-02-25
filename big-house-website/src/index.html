@@ -8,6 +8,7 @@
   <title>Fanale Research</title>
   <meta name="description" content="Get easy research and modeling tools for stocks and options, including free
     historical option prices.">
+  <meta name="keywords" content="Options, Stocks, free options, historical options, option charts, options research, options data">
   <base href="/">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -18,7 +19,7 @@
   var x = document.URL.split('/')[3].toString();
   if (x == 'research') {
     console.log('ran');
-    (adsbygoogle = window.adsbygoogle || []).push({
+    (adsbygoogle = winvar.adsbygoogle || []).push({
       google_ad_client: "ca-pub-3255894829369180",
       enable_page_level_ads: true
     });
@@ -29,7 +30,9 @@
   <meta name="keywords" content="historical option price">
 
   <script>
-    window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+    winvar = window||{};
+    if (winvar!={}){
+    winvar.ga=winvar.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
     ga('create', 'UA-133446595-1', 'auto');
 
     // Replace the following lines with the plugins you want to use.
@@ -39,6 +42,7 @@
     // ...
 
     ga('send', 'pageview');
+      }
   </script>
   <script async src="https://www.google-analytics.com/analytics.js"></script>
   <script async src="../node_modules/autotrack/autotrack.js"></script>

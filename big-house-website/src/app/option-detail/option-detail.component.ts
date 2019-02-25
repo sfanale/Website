@@ -8,6 +8,7 @@ import {optionstools} from "../options-tools";
 import {Stock} from "../stock";
 import {NewsService} from "../_services/news.service";
 import {Title} from "@angular/platform-browser";
+import { Meta } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-option-detail',
@@ -23,7 +24,8 @@ export class OptionDetailComponent implements OnInit {
     private route: ActivatedRoute,
     private optionTools: optionstools,
     private newsService: NewsService,
-    private titleService: Title
+    private titleService: Title,
+    private meta: Meta
   ) { }
 
   ngOnInit() {
@@ -82,9 +84,11 @@ export class OptionDetailComponent implements OnInit {
 
       this.returns = this.optionTools.getRets(data);
       this.calcrets = this.optionTools.getCalRets(data);
-      console.log(this.returns);
-      console.log(this.calcrets);
 
+      this.meta.updateTag({ name: 'description', content: `Option Chart for ${this.stock[0].shortname} ${this.option[0].strike}`});
+      this.meta.updateTag({ name: 'keywords', content: `${this.stock[0].shortname}, ${this.option[0].underlyingsymbol},
+      ${this.option[0].contractsymbol}, ${this.option[0].strike}, ${this.option[0].expiration}, free options,
+      historical options` });
 
       this.chart = new Chart('canvas', {
         type: 'line',

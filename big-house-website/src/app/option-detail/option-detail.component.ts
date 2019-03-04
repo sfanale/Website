@@ -29,8 +29,8 @@ export class OptionDetailComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getOptionDetails();
     this.getStockDetails();
+    this.getOptionDetails();
     this.getNews();
     this.setTitle();
   }
@@ -85,11 +85,6 @@ export class OptionDetailComponent implements OnInit {
       this.returns = this.optionTools.getRets(data);
       this.calcrets = this.optionTools.getCalRets(data);
 
-      this.meta.updateTag({ name: 'description', content: `Option Chart for ${this.stock[0].shortname} ${this.option[0].strike}`});
-      this.meta.updateTag({ name: 'keywords', content: `${this.stock[0].shortname}, ${this.option[0].underlyingsymbol},
-      ${this.option[0].contractsymbol}, ${this.option[0].strike}, ${this.option[0].expiration}, free options,
-      historical options` });
-
       this.chart = new Chart('canvas', {
         type: 'line',
         data: {
@@ -126,6 +121,23 @@ export class OptionDetailComponent implements OnInit {
           }
         }
       });
+      /*
+      try {
+        this.meta.updateTag({
+          name: 'description',
+          content: 'Option Chart for ' + this.stock[0].shortname + ' at $' + this.option[0].strike
+        });
+        this.meta.updateTag({
+          name: 'keywords', content: this.stock[0].shortname + ', ' + this.option[0].underlyingsymbol + ', ' +
+            this.option[0].contractsymbol + ', ' + this.option[0].strike + ', ' + this.option[0].expiration + ', ' +
+            'free options, historical options'
+        });
+      }
+      catch(e) {
+        console.log(e);
+      }
+      */
+
     });
   }
 

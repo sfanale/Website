@@ -32,6 +32,10 @@ export class StockDetailComponent implements OnInit {
   options_to_show_calls={};
   options_to_show_puts={};
   selected_date;
+  $shortname;
+  $lastprice;
+  $lastchange;
+  $lastchangeper;
 
 
   constructor(
@@ -106,6 +110,11 @@ export class StockDetailComponent implements OnInit {
         console.log(d_temp.getMonth());
         this.dates = this.dates.concat((d_temp.getMonth()+1)+'/'+ d_temp.getDate()+'/'+d_temp.getFullYear());
       }
+
+      this.$shortname=  new Promise<string>(function(resolve) {resolve(data[0].shortname);});
+      this.$lastprice = new Promise<string>( function(resolve){resolve(data[data.length-1].regularmarketprice);});
+      this.$lastchange = new Promise<string>( function(resolve){resolve(data[data.length-1].regularmarketchange);});
+      this.$lastchangeper = new Promise<string>( function(resolve){resolve(data[data.length-1].regularmarketchangepercent);});
 
       this.chart = new Chart('canvas', {
         type: 'line',
